@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="21px" viewBox="0 0 15 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>location</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dragons_Generic_WF_v4" transform="translate(-109.000000, -2965.000000)" fill="#FABE35">
+            <g id="Group-11" transform="translate(0.000000, 2059.000000)">
+                <g id="Group-33" transform="translate(109.000000, 903.000000)">
+                    <g id="Group" transform="translate(0.000000, 3.000000)">
+                        <path d="M13.9285714,6.3 C13.9285714,2.8245 11.0464286,0 7.5,0 C3.95357143,0 1.07142857,2.8245 1.07142857,6.3 C1.07142857,11.025 7.5,17.85 7.5,17.85 C7.5,17.85 13.9285714,11.025 13.9285714,6.3 L13.9285714,6.3 Z M5.35714286,6.3 C5.35714286,5.145 6.32142857,4.2 7.5,4.2 C8.67857143,4.2 9.64285714,5.145 9.64285714,6.3 C9.64285714,7.455 8.68928571,8.4 7.5,8.4 C6.32142857,8.4 5.35714286,7.455 5.35714286,6.3 L5.35714286,6.3 Z M0,18.9 L0,21 L15,21 L15,18.9 L0,18.9 L0,18.9 Z" id="location"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

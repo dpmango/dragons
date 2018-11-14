@@ -1,7 +1,98 @@
 // FOOTER
 .footer
-  background: #f5f5f5
+  position: relative
+  z-index: 9
+  background: #000000
+  color: white
   &__wrapper
     display: flex
+    align-items: flex-start
+    padding: 50px 0
+
+  &__contacts
+    flex: 1 1 auto
+
+  &__menu
+    flex: 0 0 auto
+    margin-left: auto
+    margin: 0
+    padding: 0 78px 0 36px
+    li
+      display: block
+      font-size: 14px
+      font-weight: 700
+      letter-spacing: 0.044em
+      margin-bottom: 6px
+      text-transform: uppercase
+    a
+      position: relative
+      display: inline-block
+      padding: 3px
+      transition: color .25s $ease
+      &:hover, &.is-active
+        color: $colorPrimary
+        &::after
+          right: 0
+
+  &__controls
+    flex: 0 0 auto
+    width: 100%
+    max-width: 280px
+
+  &__socials
+    display: flex
     align-items: center
-    height: 100px
+    &-title
+      font-size: 14px
+      letter-spacing: -.009em
+      margin-right: 10px
+
+  &__subscription
+    margin-top: 30px
+    // max-width: 280px
+
+  &__sponsor
+    margin-top: 40px
+  &__sponsor-text
+    display: block
+    font-size: 10px
+    margin-bottom: 10px
+    line-height: 1
+  &__sponsor-logo
+    display: inline-block
+    font-size: 0
+
+  &__logo
+    margin-top: 30px
+
+// single contact
+.footer-contact
+  display: flex
+  align-items: flex-start
+  margin-bottom: 25px
+  &__icon
+    flex: 0 0 40px
+    max-width: 40px
+    display: flex
+    justify-content: center
+    color: $colorPrimary
+    .ico
+      &-ticket
+        font-size: 20px
+      &-phone
+        font-size: 22px
+      &-location
+        font-size: 21px
+
+  &__holder
+    font-weight: 700
+    font-size: 24px
+    line-height: 1
+
+  &__title
+    text-transform: uppercase
+    color: $colorPrimary
+
+  &__text
+
+  &__holder

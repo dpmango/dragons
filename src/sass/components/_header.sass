@@ -46,6 +46,7 @@
     line-height: 1
   &__sponsor-logo
     margin-left: 10px
+    display: inline-block
 
 
   &__bottom
@@ -83,7 +84,7 @@
         height: 2px
         background: $colorPrimary
         transition: right .25s $ease
-      &:hover
+      &:hover, &.is-active
         color: $colorPrimary
         &::after
           right: 0

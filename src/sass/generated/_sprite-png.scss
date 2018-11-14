@@ -1,19 +1,37 @@
 $sprite: (
-	logo-monmouthshire: (
+	logo-medium: (
+		offset-x: -134px,
+		offset-y: -66px,
+		width: 40px,
+		height: 45px,
+		total-width: 266px,
+		total-height: 140px,
+		image: '../img/sprite.png'
+	),
+	logo-monmouthshire-white: (
 		offset-x: -134px,
 		offset-y: 0px,
+		width: 132px,
+		height: 26px,
+		total-width: 266px,
+		total-height: 140px,
+		image: '../img/sprite.png'
+	),
+	logo-monmouthshire: (
+		offset-x: -134px,
+		offset-y: -36px,
 		width: 99px,
 		height: 20px,
-		total-width: 233px,
+		total-width: 266px,
 		total-height: 140px,
 		image: '../img/sprite.png'
 	),
 	logo-small: (
-		offset-x: -134px,
-		offset-y: -30px,
+		offset-x: -184px,
+		offset-y: -66px,
 		width: 32px,
 		height: 36px,
-		total-width: 233px,
+		total-width: 266px,
 		total-height: 140px,
 		image: '../img/sprite.png'
 	),
@@ -22,7 +40,7 @@ $sprite: (
 		offset-y: 0px,
 		width: 124px,
 		height: 140px,
-		total-width: 233px,
+		total-width: 266px,
 		total-height: 140px,
 		image: '../img/sprite.png'
 	),
@@ -82,6 +100,12 @@ $sprite: (
 
 
 
+	.icon-logo-medium {
+		@include sprite(logo-medium)
+	}
+	.icon-logo-monmouthshire-white {
+		@include sprite(logo-monmouthshire-white)
+	}
 	.icon-logo-monmouthshire {
 		@include sprite(logo-monmouthshire)
 	}
