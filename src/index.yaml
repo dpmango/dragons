@@ -1,0 +1,9 @@
+ProjectTitle: Dragons
+
+PageList:
+- file: homepage.html
+  ready: 0
+- file: article.html
+  ready: 10
+- file: page.html
+  ready: 0
