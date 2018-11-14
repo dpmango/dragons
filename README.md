@@ -1,14 +1,15 @@
-# Gulp Starter Pack
-This package intended to solve common front-end development tasks. Works best for psd/sketch to html projects and save you a lot of time setting up local environment
+# DRAGONS TEAM
+Based on [gulp started pack](https://github.com/dpmango/gulp-started-pack), package intended to solve common front-end development tasks.
 
 ## Demo page
-https://projectname.surge.sh (change name in package.json)
+https://dragons-team.surge.sh (change name in package.json)
 
 ## How to start
-* `yarn` - install npm dependencies
+* `yarn or npm i` - install npm dependencies
 * `bower install` - install bower packages
 * `gulp` - run dev-server
 * `gulp build` - build project from sources
+* `yarn deploy or npm run deploy` - build and deploy to .surge
 
 ## List of Gulp tasks
 To run separate task type in command line `gulp [task_name]`.
@@ -52,8 +53,6 @@ Exmaple:
 
 If it's not working correctly, try installing git-scripts manually:
 `yarn add git-scripts --save`
-
-use `yarn surge` to do the same, but it will run `gulp build` first and deploy production version of build (mostly about minified assets)
 
 
 ## Other
