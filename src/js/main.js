@@ -10,10 +10,14 @@ $(document).ready(function(){
   ////////////
   // READY - triggered when PJAX DONE
   ////////////
+
+  // some functions should be called once only
+  legacySupport();
+
   function pageReady(){
-    legacySupport();
     updateHeaderActiveClass();
     initHeaderScroll();
+    setDynamicSizes();
 
     initPopups();
     initSliders();
@@ -21,9 +25,6 @@ $(document).ready(function(){
     initMasks();
     initSelectric();
     initValidations();
-
-    // development helper
-    _window.on('resize', debounce(setBreakpoint, 200))
 
     // AVAILABLE in _components folder
     // copy paste in main.js and initialize here
@@ -34,6 +35,11 @@ $(document).ready(function(){
     // revealFooter();
     // _window.on('resize', throttle(revealFooter, 100));
   }
+
+  _window.on('resize', debounce(setDynamicSizes, 100))
+  // development helper
+  _window.on('resize', debounce(setBreakpoint, 200))
+
 
   // this is a master function which should have all functionality
   pageReady();
@@ -123,6 +129,25 @@ $(document).ready(function(){
         $(val).removeClass('is-active')
       }
     });
+  }
+
+  //////////
+  // VARIOUS SIZES FUNCTIONS
+  //////////
+  function setDynamicSizes(){
+    var $articleBG = $('[js-set-article-bg-height]')
+
+    if ( $articleBG.length > 0 ) {
+      var parent = $articleBG.parent();
+      var image = parent.find('.article__cover')
+
+      var calcedHeight = parent.outerHeight() - (image.outerHeight() / 2)
+      console.log(calcedHeight)
+      $articleBG.css({
+        height: calcedHeight
+      })
+
+    }
   }
 
   //////////

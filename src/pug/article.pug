@@ -4,15 +4,83 @@ title: Article page
 extends shared/_layout
 block content
   
-  // SECTION
+  // ARTICLE
   article.article
-    .container
-      // head
-      .article__head
-        h1 CHARITY NEWS & MATCH DAY COLLECTIONS
-      
-      // content
-      .article__content
+    // head
+    .article__head
+      // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
+      .article__head-bg(js-set-article-bg-height)
+      .container
         .row
-          .col Test
-          .col Test 2
+          .col
+            h1 CHARITY NEWS &<br> MATCH DAY <br>COLLECTIONS
+          .col-auto
+            .article__share.share
+              .share__title
+                span Share
+                +icon('ico-share')
+              .share__icons
+                .share__col
+                  a(href="#" target="_blank" area-label="Facebook").share__icon.share__icon--facebook
+                    +icon('ico-social-facebook')
+                .share__col
+                  a(href="#" target="_blank" area-label="Twitter").share__icon.share__icon--twitter
+                    +icon('ico-social-twitter')
+                .share__col
+                  a(href="#" target="_blank" area-label="Google Plus").share__icon.share__icon--gplus
+                    +icon('ico-social-gplus')
+                .share__col
+                  a(href="#" target="_blank" area-label="Instagram").share__icon.share__icon--instagram
+                    +icon('ico-social-instagram')
+                .share__col
+                  a(href="#" target="_blank" area-label="YouTube").share__icon.share__icon--youtube
+                    +icon('ico-social-youtube')
+        
+        // cover image
+        .article__cover
+          img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
+          
+            
+    // content
+    .article__wrapper
+      // content head
+      .article__content-info
+        .container
+          .row
+            .col
+              .article__date 01 January 2012
+            .col-auto
+              a(href="#").article__more
+                span Related articles
+                +icon('ico-arrow-right')
+      
+      // content wysiwyg
+      // this class is important for below class-free elements (wysiwyg generated)
+      .article__content
+        .container
+          .row
+            .col-7
+              h2 Dragons Match Day collections & charity support
+          
+          .row
+            .col-7
+              p In support of Local & National charities, the Dragons provide the opportunity to perform a collection at each home match of the season. This offer proves very popular as it enables valuable funds to be raised. The collectors also receive up to a dozen complimentary tickets to watch the match after their efforts in collecting. To apply for a collection please contact Community Manager, Mike Sage via email on <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY TICKET VOUCHERS
+              p To apply for Dragons match day ticket vouchers to raffle or auction to raise valuable funds, please apply by e-mail to <a href="mailto:info@dragonsrugby.wales">info@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY ENTERTAINMENT
+              p If you feel you have a talent and want to Perform on Parade, we have the perfect opportunities in our family zone or pitch side. For further info contact <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+
+              p We regularly have the Dragons Choir – Côr y Dreigiau – perform at our home games. Côr y Dreigiau are available to hire for any occasion and are always happy to welcome new members. So if you like them and you share a passion for both singing and rugby, then why not join in with one of their rehearsals? 
+                br
+                | Further details on the choir can be found at <a href="www.corydreigiau.org" target="_blank">www.corydreigiau.org</a>
+            
+            .offset-1.col-4(js-position-blockquote)
+              blockquote This team is still growing and we’re reasonably content, although we still have a lot of work to do.
+
+
+  // SPONSORS
+  section.sponsors
+    .container
+      

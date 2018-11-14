@@ -1,0 +1,65 @@
+.share
+  display: flex
+  &__title
+    font: 14px
+    color: $colorRed
+    display: flex
+    align-items: center
+    margin-right: 15px
+    span
+      display: inline-block
+      margin-right: 5px
+    .icon
+      font-size: 20px
+  &__icons
+    margin: -6px
+    display: flex
+    align-items: center
+    font-size: 0
+  &__col
+    padding: 6px
+  &__icon
+    position: relative
+    z-index: 1
+    overflow: hidden
+    display: inline-block
+    min-size: 24px
+    border-radius: 50%
+    font-size: 0
+    color: white
+    transition: opacity .25s $ease
+    .ico
+      position: absolute
+      top: 50%
+      left: 50%
+      overflow: visible
+      transform: translate(-50%,-50%)
+    &:hover
+      opacity: .7
+    &--facebook
+      background-color: $facebook
+      .ico
+        font-size: 13px
+
+    &--instagram
+      background-color: $instagram
+      .ico
+        font-size: 12.8px
+        margin-left: -0.05em
+
+    &--twitter
+      background-color: $twitter
+      .ico
+        font-size: 9.6px
+
+    &--youtube
+      background-color: $youtube
+      .ico
+        font-size: 9.2px
+        margin-left: -0.1em
+
+    &--gplus
+      background-color: $googleplus
+      .ico
+        font-size: 7.6px
+        margin-left: -0.1em

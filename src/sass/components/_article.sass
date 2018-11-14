@@ -1,0 +1,134 @@
+.article
+  position: relative
+  &__head
+    position: relative
+    z-index: 1
+    // background: $lightBg
+    display: flex
+    align-items: flex-start
+    padding-top: 60px
+    &-bg
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      background: $lightBg
+    h1
+      margin: 0
+      
+    .container
+      z-index: 2
+
+  &__share
+    flex: 0 0 auto
+
+  &__cover
+    margin-top: 60px
+    font-size: 0
+    img
+      max-width: 100%
+    figure
+      // in case in will be a caption
+      font-size: 16px
+
+  &__wrapper
+    padding: 45px 0 140px
+
+  &__content-info
+    margin-bottom: 60px
+
+  &__date
+    font-size: 14px
+    color: $colorRed
+
+  &__more
+    position: relative
+    z-index: 1
+    display: flex
+    align-items: center
+    margin-left: 5px
+    font-size: 0
+    color: $colorRed
+    padding-right: 10px
+    transition: .25s $ease
+    span
+      display: inline-block
+      font-size: 16px
+      text-transform: uppercase
+      font-weight: 700
+      letter-spacing: 0.005em
+    .ico
+      position: absolute
+      top: 50%
+      right: 0
+      font-size: 13.5px
+      transform: translateY(-55%)
+    &:hover
+      color: $colorRed
+
+  &__content
+    h2
+      font-size: 30px
+      font-weight: normal
+      letter-spacing: -0.0019em
+      margin: 0 0 50px
+      color: $colorRed
+    h3
+      font-size: 20px
+      font-weight: 700
+      text-transform: uppercase
+      margin: 2em 0 0
+      + p
+        // remote top margin, but compensate line height diff
+        margin-top: .2em
+    p
+      font-size: 20px
+      line-height: 1.4
+      font-weight: 500
+    a
+      position: relative
+      z-index: 1
+      transition: color .25s $ease
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        height: 1px
+        background: currentColor
+        transition: color .25s $ease
+      &:hover
+        color: $colorRed
+        &::after
+          // right: 0
+
+    blockquote
+      position: relative
+      z-index: 1
+      font-size: 36px
+      font-weight: 700
+      line-height: 1
+      color: $colorRed
+      text-transform: uppercase
+      letter-spacing: -0.0049em
+      margin: calc(1em + 20px) 0 1em
+      &::after, &::before
+        // quote marks
+        position: absolute
+        display: inline-block
+        content: ' '
+        font-size: 72px
+        line-height: .5
+        left: 0
+        pointer-events: none
+      &::after
+        content: '“'
+        top: -.3em
+        left: -.05em
+      &::before
+        content: '”'
+        bottom: -.8em

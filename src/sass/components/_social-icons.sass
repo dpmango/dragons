@@ -15,7 +15,7 @@
     border: 1px solid white
     font-size: 0
     color: white
-    transition: background .25s $ease
+    transition: background .25s $ease, border .25s $ease
     .ico
       position: absolute
       top: 50%
@@ -25,17 +25,29 @@
     &--facebook
       .ico
         font-size: 10px
+      &:hover
+        background-color: $facebook
+        border-color: $facebook
 
     &--instagram
       .ico
         font-size: 10px
         margin-left: -0.05em
+      &:hover
+        background-color: $instagram
+        border-color: $instagram
 
     &--twitter
       .ico
         font-size: 8px
+      &:hover
+        background-color: $twitter
+        border-color: $twitter
 
     &--youtube
       .ico
         font-size: 7px
         margin-left: -0.1em
+      &:hover
+        background-color: $youtube
+        border-color: $youtube
