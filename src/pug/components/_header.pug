@@ -1,18 +1,75 @@
 // HEADER :: START
 header.header
   .container
-    .header__wrapper
-      a(href="#").header__logo
-        +icon('ico-email')
+    .header__top
+      a(href="#" area-label="Homepage").header__logo
+        i.icon.icon-logo
+          
+      .header__controls
+        // socials
+        .header__socials.social-icons
+          .social-icons__col
+            a(href="#" target="_blank" area-label="Facebook").social-icons__icon.social-icons__icon--facebook
+              +icon('ico-social-facebook')
+          .social-icons__col
+            a(href="#" target="_blank" area-label="Instagram").social-icons__icon.social-icons__icon--instagram
+              +icon('ico-social-instagram')
+          .social-icons__col
+            a(href="#" target="_blank" area-label="Twitter").social-icons__icon.social-icons__icon--twitter
+              +icon('ico-social-twitter')
+          .social-icons__col
+            a(href="#" target="_blank" area-label="YouTube").social-icons__icon.social-icons__icon--youtube
+              +icon('ico-social-youtube')
+              
+        // subscription form
+        .header__subscription
+          form(action="#" js-subscription-validation).subsc-form
+            input.subsc-form__input.ui-input(
+              type="email" 
+              placeholder="Join our Mailing List"
+              id="email"
+              name="email")
+            button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE
+        
+        // cta
+        .header__cta
+          a(href="#").btn.btn-primary BUY TICKETS
+        
+        // sponsor
+        .header__sponsor
+          span.header__sponsor-text Main Club  <br/>Sponsor
+          a(href="#" area-label="Main Club Sponsor").header__sponsor-logo
+            i.icon.icon-logo-monmouthshire
+        
+      //- .header__hamburger
+      //-   .hamburger.hamburger--squeeze(js-hamburger)
+      //-     .hamburger-box
+      //-       .hamburger-inner
+    
+    .header__bottom
       ul.header__menu
-        
+        li
+          a(href="#") Home
+        li
+          a(href="#") News
+        li
+          a(href="#") Tickets
+        li
+          a(href="#") Teams
+        li
+          a(href="#") Match
+        li
+          a(href="#") REGION
+        li
+          a(href="#") Shop
+        li
+          a(href="#") CommerciaL
+        li
+          a(href="#") Contact
       
-      .header__cta
-        
-      
-      .header__hamburger
-        .hamburger.hamburger--squeeze(js-hamburger)
-          .hamburger-box
-            .hamburger-inner
-        
+      a(href="#").header__flight
+        i.icon.icon-logo-small
+        span.header__flight-text The FLIGHT
+  
+          
 // HEADER :: END

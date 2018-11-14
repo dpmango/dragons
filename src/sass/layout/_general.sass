@@ -16,7 +16,7 @@ ul
 body, html
   background: white
   color: $fontColor
-  font-family: 'Avenir Next LT Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-family: $defaultFamily
   font-size: 16px
   min-width: 320px
   max-width: 100%
@@ -38,12 +38,14 @@ body, html
     padding-top: 100px
 
 .container
-  max-width: 1200px
+  // max-width: 1236px
+  max-width: 1308px
   width: 100%
   margin-left: auto
   margin-right: auto
-  padding-left: 40px
-  padding-right: 40px
+  // gutter space
+  padding-left: 36px
+  padding-right: 36px
 
 +r($mobile)
   .container

@@ -8,17 +8,33 @@
   label
     display: block
     margin-bottom: 10px
-  input, textarea
-    display: block
-    width: 100%
-    -webkit-appearance: none
-    background: white
-    color: $grayColor
-    border: 1px solid $borderColor
-    border-radius: 4px
-    padding: 12px 15px
-  textarea
-    resize: vertical
+
+.ui-input
+  display: block
+  width: 100%
+  -webkit-appearance: none
+  background: #EAECE7
+  box-shadow: none
+  padding: 9px 7px
+  // border: 1px solid $borderColor
+  border: 0
+  // border-radius: 4px
+  color: $fontColor
+  font-size: 12px
+  font-weight: 500
+  font-family: $defaultFamily
+  letter-spacing: -0.012em
+  line-height: normal
+  &::placeholder
+    color: rgba($fontColor, .25)
+
+  &.has-error
+    color: $colorRed
+    &::placeholder
+      color: rgba($colorRed, .5)
+
+textarea.ui-input
+  resize: vertical
 
 
 // Checkbox
