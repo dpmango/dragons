@@ -82,7 +82,7 @@
     display: flex
     align-items: center
     // logo offset
-    padding: 5px 0 9px 125px
+    padding: 5px 0 0px 125px
 
   &__menu
     flex: 0 1 auto
@@ -101,25 +101,26 @@
     a
       position: relative
       display: inline-block
-      padding: 5px 5px
+      padding: 10px 5px 19px
       transition: color .25s $ease
       &::after
         display: inline-block
         content: ' '
         position: absolute
-        bottom: 0
+        bottom: 14px
         left: 0
         right: 100%
         height: 2px
         background: $colorPrimary
         transition: right .25s $ease
-      &:hover, &.is-active
+      &:hover, &.is-active, &.is-hovered
         color: $colorPrimary
         &::after
           right: 0
 
   &__flight
     flex: 0 0 auto
+    padding-bottom: 9px
     margin-left: auto
     display: flex
     align-items: center

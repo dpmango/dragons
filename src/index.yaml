@@ -2,7 +2,7 @@ ProjectTitle: Dragons
 
 PageList:
 - file: article.html
-  ready: 60
+  ready: 70
 - file: homepage.html
   ready: 0
 - file: page.html

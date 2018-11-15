@@ -7,38 +7,46 @@ $(document).ready(function(){
   var _window = $(window);
   var _document = $(document);
 
+  var $headerLogo = $('[js-header-logo]');
+  var $headerTop = $('[js-header-top]');
+  var $headerBottom = $('[js-header-sticky]');
+  var $dropdows = $('.dropdown-menu');
+
   ////////////
-  // READY - triggered when PJAX DONE
+  // LIST OF FUNCTIONS
   ////////////
 
   // some functions should be called once only
   legacySupport();
   initHeaderScroll();
 
+  // triggered when PJAX DONE
   function pageReady(){
-    updateHeaderActiveClass();
+    // please list in alphabetical order
+    positionDropdownMenus();
     setPageHeaderOffset();
+    updateHeaderActiveClass();
     setDynamicSizes();
+    revealFooter();
 
-    initPopups();
     initSliders();
-    initScrollMonitor();
+    initPopups();
     initMasks();
     initSelectric();
+    initScrollMonitor();
     initValidations();
 
-    // AVAILABLE in _components folder
-    // copy paste in main.js and initialize here
-    // initPerfectScrollbar();
     // initLazyLoad();
     // initTeleport();
-    // parseSvg();
-    // revealFooter();
-    // _window.on('resize', throttle(revealFooter, 100));
   }
 
+  // scroll/resize listeners (some might be found below with isolated initialization)
   _window.on('resize', debounce(setDynamicSizes, 100));
   _window.on('resize', debounce(setPageHeaderOffset, 50));
+  _window.on('resize', debounce(positionDropdownMenus, 200));
+  _window.on('scroll', positionDropdownMenus);
+  _window.on('resize', throttle(revealFooter, 100));
+
   // development helper
   _window.on('resize', debounce(setBreakpoint, 200))
 
@@ -69,6 +77,44 @@ $(document).ready(function(){
     });
   }
 
+  //////////
+  // DETECTORS
+  //////////
+  function isRetinaDisplay() {
+    if (window.matchMedia) {
+        var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+        return (mq && mq.matches || (window.devicePixelRatio > 1));
+    }
+  }
+
+  function isMobile(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  function msieversion() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  if ( msieversion() ){
+    $('body').addClass('is-ie');
+  }
+
+  if ( isMobile() ){
+    $('body').addClass('is-mobile');
+  }
+
+
 
   // Prevent # behavior
 	_document
@@ -93,15 +139,12 @@ $(document).ready(function(){
     _window.on('scroll', function(e) { // no throttling here for smooth animation
       var vScroll = _window.scrollTop();
       // var $header = $('.header');
-      var $logo = $('[js-header-logo]');
-      var $top = $('[js-header-top]');
-      var $bottom = $('[js-header-sticky]');
-      var topHeight = $top.outerHeight();
-      var logoLimits = [1, 0.357] // [140, 50] // scale factor
-      var logoLimitsBottom = [23, 9] // [1, 39.2] // [-23, -9]
+      var topHeight = $headerTop.outerHeight() - 10;
+      var logoLimits = [1, 0.45] // 357 // [140, 50] // scale factor
+      var logoLimitsBottom = [23, 10] // [1, 39.2] // [-23, -9]
 
       if (preventHeaderScrollListener){
-        if ( vScroll < topHeight ){
+        if ( vScroll <= topHeight ){
           preventHeaderScrollListener = false // re-enable
         } else{
           return // else prevent calculations and setting DOM
@@ -115,14 +158,14 @@ $(document).ready(function(){
       var calcedOpacity = scrollPercent
 
       // limit rules
-      if ( vScroll > topHeight ){
+      if ( vScroll >= topHeight ){
         calcedScroll = topHeight
         calcedScale = logoLimits[1]
         calcedBottom = logoLimitsBottom[1]
         calcedOpacity = 0
         preventHeaderScrollListener = true
       }
-      if ( vScroll < 0 ){
+      if ( vScroll <= 0 ){
         calcedScroll = 0
         calcedOpacity = 1
         calcedScale = logoLimits[0]
@@ -130,22 +173,58 @@ $(document).ready(function(){
       }
 
       // set values to DOM
-      $logo.css({
+      $headerLogo.css({
         "transform": 'scale('+ calcedScale +')',
         "bottom": "-" + calcedBottom + "px",
         // translate3d(0,-'+ calcedBottom +'px,0)'
       })
 
-      $bottom.css({
+      $headerBottom.css({
         "transform": "translate3d(0,-" + calcedScroll + "px,0)"
       })
 
-      $top.find('.header__top').css({
+      $headerTop.find('.header__top').css({
         opacity: calcedOpacity
       })
 
     });
   }
+
+  // Position dropdown menus
+  var preventDropdownScrollListener = false
+
+  function positionDropdownMenus(){
+    var vScroll = _window.scrollTop();
+    var topHeight = $headerTop.outerHeight() - 10;
+    var bottomHeight = $headerBottom.outerHeight()
+    var headerHeight = topHeight + bottomHeight
+
+    if (preventDropdownScrollListener){
+      if ( vScroll <= topHeight ){
+        preventDropdownScrollListener = false // re-enable
+      } else{
+        return // else prevent calculations and setting DOM
+      }
+    }
+
+    var calcedTop = headerHeight - vScroll
+
+    // limit rules
+    if ( vScroll >= topHeight ){
+      calcedTop = bottomHeight
+      preventDropdownScrollListener = true
+    }
+    if ( vScroll <= 0 ){
+      calcedTop = headerHeight
+    }
+
+    console.log(calcedTop, topHeight)
+
+    $dropdows.css({
+      'top': calcedTop
+    })
+  }
+
 
   // HEADER PAGE OFFSET
   function setPageHeaderOffset(){
@@ -154,18 +233,6 @@ $(document).ready(function(){
     $('.page__content').css({
       'padding-top': Math.floor(headerHeight)
     })
-  }
-
-
-  // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function(){
-    $(this).toggleClass('is-active');
-    $('.mobile-navi').toggleClass('is-active');
-  });
-
-  function closeMobileMenu(){
-    $('[js-hamburger]').removeClass('is-active');
-    $('.mobile-navi').removeClass('is-active');
   }
 
   // SET ACTIVE CLASS IN HEADER
@@ -179,6 +246,46 @@ $(document).ready(function(){
       }
     });
   }
+
+  // HAMBURGER TOGGLER
+  _document.on('click', '[js-hamburger]', function(){
+    $(this).toggleClass('is-active');
+    $('.mobile-navi').toggleClass('is-active');
+  });
+
+  function closeMobileMenu(){
+    $('[js-hamburger]').removeClass('is-active');
+    $('.mobile-navi').removeClass('is-active');
+  }
+
+
+  // MENU HOVER
+  var menuDebounceTime = 300 // how much time user have to hover dropdown menu?
+  _document
+    .on('mouseenter', '[js-dropdown-menu]', debounce(function(){
+      $(this).parent().addClass('is-hovered');
+      var target = $(this).data('target');
+      $('.dropdown-menu[data-for='+ target +']').addClass('is-active');
+    }, menuDebounceTime))
+    .on('mouseleave', '[js-dropdown-menu]', debounce(function(){
+      $(this).parent().removeClass('is-hovered');
+      var target = $(this).data('target');
+      $('.dropdown-menu[data-for='+ target +']').removeClass('is-active');
+    }, menuDebounceTime))
+
+    // reverse (keep hovered menu active)
+    .on('mouseenter', '.dropdown-menu[data-for]', debounce(function(){
+      $(this).addClass('is-active');
+      var target = $(this).data('for');
+      $('[js-dropdown-menu][data-target='+ target +']').parent().addClass('is-hovered');
+    }, menuDebounceTime))
+    .on('mouseleave', '.dropdown-menu[data-for]', debounce(function(){
+      $(this).removeClass('is-active');
+      var target = $(this).data('for');
+      $('[js-dropdown-menu][data-target='+ target +']').parent().removeClass('is-hovered');
+    }, menuDebounceTime))
+
+
 
   //////////
   // VARIOUS SIZES FUNCTIONS
@@ -197,6 +304,36 @@ $(document).ready(function(){
 
     }
   }
+
+  ////////////////
+  // FOOTER REVEAL
+  ////////////////
+
+  function revealFooter() {
+    var footer = $('[js-reveal-footer]');
+    if (footer.length > 0) {
+      var footerHeight = footer.outerHeight();
+      var maxHeight = _window.height() - footerHeight > 100;
+      if (maxHeight && !msieversion() ) {
+        $('body').css({
+          'margin-bottom': footerHeight
+        });
+        footer.css({
+          'position': 'fixed',
+          'z-index': -10
+        });
+      } else {
+        $('body').css({
+          'margin-bottom': 0
+        });
+        footer.css({
+          'position': 'static',
+          'z-index': 10
+        });
+      }
+    }
+  }
+
 
   //////////
   // SLIDERS
@@ -428,10 +565,6 @@ $(document).ready(function(){
       digits: true
     }
 
-    ////////
-    // FORMS
-
-
     /////////////////////
     // REGISTRATION FORM
     ////////////////////
@@ -471,7 +604,7 @@ $(document).ready(function(){
       }
     });
 
-    $("[js-subscription-validation]").validate({
+    var subscriptionValidationObject = {
       errorPlacement: validateErrorPlacement,
       highlight: validateHighlight,
       unhighlight: validateUnhighlight,
@@ -488,7 +621,11 @@ $(document).ready(function(){
           email: "Email is invalid"
         }
       }
-    });
+    }
+
+    // call/init
+    $("[js-subscription-validation]").validate(subscriptionValidationObject);
+    $("[js-subscription-validation-footer]").validate(subscriptionValidationObject);
 
   }
 
@@ -563,10 +700,8 @@ $(document).ready(function(){
   Barba.Pjax.start();
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
-
     pageReady();
     closeMobileMenu();
-
   });
 
   // some plugins get bindings onNewPage only that way

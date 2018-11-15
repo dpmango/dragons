@@ -1,0 +1,59 @@
+.dropdown-menu
+  position: fixed
+  // top will be set with js
+  top: 150px
+  left: 0
+  right: 0
+  z-index: 9
+  background: rgba(black, .6)
+  color: $colorPrimary
+  will-change: transform
+  pointer-events: none
+  transform: translate3d(0,-10px,0)
+  opacity: 0
+  transition: opacity .25s $ease, transform .25s $ease
+  &.is-active
+    opacity: 1
+    transform: translate3d(0,0,0)
+    pointer-events: all
+  &__col
+    margin-right: 30px
+    min-width: 150px
+    padding: 0 15px
+    &:last-child
+      margin-right: 0
+
+  &__list
+    flex: 0 1 auto
+    display: flex
+    align-items: center
+    font-size: 18px
+    margin: 0 -15px
+    padding: 15px 0 25px 140px
+    li
+      display: block
+      margin-right: 20px
+      margin-bottom: 5px
+      font-size: 14px
+      font-weight: 700
+      letter-spacing: 0.044em
+      text-transform: uppercase
+    a
+      position: relative
+      display: inline-block
+      padding: 5px 0px
+      transition: color .25s $ease
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 100%
+        height: 2px
+        background: $colorPrimary
+        transition: right .25s $ease
+      &:hover, &.is-active
+        color: $colorPrimary
+        &::after
+          right: 0
