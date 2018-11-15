@@ -13,10 +13,11 @@ $(document).ready(function(){
 
   // some functions should be called once only
   legacySupport();
+  initHeaderScroll();
 
   function pageReady(){
     updateHeaderActiveClass();
-    initHeaderScroll();
+    setPageHeaderOffset();
     setDynamicSizes();
 
     initPopups();
@@ -36,7 +37,8 @@ $(document).ready(function(){
     // _window.on('resize', throttle(revealFooter, 100));
   }
 
-  _window.on('resize', debounce(setDynamicSizes, 100))
+  _window.on('resize', debounce(setDynamicSizes, 100));
+  _window.on('resize', debounce(setPageHeaderOffset, 50));
   // development helper
   _window.on('resize', debounce(setBreakpoint, 200))
 
@@ -84,27 +86,69 @@ $(document).ready(function(){
   // HEADER SCROLL
   // add .header-static for .page or body
   // to disable sticky header
-  function initHeaderScroll(){
-    _window.on('scroll', throttle(function(e) {
-      var vScroll = _window.scrollTop();
-      var header = $('.header').not('.header--static');
-      var headerHeight = header.height();
-      var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-      var visibleWhen = Math.round(_document.height() / _window.height()) >  2.5
 
-      if (visibleWhen){
-        if ( vScroll > headerHeight ){
-          header.addClass('is-fixed');
-        } else {
-          header.removeClass('is-fixed');
-        }
-        if ( vScroll > firstSection ){
-          header.addClass('is-fixed-visible');
-        } else {
-          header.removeClass('is-fixed-visible');
+  var preventHeaderScrollListener = false
+
+  function initHeaderScroll(){
+    _window.on('scroll', function(e) { // no throttling here for smooth animation
+      var vScroll = _window.scrollTop();
+      // var $header = $('.header');
+      var $logo = $('[js-header-logo]');
+      var $top = $('[js-header-top]');
+      var $bottom = $('[js-header-sticky]');
+      var topHeight = $top.outerHeight();
+      var logoLimits = [1, 0.357] // [140, 50] // scale factor
+
+      if (preventHeaderScrollListener){
+        if ( vScroll < topHeight ){
+          preventHeaderScrollListener = false // re-enable
+        } else{
+          return // else prevent calculations and setting DOM
         }
       }
-    }, 10));
+
+      var calcedScroll = vScroll;
+      // var calcedScale = (logoLimits[0] - logoLimits[1]) / vScroll
+      var scrollPercent = 1 - (vScroll / topHeight) // 1 -> 0
+      var calcedScale = scrollPercent - Math.min(scrollPercent, logoLimits[1])
+      var calcedOpacity = scrollPercent
+
+      // limit rules
+      if ( vScroll > topHeight ){
+        calcedScroll = topHeight
+        calcedScale = logoLimits[1]
+        calcedOpacity = 0
+        preventHeaderScrollListener = true
+      }
+      if ( vScroll < 0 ){
+        calcedScroll = 0
+        calcedOpacity = 1
+        calcedScale = logoLimits[0]
+      }
+
+      // set values to DOM
+      $logo.css({
+        "transform": 'scale('+ calcedScale +')'
+      })
+
+      $bottom.css({
+        "transform": "translate3d(0,-" + calcedScroll + "px,0)"
+      })
+
+      $top.find('.header__top').css({
+        opacity: calcedOpacity
+      })
+
+    });
+  }
+
+  // HEADER PAGE OFFSET
+  function setPageHeaderOffset(){
+    var headerHeight = $('[js-header-top]').outerHeight() + $('[js-header-sticky]').height();
+
+    $('.page__content').css({
+      'padding-top': Math.floor(headerHeight)
+    })
   }
 
 
@@ -141,8 +185,7 @@ $(document).ready(function(){
       var parent = $articleBG.parent();
       var image = parent.find('.article__cover')
 
-      var calcedHeight = parent.outerHeight() - (image.outerHeight() / 2)
-      console.log(calcedHeight)
+      var calcedHeight = Math.floor(parent.outerHeight() - (image.outerHeight() / 2))
       $articleBG.css({
         height: calcedHeight
       })

@@ -1,22 +1,51 @@
 /* HEADER
 .header
-  position: relative
-  z-index: 10
+  .container
+    position: relative
+
+// this part is always at top
+.header-top
+  position: absolute
+  z-index: 9
   top: 0
+  left: 0
+  right: 0
+  background: black
+  color: white
+
+// main header (scrollable sticky)
+.header-sticky
+  position: fixed
+  z-index: 10
+  // todo - plus dynamic size in js ?
+  padding-top: 10px
+  top: 90px
   right: 0
   left: 0
-  color: white
   background: black
+  color: white
+  transform: translate3d(0,0,0)
+  will-change: transform
+  backface-visibility: hidden
+
+
+// componenets
+.header
   &__top
     position: relative
     display: flex
     align-items: flex-start
-    padding: 35px 0 33px
+    padding: 35px 0 33px 125px
+    transition: opacity .1s linear
+    will-change: opacity
 
   &__logo
-    flex: 0 0 auto
-    // to create async layout
-    max-height: calc(65px - 35px)
+    position: absolute
+    bottom: -23px
+    font-size: 0
+    transition: .1s linear
+    will-change: transform
+    transform-origin: left bottom
 
   &__controls
     margin-left: auto
