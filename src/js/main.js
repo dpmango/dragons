@@ -98,6 +98,7 @@ $(document).ready(function(){
       var $bottom = $('[js-header-sticky]');
       var topHeight = $top.outerHeight();
       var logoLimits = [1, 0.357] // [140, 50] // scale factor
+      var logoLimitsBottom = [23, 9] // [1, 39.2] // [-23, -9]
 
       if (preventHeaderScrollListener){
         if ( vScroll < topHeight ){
@@ -108,15 +109,16 @@ $(document).ready(function(){
       }
 
       var calcedScroll = vScroll;
-      // var calcedScale = (logoLimits[0] - logoLimits[1]) / vScroll
       var scrollPercent = 1 - (vScroll / topHeight) // 1 -> 0
-      var calcedScale = scrollPercent - Math.min(scrollPercent, logoLimits[1])
+      var calcedScale = normalize(vScroll, topHeight, 0, logoLimits[1], logoLimits[0]);
+      var calcedBottom = normalize(vScroll, topHeight, 0, logoLimitsBottom[1], logoLimitsBottom[0]);
       var calcedOpacity = scrollPercent
 
       // limit rules
       if ( vScroll > topHeight ){
         calcedScroll = topHeight
         calcedScale = logoLimits[1]
+        calcedBottom = logoLimitsBottom[1]
         calcedOpacity = 0
         preventHeaderScrollListener = true
       }
@@ -124,11 +126,14 @@ $(document).ready(function(){
         calcedScroll = 0
         calcedOpacity = 1
         calcedScale = logoLimits[0]
+        calcedBottom = logoLimitsBottom[0]
       }
 
       // set values to DOM
       $logo.css({
-        "transform": 'scale('+ calcedScale +')'
+        "transform": 'scale('+ calcedScale +')',
+        "bottom": "-" + calcedBottom + "px",
+        // translate3d(0,-'+ calcedBottom +'px,0)'
       })
 
       $bottom.css({
@@ -610,3 +615,15 @@ $(document).ready(function(){
   }
 
 });
+
+
+// HELPER FUNCTIONS AND MATH
+function normalize(value, fromMin, fromMax, toMin, toMax) {
+  var pct = (value - fromMin) / (fromMax - fromMin);
+  var normalized = pct * (toMax - toMin) + toMin;
+
+  //Cap output to min/max
+  if (normalized > toMax) return toMax;
+  if (normalized < toMin) return toMin;
+  return normalized;
+}
