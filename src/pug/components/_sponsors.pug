@@ -6,7 +6,7 @@ section.sponsors
       .row.align-items-center
         .col
           .h3-title OFFICIAL SPONSORS
-        .col-auto
+        .col-auto.d-none.d-lg-block
           span Would you like to be part of our success?  
           a(href="#").more-link
             span FIND OUT MORE
@@ -14,12 +14,12 @@ section.sponsors
     
     .sponsors__grid
       .row
-        .col-2
+        .col-12.col-lg-2
           .sponsors__title Headline Sponsor
           .sponsors__logo.sponsors__logo--full
             img(src='img/sponsors/monmouthsire.png' srcset='img/sponsors/monmouthsire@2x.png 2x' alt="" js-lazy)
             
-        .col-10
+        .col-12.col-lg-10
           .sponsors__title Main Sponsors
           .row
             .col.sponsors__logo
@@ -54,4 +54,9 @@ section.sponsors
             .col.sponsors__logo
               img(src='img/sponsors/logo14.png' srcset='img/sponsors/logo14@2x.png 2x' alt="" js-lazy)
 
-                                                    
+    
+    .d-block.d-lg-none
+      span Would you like to be part of our success?  
+      a(href="#").more-link
+        span FIND OUT MORE
+        +icon('ico-arrow-right')                                            

@@ -49,6 +49,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(setPageHeaderOffset, 50));
   _window.on('resize', debounce(setDynamicSizes, 100));
   _window.on('resize', throttle(revealFooter, 100));
+  _window.on('resize', debounce(resetListenersPrevent, 100))
 
   // development helper
   _window.on('resize', debounce(setBreakpoint, 200))
@@ -233,6 +234,12 @@ $(document).ready(function(){
     $dropdows.css({
       'top': calcedTop
     })
+  }
+
+  // reset blockers on resize
+  function resetListenersPrevent(){
+    preventHeaderScrollListener = false
+    preventDropdownScrollListener = false
   }
 
 
