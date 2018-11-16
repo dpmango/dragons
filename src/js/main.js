@@ -218,8 +218,6 @@ $(document).ready(function(){
       calcedTop = headerHeight
     }
 
-    console.log(calcedTop, topHeight)
-
     $dropdows.css({
       'top': calcedTop
     })

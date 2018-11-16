@@ -21,19 +21,34 @@ block content
                 +icon('ico-share')
               .share__icons
                 .share__col
-                  a(href="#" target="_blank" area-label="Facebook").share__icon.share__icon--facebook
+                  a(href="#" 
+                    target="_blank" 
+                    data-sharer="facebook" 
+                    data-hashtag="hashtag"
+                    area-label="Facebook").share__icon.share__icon--facebook
                     +icon('ico-social-facebook')
                 .share__col
-                  a(href="#" target="_blank" area-label="Twitter").share__icon.share__icon--twitter
+                  a(href="#" 
+                    data-sharer="twitter" 
+                    data-title="Pass title" 
+                    data-hashtags="hash, tags" 
+                    target="_blank" 
+                    area-label="Twitter").share__icon.share__icon--twitter
                     +icon('ico-social-twitter')
                 .share__col
-                  a(href="#" target="_blank" area-label="Google Plus").share__icon.share__icon--gplus
+                  a(href="#" 
+                    target="_blank" 
+                    area-label="Google Plus").share__icon.share__icon--gplus
                     +icon('ico-social-gplus')
                 .share__col
-                  a(href="#" target="_blank" area-label="Instagram").share__icon.share__icon--instagram
+                  a(href="#" 
+                    target="_blank" 
+                    area-label="Instagram").share__icon.share__icon--instagram
                     +icon('ico-social-instagram')
                 .share__col
-                  a(href="#" target="_blank" area-label="YouTube").share__icon.share__icon--youtube
+                  a(href="#" 
+                    target="_blank" 
+                    area-label="YouTube").share__icon.share__icon--youtube
                     +icon('ico-social-youtube')
         
         // cover image

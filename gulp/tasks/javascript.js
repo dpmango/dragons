@@ -21,6 +21,7 @@ gulp.task('javascript:vendor', function() {
       path.resolve('bower_components', 'barba.js/dist/barba.min.js'),
       path.resolve('bower_components', 'jquery-lazy/jquery.lazy.min.js'),
       path.resolve('bower_components', 'animejs/anime.min.js'),
+      path.resolve('bower_components', 'sharer.js/sharer.min.js'),
       config.src.js + '/vendor/**/*.js'
      ])
     .pipe(plumber({ errorHandler: config.errorHandler }))
