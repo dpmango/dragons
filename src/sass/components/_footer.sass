@@ -34,7 +34,7 @@
     a
       position: relative
       display: inline-block
-      padding: 3px
+      padding: 3px 0px
       transition: color .25s $ease
       &:hover, &.is-active
         color: $colorPrimary
@@ -94,12 +94,56 @@
   &__holder
     font-weight: 700
     font-size: 24px
-    line-height: 1
+    line-height: 1.1
 
   &__title
     text-transform: uppercase
     color: $colorPrimary
 
   &__text
+    margin-top: .1em
 
-  &__holder
+
++r($lg)
+  .footer
+    &__wrapper
+      padding: 50px 0 50px
+      flex-wrap: wrap
+    &__menu
+      order: 3
+      width: 100%
+      padding: 0
+      // too small !
+      // margin: 10px 0 30px
+      li
+        // too small !
+        // font-size: 7px
+    &__controls
+      order: 2
+    &__subscription
+      margin-top: 25px
+    &__sponsor
+      margin-top: 25px
+
+    &__menu
+
+
+  .footer-contact
+    margin-bottom: 12px
+    &__icon
+      display: none
+    &__holder
+      // too small !
+      // font-size: 13px
+      font-size: 18px
+
++r($md)
+  .footer
+    &__wrapper
+      padding: 35px 0 75px
+      flex-direction: column
+    &__menu
+      order: 2
+      margin: 20px 0 40px
+    &__controls
+      order: 3

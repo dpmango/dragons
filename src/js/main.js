@@ -408,7 +408,7 @@ $(document).ready(function(){
         });
         footer.css({
           'position': 'static',
-          'z-index': 10
+          'z-index': 8
         });
       }
     }
