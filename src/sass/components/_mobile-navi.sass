@@ -1,0 +1,116 @@
+.mobile-navi
+  position: fixed 0
+  z-index: 9
+  background: black
+  color: white
+  display: flex
+  flex-direction: column
+  // opacity: 0
+  transform: translate3d(100%,0,0)
+  pointer-events: none
+  transition: .25s $ease
+  +rmin($lg)
+    display: none !important
+  &.is-active
+    transform: translate3d(0,0,0)
+    // opacity: 1
+    pointer-events: all
+  &__wrapper
+    position: relative
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    // header offset
+    padding-top: 90px
+    overflow-y: scroll
+
+  &__menu
+    flex: 1 0 auto
+    margin: 0
+    padding: 0
+    li
+      position: relative
+      display: block
+      width: 100%
+      font-size: 16px
+      font-weight: 700
+      letter-spacing: 0.005em
+      text-transform: uppercase
+      border-bottom: 1px solid #4A4A4A
+      &.have-ul
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute
+          right: 40px
+          top: 16px
+          background: svg-load('../icons/arrow-menu.svg') no-repeat center
+          size: 10px 7px
+          background-size: contain
+          transition: transform .25s $ease
+      &.is-opened
+        &::after
+          transform: rotate(180deg)
+    a
+      position: relative
+      display: block
+      padding: 12px 40px 8px
+      transition: color .25s $ease
+      &:hover, &.is-active, &.is-opened
+        color: $colorPrimary
+    li ul
+      display: none
+      // second level
+      padding-left: 0
+      li
+        border-color: rgba(black, .1)
+        background: $colorPrimary
+        font-size: 14px
+        color: $fontColor
+        font-weight: normal
+        &:last-child
+          border-bottom: 0
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute
+          right: 42px
+          top: 12px
+          background: svg-load('../icons/arrow-menu-second-lvl.svg') no-repeat center
+          size: 7px 10px
+          background-size: contain
+          transition: transform .25s $ease
+      a
+        &:hover
+          color: white
+
+  &__subscription
+    margin-top: 60px
+    padding: 24px 40px
+    border-top: 1px solid #4A4A4A
+
+  &__subscription-title
+    font-size: 16px
+    line-height: 1
+    color: $colorPrimary
+    font-weight: 700
+    letter-spacing: -.0033em
+    margin-bottom: 7px
+
++r($sm)
+  .mobile-navi
+    &__menu
+      li
+        &.have-ul
+          &::after
+            right: 20px
+      a
+        padding-left: 15px
+        padding-right: 15px
+      li ul
+        li::after
+          right: 22px
+
+    &__subscription
+      padding-left: 20px
+      padding-right: 20px

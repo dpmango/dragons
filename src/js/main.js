@@ -19,13 +19,14 @@ $(document).ready(function(){
   // some functions should be called once only
   legacySupport();
   positionHeader();
+  addMobileMenuClasses();
 
   // triggered when PJAX DONE
   function pageReady(){
-    // please list in alphabetical order
     positionDropdownMenus();
     setPageHeaderOffset();
     updateHeaderActiveClass();
+    closeMobileMenu();
     setDynamicSizes();
     revealFooter();
 
@@ -259,14 +260,49 @@ $(document).ready(function(){
   }
 
   // HAMBURGER TOGGLER
+  var lastScroll = 0;
+
+  function disableScroll() {
+    lastScroll = _window.scrollTop();
+    $('.page__content').css({
+      'margin-top': '-' + lastScroll + 'px'
+    });
+    $('body').addClass('body-lock');
+    $('.footer').addClass('is-hidden')
+  }
+
+  function enableScroll() {
+    $('.page__content').attr('style', '');
+    $('body').removeClass('body-lock');
+    $('.footer').removeClass('is-hidden')
+    _window.scrollTop(lastScroll)
+    lastScroll = 0;
+  }
+
+  function blockScroll(unlock) {
+    if ($('[js-hamburger]').is('.is-active')) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+
+    if (unlock) {
+      enableScroll();
+    }
+  };
+
   _document.on('click', '[js-hamburger]', function(){
     $(this).toggleClass('is-active');
     $('.mobile-navi').toggleClass('is-active');
+
+    blockScroll();
   });
 
   function closeMobileMenu(){
     $('[js-hamburger]').removeClass('is-active');
     $('.mobile-navi').removeClass('is-active');
+
+    blockScroll();
   }
 
 
@@ -297,6 +333,37 @@ $(document).ready(function(){
     }, menuDebounceTime))
 
 
+  // MOBILE NAVI
+  function addMobileMenuClasses(){
+    var $selector = $('[js-mobile-navi-menu] li');
+
+    if ( $selector.length > 0 ){
+      $selector.each(function(i,li){
+        if ( $(li).find('ul').length > 0 ){
+          $(li).addClass('have-ul');
+        }
+      })
+    }
+  }
+
+  // click handlers
+  _document
+    .on('click', '[js-mobile-navi-menu] li', throttle(function(){
+      var $this = $(this);
+      var haveLi = $this.is('.have-ul');
+      if ( !haveLi ) return
+      var $ul = $this.find('ul');
+      var $siblings = $this.siblings()
+
+      // clear all first
+      $siblings.removeClass('is-opened');
+      $siblings.find('ul').slideUp(250);
+
+      // add classes and togglers
+      $ul.slideToggle(250);
+      $this.toggleClass('is-opened');
+
+    },250, {leading: true}));
 
   //////////
   // VARIOUS SIZES FUNCTIONS
@@ -637,7 +704,7 @@ $(document).ready(function(){
     // call/init
     $("[js-subscription-validation]").validate(subscriptionValidationObject);
     $("[js-subscription-validation-footer]").validate(subscriptionValidationObject);
-
+    $("[js-subscription-validation-menu]").validate(subscriptionValidationObject);
   }
 
 
@@ -712,7 +779,6 @@ $(document).ready(function(){
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
     pageReady();
-    closeMobileMenu();
   });
 
   // some plugins get bindings onNewPage only that way

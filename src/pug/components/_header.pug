@@ -82,18 +82,83 @@ header.header
     .dropdown-menu__list
       .dropdown-menu__col
         li 
-          a(href="") Players
+          a(href="#") Players
         li 
-          a(href="") Staff
+          a(href="#") Staff
         li 
-          a(href="") Statistics
+          a(href="#") Statistics
       .dropdown-menu__col
         li 
-          a(href="") Academy
+          a(href="#") Academy
         li 
-          a(href="") Dragons Women
+          a(href="#") Dragons Women
         li 
-          a(href="") Past players
+          a(href="#") Past players
 
 
+// MOBILE NAVI
+.mobile-navi
+  .mobile-navi__wrapper
+    // menu
+    ul.mobile-navi__menu(js-mobile-navi-menu)
+      li
+        a(href="#") Home
+      li
+        a(href="#") News
+      li
+        a(href="#") Tickets
+        ul
+          li 
+            a(href="#") Players
+          li 
+            a(href="#") Staff
+      li
+        a(href="#") Teams
+        ul
+          li 
+            a(href="#") Players
+          li 
+            a(href="#") Staff
+          li 
+            a(href="#") Statistics
+          li 
+            a(href="#") Academy
+          li 
+            a(href="#") Dragons Women
+          li 
+            a(href="#") Past players
+      li
+        a(href="#") Match
+      li
+        a(href="#") REGION
+      li
+        a(href="#") Shop
+        ul
+          li 
+            a(href="#") Players
+          li 
+            a(href="#") Staff
+      li
+        a(href="#") CommerciaL
+        ul
+          li 
+            a(href="#") Players
+          li 
+            a(href="#") Staff
+      li
+        a(href="#") Contact
+    
+    // subscription form
+    .mobile-navi__subscription
+      .mobile-navi__subscription-title JOIN THE <br/> EVOLUTION
+    
+      form(action="#" js-subscription-validation-menu).subsc-form.subsc-form--mobile-navi
+        input.subsc-form__input.ui-input(
+          type="email" 
+          placeholder="Join our Mailing List"
+          id="email"
+          name="email")
+        button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE
+            
+      
 // HEADER :: END
