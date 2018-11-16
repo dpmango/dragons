@@ -12,7 +12,15 @@ h1
 +r($lg)
   h1
     font-size: 46px
-    
+
++r($sm)
+  h1
+    font-size: 36px
+
++r($mobile-s)
+  h1
+    font-size: 32px
+
 .more-link
   position: relative
   z-index: 1
@@ -23,6 +31,9 @@ h1
   color: $colorRed
   padding-right: 10px
   transition: .25s $ease
+  &--no-margin
+    margin-left: 0
+
   span
     display: inline-block
     font-size: 16px

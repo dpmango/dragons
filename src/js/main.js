@@ -727,8 +727,19 @@ $(document).ready(function(){
       },
       beforeLoad: function(element){
         // element.attr('style', '')
+      },
+      afterLoad: function(element){
+        setDynamicSizes()
       }
     });
+
+    $('[js-lazy]').Lazy({
+      onFinishedAll: function() {
+        if( !this.config("autoDestroy") )
+            setDynamicSizes();
+      }
+    });
+
   }
 
   //////////
