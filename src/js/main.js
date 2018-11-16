@@ -18,7 +18,7 @@ $(document).ready(function(){
 
   // some functions should be called once only
   legacySupport();
-  initHeaderScroll();
+  positionHeader();
 
   // triggered when PJAX DONE
   function pageReady(){
@@ -41,10 +41,12 @@ $(document).ready(function(){
   }
 
   // scroll/resize listeners (some might be found below with isolated initialization)
-  _window.on('resize', debounce(setDynamicSizes, 100));
-  _window.on('resize', debounce(setPageHeaderOffset, 50));
-  _window.on('resize', debounce(positionDropdownMenus, 200));
   _window.on('scroll', positionDropdownMenus);
+  _window.on('scroll', positionHeader);
+  _window.on('resize', debounce(positionHeader, 200));
+  _window.on('resize', debounce(positionDropdownMenus, 200));
+  _window.on('resize', debounce(setPageHeaderOffset, 50));
+  _window.on('resize', debounce(setDynamicSizes, 100));
   _window.on('resize', throttle(revealFooter, 100));
 
   // development helper
@@ -135,65 +137,74 @@ $(document).ready(function(){
 
   var preventHeaderScrollListener = false
 
-  function initHeaderScroll(){
-    _window.on('scroll', function(e) { // no throttling here for smooth animation
-      var vScroll = _window.scrollTop();
-      // var $header = $('.header');
-      var topHeight = $headerTop.outerHeight() - 10;
-      var logoLimits = [1, 0.45] // 357 // [140, 50] // scale factor
-      var logoLimitsBottom = [23, 10] // [1, 39.2] // [-23, -9]
+  function positionHeader(){
+    if ( _window.width() <= 992 ){
+      $headerLogo.attr('style', '')
+      $headerBottom.attr('style', '')
+      $headerTop.find('.header__top').attr('style', '')
+      return false
+    }
 
-      if (preventHeaderScrollListener){
-        if ( vScroll <= topHeight ){
-          preventHeaderScrollListener = false // re-enable
-        } else{
-          return // else prevent calculations and setting DOM
-        }
+    var vScroll = _window.scrollTop();
+    // var $header = $('.header');
+    var topHeight = $headerTop.outerHeight() - 10;
+    var logoLimits = [1, 0.45] // 357 // [140, 50] // scale factor
+    var logoLimitsBottom = [23, 10] // [1, 39.2] // [-23, -9]
+
+    if (preventHeaderScrollListener){
+      if ( vScroll <= topHeight ){
+        preventHeaderScrollListener = false // re-enable
+      } else{
+        return // else prevent calculations and setting DOM
       }
+    }
 
-      var calcedScroll = vScroll;
-      var scrollPercent = 1 - (vScroll / topHeight) // 1 -> 0
-      var calcedScale = normalize(vScroll, topHeight, 0, logoLimits[1], logoLimits[0]);
-      var calcedBottom = normalize(vScroll, topHeight, 0, logoLimitsBottom[1], logoLimitsBottom[0]);
-      var calcedOpacity = scrollPercent
+    var calcedScroll = vScroll;
+    var scrollPercent = 1 - (vScroll / topHeight) // 1 -> 0
+    var calcedScale = normalize(vScroll, topHeight, 0, logoLimits[1], logoLimits[0]);
+    var calcedBottom = normalize(vScroll, topHeight, 0, logoLimitsBottom[1], logoLimitsBottom[0]);
+    var calcedOpacity = scrollPercent
 
-      // limit rules
-      if ( vScroll >= topHeight ){
-        calcedScroll = topHeight
-        calcedScale = logoLimits[1]
-        calcedBottom = logoLimitsBottom[1]
-        calcedOpacity = 0
-        preventHeaderScrollListener = true
-      }
-      if ( vScroll <= 0 ){
-        calcedScroll = 0
-        calcedOpacity = 1
-        calcedScale = logoLimits[0]
-        calcedBottom = logoLimitsBottom[0]
-      }
+    // limit rules
+    if ( vScroll >= topHeight ){
+      calcedScroll = topHeight
+      calcedScale = logoLimits[1]
+      calcedBottom = logoLimitsBottom[1]
+      calcedOpacity = 0
+      preventHeaderScrollListener = true
+    }
+    if ( vScroll <= 0 ){
+      calcedScroll = 0
+      calcedOpacity = 1
+      calcedScale = logoLimits[0]
+      calcedBottom = logoLimitsBottom[0]
+    }
 
-      // set values to DOM
-      $headerLogo.css({
-        "transform": 'scale('+ calcedScale +')',
-        "bottom": "-" + calcedBottom + "px",
-        // translate3d(0,-'+ calcedBottom +'px,0)'
-      })
+    // set values to DOM
+    $headerLogo.css({
+      "transform": 'scale('+ calcedScale +')',
+      "bottom": "-" + calcedBottom + "px",
+      // translate3d(0,-'+ calcedBottom +'px,0)'
+    })
 
-      $headerBottom.css({
-        "transform": "translate3d(0,-" + calcedScroll + "px,0)"
-      })
+    $headerBottom.css({
+      "transform": "translate3d(0,-" + calcedScroll + "px,0)"
+    })
 
-      $headerTop.find('.header__top').css({
-        opacity: calcedOpacity
-      })
-
-    });
+    $headerTop.find('.header__top').css({
+      opacity: calcedOpacity
+    })
   }
 
   // Position dropdown menus
   var preventDropdownScrollListener = false
 
   function positionDropdownMenus(){
+    if ( _window.width() <= 992 ){
+      $dropdows.attr('style', '')
+      return false
+    }
+
     var vScroll = _window.scrollTop();
     var topHeight = $headerTop.outerHeight() - 10;
     var bottomHeight = $headerBottom.outerHeight()
@@ -226,7 +237,9 @@ $(document).ready(function(){
 
   // HEADER PAGE OFFSET
   function setPageHeaderOffset(){
-    var headerHeight = $('[js-header-top]').outerHeight() + $('[js-header-sticky]').height();
+    var headerHeight =
+      ($('[js-header-top]').is(':visible') ? $('[js-header-top]').outerHeight(true) : 0)
+      + $('[js-header-sticky]').height();
 
     $('.page__content').css({
       'padding-top': Math.floor(headerHeight)
