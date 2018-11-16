@@ -37,7 +37,7 @@ $(document).ready(function(){
     initScrollMonitor();
     initValidations();
 
-    // initLazyLoad();
+    initLazyLoad();
     // initTeleport();
   }
 
@@ -272,7 +272,9 @@ $(document).ready(function(){
   }
 
   function enableScroll() {
-    $('.page__content').attr('style', '');
+    $('.page__content').css({
+      'margin-top': '-' + 0 + 'px'
+    });
     $('body').removeClass('body-lock');
     $('.footer').removeClass('is-hidden')
     _window.scrollTop(lastScroll)
@@ -707,6 +709,27 @@ $(document).ready(function(){
     $("[js-subscription-validation-menu]").validate(subscriptionValidationObject);
   }
 
+  //////////
+  // LAZY LOAD
+  //////////
+  function initLazyLoad(){
+    $('[js-lazy]').Lazy({
+      threshold: 500,
+      enableThrottle: true,
+      throttle: 100,
+      scrollDirection: 'vertical',
+      effect: 'fadeIn',
+      effectTime: 350,
+      // visibleOnly: true,
+      // placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
+      onError: function(element) {
+          console.log('error loading ', element);
+      },
+      beforeLoad: function(element){
+        // element.attr('style', '')
+      }
+    });
+  }
 
   //////////
   // BARBA PJAX

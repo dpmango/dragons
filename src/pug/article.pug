@@ -61,22 +61,22 @@ block content
           // width - w_1824
           // filters - g_auto,e_sharpen
           
-          picture
+          picture(js-lazy data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
             // 992 and above
-            source(
+            data-src(
               media="(min-width: 992px)" 
               srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
             // 992 - 576px
-            source(
+            data-src(
               media="(min-width: 576px)" 
               srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
             // 576px and less
-            source(
+            data-src(
               media="(min-width: 0px)" 
               srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
             
             // fallback
-            img.section-bg(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+            //- img.section-bg(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
 
     // content
     .article__wrapper
