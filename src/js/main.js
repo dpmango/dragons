@@ -169,6 +169,7 @@ $(document).ready(function(){
 
     // limit rules
     if ( vScroll >= topHeight ){
+      console.log(topHeight)
       calcedScroll = topHeight * -1
       calcedScale = logoLimits[1]
       calcedBottom = logoLimitsBottom[1]
