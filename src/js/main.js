@@ -357,12 +357,18 @@ $(document).ready(function(){
 
   // click handlers
   _document
-    .on('click', '[js-mobile-navi-menu] li', throttle(function(){
+    .on('click', '[js-mobile-navi-menu] li a', throttle(function(e){
       var $this = $(this);
-      var haveLi = $this.is('.have-ul');
-      if ( !haveLi ) return
-      var $ul = $this.find('ul');
-      var $siblings = $this.siblings()
+      var $li = $this.parent();
+      var haveLi = $li.is('.have-ul');
+      if ( haveLi ) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        return
+      }
+      var $ul = $li.find('ul');
+      var $siblings = $li.siblings()
 
       // clear all first
       $siblings.removeClass('is-opened');
@@ -370,9 +376,14 @@ $(document).ready(function(){
 
       // add classes and togglers
       $ul.slideToggle(250);
-      $this.toggleClass('is-opened');
+      $li.toggleClass('is-opened');
 
-    },250, {leading: true}));
+    },250, {leading: true}))
+
+    // second level click
+    .on('click', '[js-mobile-navi-menu] li ul', function(e){
+      e.stopPropagation();
+    });
 
   //////////
   // VARIOUS SIZES FUNCTIONS

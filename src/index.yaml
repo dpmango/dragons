@@ -4,6 +4,20 @@ PageList:
 - file: article.html
   ready: 85
 - file: homepage.html
-  ready: 0
-- file: page.html
-  ready: 0
+  ready: 5
+- file: fixtures.html
+  ready: 5
+- file: match-report.html
+  ready: 5
+- file: line-ups.html
+  ready: 5
+- file: squads.html
+  ready: 5
+- file: player.html
+  ready: 5
+- file: news.html
+  ready: 5
+- file: article-news.html
+  ready: 5
+- file: styleguide.html
+  ready: 5

@@ -1,0 +1,148 @@
+---
+title: Article page
+---
+extends shared/_layout
+block content
+  
+  // ARTICLE
+  article.article(itemscope itemtype="http://schema.org/Article")
+    // shema.org hidden
+    link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news/charity-news-match-day-collections.html")
+    meta(itemprop="inLanguage" content="en")
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    div(itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher")
+      link(itemprop="url" href="http://www.dragonsrugby.wales")
+      span(itemprop="name" content="Dragons")
+      span(itemprop="logo" itemscope itemtype="https://schema.org/ImageObject")
+        link(itemprop="url" href="https://res.cloudinary.com/dragons/image/upload/c_scale,w_150/common/dragons-logo.png")
+        meta(itemprop="width" content="150")
+        meta( temprop="height" content="169")
+      meta(itemprop="sameAs" content="https://www.facebook.com/dragonsrugby.wales")
+      meta(itemprop="sameAs" content="https://www.instagram.com/dragonsrugby/")
+      meta(itemprop="sameAs" content="https://twitter.com/dragonsrugby")
+      meta(itemprop="sameAs" content="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA")
+            
+    // head
+    .article__head
+      // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
+      .article__head-bg(js-set-article-bg-height)
+      .container
+        .row
+          .col
+            h1(itemprop="name") CHARITY NEWS &<br> MATCH DAY <br>COLLECTIONS
+          .col-auto
+            .article__share.share
+              .share__title
+                span Share
+                +icon('ico-share')
+              .share__icons
+                .share__col
+                  a(href="#" 
+                    data-sharer="facebook" 
+                    data-hashtag="hashtag"
+                    area-label="Facebook").share__icon.share__icon--facebook
+                    +icon('ico-social-facebook')
+                .share__col
+                  a(href="#" 
+                    data-sharer="twitter" 
+                    data-title="Pass title" 
+                    data-hashtags="hash, tags" 
+                    area-label="Twitter").share__icon.share__icon--twitter
+                    +icon('ico-social-twitter')
+                .share__col
+                  a(href="#" 
+                    onclick="shareGoogle('https://dragons-team.surge.sh/article.html')"
+                    target="_blank" 
+                    area-label="Google Plus").share__icon.share__icon--gplus
+                    +icon('ico-social-gplus')
+                  script.
+                    function shareGoogle(purl) {
+                      url = 'https://plus.google.com/share?url=' + purl;
+                      window.open(url,'','toolbar=0,status=0,width=626,height=436')
+                      return false;
+                    }
+
+                .share__col
+                  a(href="https://www.instagram.com/dragonsrugby/" 
+                    target="_blank" 
+                    area-label="Instagram").share__icon.share__icon--instagram
+                    +icon('ico-social-instagram')
+                .share__col
+                  a(href="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA" 
+                    target="_blank" 
+                    area-label="YouTube").share__icon.share__icon--youtube
+                    +icon('ico-social-youtube')
+        
+        // cover image
+        .article__cover
+          //- img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
+          // kind of reverse mobile-first approach. First matching media rule will be displayed
+          // image options https://cloudinary.com/documentation/image_transformations
+          // aspect ration - ar_16:9
+          // fill mode - c_fill
+          // width - w_1824
+          // filters - g_auto,e_sharpen
+          
+          picture(
+            alt="image"
+            area-label="Image description"
+            js-lazy 
+            data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+            // 992 and above
+            data-src(
+              media="(min-width: 992px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            // 992 - 576px
+            data-src(
+              media="(min-width: 576px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            // 576px and less
+            data-src(
+              media="(min-width: 0px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            
+            // fallback
+            //- img.section-bg(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+
+    // content
+    .article__wrapper
+      // content head
+      .article__content-info
+        .container
+          .row
+            .col-12.col-sm
+              .article__date(datetime="2012-01-01T09:04:20+00:00" itemprop="datePublished") 01 January 2012
+            .col-12.col-sm-auto
+              a(href="#").more-link.more-link--no-margin
+                span Related articles
+                +icon('ico-arrow-right')
+      
+      // content wysiwyg
+      // this class is important for below class-free elements (wysiwyg generated)
+      .article__content
+        .container
+          .row
+            .col-12.col-lg-7
+              h2(itemprop="headline") Dragons Match Day collections & charity support
+          
+          .row
+            .col-12.col-lg-7(itemprop="articleBody")
+              p In support of Local & National charities, the Dragons provide the opportunity to perform a collection at each home match of the season. This offer proves very popular as it enables valuable funds to be raised. The collectors also receive up to a dozen complimentary tickets to watch the match after their efforts in collecting. To apply for a collection please contact Community Manager, Mike Sage via email on <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY TICKET VOUCHERS
+              p To apply for Dragons match day ticket vouchers to raffle or auction to raise valuable funds, please apply by e-mail to <a href="mailto:info@dragonsrugby.wales">info@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY ENTERTAINMENT
+              p If you feel you have a talent and want to Perform on Parade, we have the perfect opportunities in our family zone or pitch side. For further info contact <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+
+              p We regularly have the Dragons Choir – Côr y Dreigiau – perform at our home games. Côr y Dreigiau are available to hire for any occasion and are always happy to welcome new members. So if you like them and you share a passion for both singing and rugby, then why not join in with one of their rehearsals? 
+                br
+                | Further details on the choir can be found at <a href="www.corydreigiau.org" target="_blank">www.corydreigiau.org</a>
+            
+            .col-12.offset-0.col-lg-4.offset-lg-1(js-position-blockquote)
+              blockquote This team is still growing and we’re reasonably content, although we still have a lot of work to do.
+
+  
+  include components/_sponsors
