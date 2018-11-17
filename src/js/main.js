@@ -161,7 +161,7 @@ $(document).ready(function(){
       }
     }
 
-    var calcedScroll = vScroll;
+    var calcedScroll = vScroll * -1;
     var scrollPercent = 1 - (vScroll / topHeight) // 1 -> 0
     var calcedScale = normalize(vScroll, topHeight, 0, logoLimits[1], logoLimits[0]);
     var calcedBottom = normalize(vScroll, topHeight, 0, logoLimitsBottom[1], logoLimitsBottom[0]);
@@ -169,14 +169,14 @@ $(document).ready(function(){
 
     // limit rules
     if ( vScroll >= topHeight ){
-      calcedScroll = topHeight
+      calcedScroll = topHeight * -1
       calcedScale = logoLimits[1]
       calcedBottom = logoLimitsBottom[1]
       calcedOpacity = 0
       preventHeaderScrollListener = true
     }
     if ( vScroll <= 0 ){
-      calcedScroll = 0
+      // calcedScroll = 0
       calcedOpacity = 1
       calcedScale = logoLimits[0]
       calcedBottom = logoLimitsBottom[0]
@@ -190,7 +190,7 @@ $(document).ready(function(){
     })
 
     $headerBottom.css({
-      "transform": "translate3d(0,-" + calcedScroll + "px,0)"
+      "transform": "translate3d(0," + calcedScroll + "px,0)"
     })
 
     $headerTop.find('.header__top').css({
