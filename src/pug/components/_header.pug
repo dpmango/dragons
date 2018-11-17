@@ -37,14 +37,14 @@ header.header
           // sponsor
           .header__sponsor
             span.header__sponsor-text Main Club  <br/>Sponsor
-            a(href="#" area-label="Main Club Sponsor").header__sponsor-logo
-              i.icon.icon-logo-monmouthshire
+            a(href="#").header__sponsor-logo
+              i.icon.icon-logo-monmouthshire(area-label="monmouthshire")
   
   // STICKY
   .header-sticky(js-header-sticky)
     .container
-      a(href="homepage.html" area-label="Homepage" js-header-logo).header__logo
-        i.icon.icon-logo
+      a(href="homepage.html" area-label="Navigate to homepage" js-header-logo).header__logo
+        i.icon.icon-logo(area-label="Dragons Logo")
 
       .header__bottom
         ul.header__menu
@@ -71,13 +71,13 @@ header.header
           i.icon.icon-logo-small
           span.header__flight-text The FLIGHT
         
-        .header__hamburger
+        .header__hamburger(area-label="Toggle mobile menu")
           .hamburger.hamburger--squeeze(js-hamburger)
             .hamburger-box
               .hamburger-inner
 
 // header mega menu
-.dropdown-menu(data-for="teams")
+.dropdown-menu(data-for="teams" area-label="Dropdown menu for teams")
   .container
     .dropdown-menu__list
       .dropdown-menu__col
