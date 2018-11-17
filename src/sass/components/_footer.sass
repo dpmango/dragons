@@ -76,7 +76,9 @@
 .footer-contact
   display: flex
   align-items: flex-start
-  margin-bottom: 25px
+  margin-bottom: 23px
+  &:last-child
+    margin-bottom: 0
   &__icon
     flex: 0 0 40px
     max-width: 40px
@@ -94,14 +96,19 @@
   &__holder
     font-weight: 700
     font-size: 24px
-    line-height: 1.1
+    line-height: 1.05
 
   &__title
     text-transform: uppercase
     color: $colorPrimary
 
   &__text
-    margin-top: .1em
+    margin-top: .05em
+    a
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed
+
 
 
 +r($lg)

@@ -125,6 +125,10 @@
     margin-left: auto
     display: flex
     align-items: center
+    &:hover
+      .header__flight-text
+        color: $colorPrimaryHover
+
   &__flight-text
     display: inline-block
     font-size: 14px
@@ -132,6 +136,7 @@
     text-transform: uppercase
     color: $colorPrimary
     margin-left: 7px
+    transition: color .25s $ease
 
 
   &__hamburger
