@@ -41,7 +41,6 @@ block content
               .share__icons
                 .share__col
                   a(href="#" 
-                    target="_blank" 
                     data-sharer="facebook" 
                     data-hashtag="hashtag"
                     area-label="Facebook").share__icon.share__icon--facebook
@@ -51,21 +50,28 @@ block content
                     data-sharer="twitter" 
                     data-title="Pass title" 
                     data-hashtags="hash, tags" 
-                    target="_blank" 
                     area-label="Twitter").share__icon.share__icon--twitter
                     +icon('ico-social-twitter')
                 .share__col
                   a(href="#" 
+                    onclick="shareGoogle('https://dragons-team.surge.sh/article.html')"
                     target="_blank" 
                     area-label="Google Plus").share__icon.share__icon--gplus
                     +icon('ico-social-gplus')
+                  script.
+                    function shareGoogle(purl) {
+                      url = 'https://plus.google.com/share?url=' + purl;
+                      window.open(url,'','toolbar=0,status=0,width=626,height=436')
+                      return false;
+                    }
+
                 .share__col
-                  a(href="#" 
+                  a(href="https://www.instagram.com/dragonsrugby/" 
                     target="_blank" 
                     area-label="Instagram").share__icon.share__icon--instagram
                     +icon('ico-social-instagram')
                 .share__col
-                  a(href="#" 
+                  a(href="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA" 
                     target="_blank" 
                     area-label="YouTube").share__icon.share__icon--youtube
                     +icon('ico-social-youtube')
