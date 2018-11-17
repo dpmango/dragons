@@ -20,27 +20,23 @@ h1
     font-size: 36px
 
   .h3-title
-    font-size: 18px
+    font-size: 20px
 
 +r($mobile-s)
   h1
     font-size: 32px
   .h3-title
-    font-size: 15px
+    font-size: 18px
 
 .more-link
   position: relative
   z-index: 1
   display: inline-flex
-  align-items: center
-  margin-left: 5px
+  align-items: baseline
   font-size: 0
   color: $colorRed
   padding-right: 10px
   transition: .25s $ease
-  &--no-margin
-    margin-left: 0
-
   span
     display: inline-block
     font-size: 16px
@@ -49,16 +45,29 @@ h1
     letter-spacing: em(0.5, 16)
   .ico
     position: absolute
+    z-index: 1
     top: 50%
     right: 0
     font-size: 13.5px
+    // dirty fix to align icon on font baseline (flex not helping)
     transform: translate(0, -55%)
+    will-change: transform
     transition: transform .25s $ease
   &:hover
     color: $colorRedHover
     .ico
       transform: translate(3px, -55%)
 
++r($sm)
+  .more-link
+    span
+      font-size: 13px
+    .ico
+      font-size: 12px
+      transform: translate(0, -45%)
+    &:hover
+      .ico
+        transform: translate(3px, -45%)
 
 // little inline helpers
 // TODO - boostrap ?
@@ -67,6 +76,9 @@ h1
 
 .f-500
   font-weight: 500
+
+.f-600
+  font-weight: 600
 
 .f-700
   font-weight: 700
