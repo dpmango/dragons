@@ -5,7 +5,26 @@ extends shared/_layout
 block content
   
   // ARTICLE
-  article.article
+  article.article(itemscope itemtype="http://schema.org/Article")
+    // shema.org hidden
+    link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news/charity-news-match-day-collections.html")
+    meta(itemprop="inLanguage" content="en")
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    div(itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher")
+      link(itemprop="url" href="http://www.dragonsrugby.wales")
+      span(itemprop="name" content="Dragons")
+      span(itemprop="logo" itemscope itemtype="https://schema.org/ImageObject")
+        link(itemprop="url" href="https://res.cloudinary.com/dragons/image/upload/c_scale,w_150/common/dragons-logo.png")
+        meta(itemprop="width" content="150")
+        meta( temprop="height" content="169")
+      meta(itemprop="sameAs" content="https://www.facebook.com/dragonsrugby.wales")
+      meta(itemprop="sameAs" content="https://www.instagram.com/dragonsrugby/")
+      meta(itemprop="sameAs" content="https://twitter.com/dragonsrugby")
+      meta(itemprop="sameAs" content="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA")
+            
+            
     // head
     .article__head
       // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
@@ -13,7 +32,7 @@ block content
       .container
         .row
           .col
-            h1 CHARITY NEWS &<br> MATCH DAY <br>COLLECTIONS
+            h1(itemprop="name") CHARITY NEWS &<br> MATCH DAY <br>COLLECTIONS
           .col-auto
             .article__share.share
               .share__title
@@ -61,7 +80,9 @@ block content
           // width - w_1824
           // filters - g_auto,e_sharpen
           
-          picture(js-lazy data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+          picture(
+            js-lazy 
+            data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
             // 992 and above
             data-src(
               media="(min-width: 992px)" 
@@ -85,7 +106,7 @@ block content
         .container
           .row
             .col-12.col-sm
-              .article__date 01 January 2012
+              .article__date(datetime="2012-01-01T09:04:20+00:00" itemprop="datePublished") 01 January 2012
             .col-12.col-sm-auto
               a(href="#").more-link.more-link--no-margin
                 span Related articles
@@ -97,10 +118,10 @@ block content
         .container
           .row
             .col-12.col-lg-7
-              h2 Dragons Match Day collections & charity support
+              h2(itemprop="headline") Dragons Match Day collections & charity support
           
           .row
-            .col-12.col-lg-7
+            .col-12.col-lg-7(itemprop="articleBody")
               p In support of Local & National charities, the Dragons provide the opportunity to perform a collection at each home match of the season. This offer proves very popular as it enables valuable funds to be raised. The collectors also receive up to a dozen complimentary tickets to watch the match after their efforts in collecting. To apply for a collection please contact Community Manager, Mike Sage via email on <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
        
               h3 MATCHDAY TICKET VOUCHERS
