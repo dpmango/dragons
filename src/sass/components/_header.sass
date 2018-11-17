@@ -84,6 +84,8 @@
     align-items: center
     // logo offset
     min-height: 50px
+    // IE fix
+    height: 50px
     padding: 5px 0 0px 125px
 
   &__menu
@@ -141,6 +143,7 @@
 
 
   &__hamburger
+    align-self: center
     display: none
     margin-left: auto
     padding-left: 20px
@@ -175,4 +178,4 @@
       padding-top: 0
 
     &__hamburger
-      display: block
+      display: inline-block
