@@ -1,0 +1,95 @@
+.fixtures
+  background: $colorRed
+  padding: 70px 0 80px 0
+  &__head
+    color: white
+
+  &__wrapper
+    margin-top: 70px
+
+  &__col
+    display: flex
+    flex-direction: column
+    background: white
+    padding-top: 15px
+    padding-bottom: 15px
+    min-height: 200px
+    &--center
+      padding-top: 0
+      background: #EAECE7
+      align-items: center
+
+  &__counter
+    transform: translateY(-30px)
+
+  &__scope
+    margin-top: -10px
+    text-align: center
+
+  &__title
+    font-size: 24px
+    font-weight: 700
+
+  &__place
+    font-size: 16px
+    font-weight: 500
+    margin-top: 10px
+
+  &__cta
+    display: block
+    text-align: center
+    margin-left: -18px
+    margin-right: -18px
+    .btn
+      display: block
+
+  &__all-link
+    margin-top: 30px
+
+// team element
+.fixtures-team
+  margin: auto -15px
+  display: flex
+  align-items: center
+  &--right
+    flex-direction: row-reverse
+    .fixtures-team
+      &__logo
+        padding-right: 0
+        padding-left: 30px
+
+  &__name
+    flex: 1 1 auto
+    font-size: 28px
+    letter-spacing: em(-.17, 28)
+    text-transform: uppercase
+    text-align: center
+  &__logo
+    flex: 0 0 auto
+    padding-right: 30px
+    font-size: 0
+    img
+      width: 100%
+
+
+// counter
+.counter
+  display: flex
+  &__col
+    display: flex
+    flex-direction: column
+    justify-content: center
+    flex: 0 1 60px
+    min-size: 60px
+    background: #000000
+    border: 1px solid #EAECE7
+    color: white
+    text-align: center
+  &__number
+    font-size: 18px
+    font-weight: 700
+  &__name
+    font-size: 10px
+    text-transform: uppercase
+    letter-spacing: em(0.31, 10)
+    margin-top: 5px

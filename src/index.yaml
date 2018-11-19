@@ -3,6 +3,10 @@ ProjectTitle: Dragons
 PageList:
 - file: article.html
   ready: 100
+- file: news.html
+  ready: 50
+- file: article-news.html
+  ready: 5
 - file: homepage.html
   ready: 5
 - file: fixtures.html
@@ -14,10 +18,6 @@ PageList:
 - file: squads.html
   ready: 5
 - file: player.html
-  ready: 5
-- file: news.html
-  ready: 5
-- file: article-news.html
   ready: 5
 - file: styleguide.html
   ready: 5

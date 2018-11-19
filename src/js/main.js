@@ -30,6 +30,9 @@ $(document).ready(function(){
     setDynamicSizes();
     revealFooter();
 
+    initMasonry();
+    initCountDown();
+    setTimeout(initMasonry, 500)
     initSliders();
     initPopups();
     initMasks();
@@ -125,6 +128,14 @@ $(document).ready(function(){
     .on('click', '[href="#"]', function(e) {
   		e.preventDefault();
   	})
+    .on('click', '[js-link]', function(e){
+      var dataHref = $(this).data('href');
+      if (dataHref && dataHref !== "#"){
+        e.preventDefault();
+        e.stopPropagation();
+        Barba.Pjax.goTo(dataHref);
+      }
+    })
     .on('click', 'a[href^="#section"]', function() { // section scroll
       var el = $(this).attr('href');
       $('body, html').animate({
@@ -429,6 +440,81 @@ $(document).ready(function(){
           'z-index': 8
         });
       }
+    }
+  }
+
+  //////////
+  // MASONRY
+  //////////
+  function initMasonry(shouldReload){
+    if ( $('[js-masonry]').length > 0 ){
+      $('[js-masonry]').each(function(i, masonry){
+        var $masonry = $(masonry);
+        var $grid;
+        var masonryOption = {
+          itemSelector: '[js-masonry-card]',
+          columnWidth: '[js-masonry-grid-sizer]',
+          percentPosition: true,
+          gutter: 36
+        }
+        $grid = $masonry.masonry(masonryOption);
+
+        if ( _window.width() < 640 ){
+          $grid.masonry('destroy')
+        } else {
+          $grid.masonry(masonryOption);
+          if ( shouldReload ){
+            setTimeout(function(){
+              $grid.masonry('reloadItems')
+            }, 150)
+          }
+        }
+      })
+    }
+  }
+
+  function initCountDown(){
+    if ($("[js-countdown]").length > 0) {
+      var $this    = $('[js-countdown]');
+      var endDate  = new Date($this.data('timestamp')).getTime();
+      var $days    = $this.find('[js-days]')
+      var $hours   = $this.find('[js-hours]')
+      var $minutes = $this.find('[js-minutes]')
+      var $seconds = $this.find('[js-seconds]')
+
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = endDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        $days.find('.counter__number').html((days).pad(2));
+        $days.find('.counter__name').html( pluralize('day', days) );
+        $hours.find('.counter__number').html((hours).pad(2));
+        $hours.find('.counter__name').html( pluralize('hour', hours) );
+        $minutes.find('.counter__number').html((hours).pad(2));
+        $minutes.find('.counter__name').html( pluralize('min', minutes) );
+        $seconds.find('.counter__number').html((seconds).pad(2));
+        $seconds.find('.counter__name').html( pluralize('sec', minutes) );
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          // document.getElementById("#days").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+
     }
   }
 
@@ -890,4 +976,10 @@ function normalize(value, fromMin, fromMax, toMin, toMax) {
   if (normalized > toMax) return toMax;
   if (normalized < toMin) return toMin;
   return normalized;
+}
+
+Number.prototype.pad = function(size) {
+  var s = String(this);
+  while (s.length < (size || 2)) {s = "0" + s;}
+  return s;
 }

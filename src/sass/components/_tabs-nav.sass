@@ -1,0 +1,44 @@
+
+/* TABS - nav
+.tabs-nav
+  flex: 0 1 auto
+  display: flex
+  align-items: center
+  font-size: 18px
+  margin: 0 -10px 0 0
+  padding: 0 0 0 0px
+  li
+    display: inline-block
+    margin-right: 10px
+    font-size: 14px
+    font-weight: 700
+    letter-spacing: em(0.44, 14)
+    text-transform: uppercase
+  a
+    position: relative
+    display: inline-block
+    padding: 10px 5px 10px
+    color: $colorRed2
+    transition: color .25s $ease
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 5px
+      left: 0
+      right: 100%
+      height: 2px
+      background: $fontColor
+      transition: right .25s $ease
+    &:hover, &.is-active
+      color: $fontColor
+      &::after
+        right: 0
+
+  &--white
+    a
+      color: $fontColor
+      &::after
+        background: white
+      &:hover, &.is-active
+        color: white

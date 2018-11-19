@@ -27,3 +27,21 @@ button
     padding: 10px 15px 9px
     letter-spacing: em(0.34, 11)
     text-transform: uppercase
+    &:hover
+      background-color: $colorPrimaryHover
+
+  &-big
+    background: $colorPrimary
+    color: $fontColor
+    font-size: 16px
+    font-weight: 700
+    padding: 30px
+    letter-spacing: em(0.5, 11)
+    text-transform: uppercase
+    &:hover
+      background-color: $colorPrimaryHover
+    &--black
+      background: black
+      color: white
+      &:hover
+        background-color: lighten(black, 10%)

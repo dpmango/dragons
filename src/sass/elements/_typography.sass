@@ -4,6 +4,11 @@ h1
   line-height: 1
   letter-spacing: em(-1.22, 72)
 
+.h2-title
+  font-size: 48px
+  font-weight: 700
+  letter-spacing: em(-.33, 48)
+
 .h3-title
   font-size: 28px
   letter-spacing: em(-0.17, 28)
@@ -57,6 +62,11 @@ h1
     color: $colorRedHover
     .ico
       transform: translate(3px, -55%)
+
+  &--white
+    color: white
+    &:hover
+      color: $colorPrimary
 
 +r($sm)
   .more-link

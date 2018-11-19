@@ -1,0 +1,145 @@
+.news
+  background: #EAECE7
+  padding: 55px 0 85px
+  &__head
+
+  &__wrapper
+
+  &__masonry
+    position: relative
+    z-index: 5
+    margin-left: -16px
+    margin-right: -16px
+
+  &__more
+    margin-top: 30px
+    .btn
+      display: block
+      margin-left: auto
+      margin-right: auto
+      max-width: 390px
+
+.grid-sizer
+  width: calc(25% - 36px)
+
+// news card
+.news-card
+  // masonry instance - requires wrapper for relative pos
+  display: block
+  // width: calc(25% - 36px)
+  // margin-bottom: 36px
+  width: 25%
+  padding: 18px
+  &--wide
+    // width: calc(50% - 36px)
+    width: 50%
+
+  &__wrapper
+    position: relative
+    z-index: 1
+
+  &__background
+    position: relative
+    z-index: 1
+    overflow: hidden
+    font-size: 0
+    user-select: none
+    pointer-events: none
+    img
+      width: 100%
+    &::after
+      // gradient mask
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      height: 50%
+      background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.50) 61%, rgba(7,7,7,0.50) 95%);
+
+  &__content
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 2
+    display: flex
+    flex-direction: column
+    padding: 8px 15px
+    color: white
+
+  &__title
+    font-size: 24px
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: em(-1, 24)
+    line-height: 1
+    text-transform: uppercase
+
+  &__timestamp
+    font-size: 12px
+    letter-spacing: em(-.25, 12)
+    line-height: 2.5
+
+  &__tag
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 3
+
+  // partly cloned more-link instance
+  &__category
+    position: relative
+    z-index: 1
+    overflow: hidden
+    display: flex
+    align-items: baseline
+    font-size: 0
+    background: $colorRed
+    color: white
+    padding: 10px 25px 10px 15px
+    transition: .25s $ease
+    span
+      display: inline-block
+      font-size: 12px
+      text-transform: uppercase
+      font-weight: 700
+      letter-spacing: em(0.5, 16)
+    > .ico
+      position: absolute
+      z-index: 1
+      top: 50%
+      right: 10px
+      font-size: 10.5px
+      // dirty fix to align icon on font baseline (flex not helping)
+      transform: translate(0, -55%)
+      will-change: transform
+      transition: transform .25s $ease
+
+    &--iconed
+      padding-right: calc(15px + 33px)
+    &-icon
+      background: #D0021B
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      display: flex
+      flex-direction: column
+      width: 33px
+      .ico
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        font-size: 11px
+    &-icon-wrap
+      flex: 1 1 auto
+      position: relative
+      z-index: 2
+
+    &:hover
+      background-color: $colorRedHover
+      > .ico
+        transform: translate(3px, -55%)
