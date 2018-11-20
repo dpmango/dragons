@@ -5,9 +5,12 @@
     color: white
 
   &__wrapper
+    position: relative
+    z-index: 1
     margin-top: 70px
 
   &__col
+    position: static
     display: flex
     flex-direction: column
     background: white
@@ -46,17 +49,18 @@
   &__all-link
     margin-top: 30px
 
+
 // team element
 .fixtures-team
-  margin: auto -15px
+  margin: auto 0
   display: flex
   align-items: center
   &--right
     flex-direction: row-reverse
     .fixtures-team
       &__logo
-        padding-right: 0
-        padding-left: 30px
+        padding-right: 10px
+        padding-left: 15px
 
   &__name
     flex: 1 1 auto
@@ -65,9 +69,11 @@
     text-transform: uppercase
     text-align: center
   &__logo
-    flex: 0 0 auto
-    padding-right: 30px
+    flex: 0 1 auto
+    padding-right: 15px
+    padding-left: 10px
     font-size: 0
+    text-align: center
     img
       width: 100%
 
@@ -93,3 +99,56 @@
     text-transform: uppercase
     letter-spacing: em(0.31, 10)
     margin-top: 5px
+
+
++r($xl)
+  .fixtures
+    &__col
+      min-height: 175px
+    &__title
+      font-size: 22px
+    &__place
+      font-size: 15px
+
+  .fixtures-team
+    &__name
+      font-size: 24px
+    &__logo
+      img
+        width: 80%
+
++r($lg)
+  .fixtures
+    padding-top: 50px
+    padding-bottom: 60px
+    &__wrapper
+      margin-top: 120px
+      max-width: 500px
+      margin-left: auto
+      margin-right: auto
+    &__col
+      min-height: 140px
+      &--center
+        padding-top: 25px
+        padding-bottom: 25px
+    &__scope
+      margin-top: auto
+      margin-bottom: auto
+    &__counter
+      position: absolute
+      top: -60px
+      left: 50%
+      transform: translateX(-50%)
+
+  .fixtures-team
+    display: flex
+    align-items: center
+    flex-direction: row
+    &--right
+      .fixtures-team
+        &__logo
+          padding-right: 15px
+          padding-left: 10px
+
+    &__logo
+      text-align: right
