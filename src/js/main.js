@@ -12,6 +12,12 @@ $(document).ready(function(){
   var $headerBottom = $('[js-header-sticky]');
   var $dropdows = $('.dropdown-menu');
 
+  var aboutSwiper = {
+    selector: '[js-about-swiper]',
+    instance: undefined,
+    disableOn: 992
+  }
+
   ////////////
   // LIST OF FUNCTIONS
   ////////////
@@ -33,8 +39,8 @@ $(document).ready(function(){
     positionArticleHeader();
 
     initMasonry();
-    initCountDown();
     setTimeout(initMasonry, 500)
+    initCountDown();
     initSliders();
     initPopups();
     initMasks();
@@ -57,6 +63,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(resetListenersPrevent, 100))
   _window.on('scroll', throttle(positionArticleHeader, 50));
   _window.on('resize', debounce(positionArticleHeader, 200));
+  _window.on('resize', debounce(initSliders, 200));
 
   // development helper
   _window.on('resize', debounce(setBreakpoint, 200))
@@ -621,40 +628,62 @@ $(document).ready(function(){
   //////////
   // SLIDERS
   //////////
-
   function initSliders(){
+    // TODO - wrong selector on barba.js changes
 
-    // EXAMPLE SWIPER
-    new Swiper('[js-slider]', {
+    // INIT CHECKERS
+    if ( $(aboutSwiper.selector).length > 0 ){
+      if ( _window.width() >= aboutSwiper.disableOn ) {
+        if ( aboutSwiper.instance !== undefined ) {
+          aboutSwiper.instance.destroy( true, true );
+          aboutSwiper.instance = undefined
+        }
+        // return
+      } else {
+        if ( aboutSwiper.instance === undefined ) {
+          enableAboutSwiper();
+        }
+      }
+
+      console.log('swiper intances', aboutSwiper.instance)
+    }
+  }
+
+  // ABOUT SWIPER
+  function enableAboutSwiper(){
+    aboutSwiper.instance = new Swiper(aboutSwiper.selector, {
+      // TODO - option for disabling links on swiping
+
       wrapperClass: "swiper-wrapper",
-      slideClass: "example-slide",
+      slideClass: "about__slider-slide",
       direction: 'horizontal',
       loop: false,
-      watchOverflow: true,
+      watchOverflow: false,
       setWrapperSize: false,
-      spaceBetween: 0,
+      // spaceBetween: 36,
       slidesPerView: 'auto',
-      // loop: true,
       normalizeSlideIndex: true,
-      // centeredSlides: true,
       freeMode: true,
-      // effect: 'fade',
-      autoplay: {
-        delay: 5000,
-      },
-      navigation: {
-        nextEl: '.example-next',
-        prevEl: '.example-prev',
-      },
+      preventClicks: true,
       breakpoints: {
         // when window width is <= 992px
         992: {
-          autoHeight: true
+          spaceBetween: 36,
+        },
+        576: {
+          spaceBetween: 20,
+        },
+        414: {
+          spaceBetween: 10
         }
       }
     })
-
   }
+
+  _document
+    .on('click', '.about-card', function(){
+
+    })
 
   //////////
   // MODALS
