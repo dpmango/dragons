@@ -10,6 +10,7 @@
     z-index: 5
     margin-left: -16px
     margin-right: -16px
+    font-size: 0
 
   &__more
     margin-top: 30px
@@ -20,7 +21,8 @@
       max-width: 390px
 
 .grid-sizer
-  width: calc(25% - 36px)
+  // width: calc(25% - 36px)
+  width: 25%
 
 // news card
 .news-card
@@ -30,15 +32,19 @@
   // margin-bottom: 36px
   width: 25%
   padding: 18px
+  // outline: 1px solid $colorRed
   &--wide
     // width: calc(50% - 36px)
     width: 50%
+    .news-card__background
+      padding-bottom: 53.33%
 
   &__wrapper
     position: relative
     z-index: 1
 
   &__background
+    padding-bottom: 113.47%
     position: relative
     z-index: 1
     overflow: hidden
@@ -46,7 +52,15 @@
     user-select: none
     pointer-events: none
     img
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: 1
       width: 100%
+      transform: translate(-50%,-50%)
+      will-change: transform
+      backface-visibility: hidden
+      transition: .75s easeOutQuart
     &::after
       // gradient mask
       display: inline-block
@@ -55,6 +69,7 @@
       bottom: 0
       left: 0
       right: 0
+      z-index: 2
       height: 50%
       background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.50) 61%, rgba(7,7,7,0.50) 95%);
 
@@ -76,11 +91,14 @@
     letter-spacing: em(-1, 24)
     line-height: 1
     text-transform: uppercase
+    padding-right: .3em
+    transition: .25s $ease
 
   &__timestamp
     font-size: 12px
     letter-spacing: em(-.25, 12)
     line-height: 2.5
+    transition: color .25s $ease
 
   &__tag
     position: absolute
@@ -143,3 +161,42 @@
       background-color: $colorRedHover
       > .ico
         transform: translate(3px, -55%)
+
+  &:hover
+    .news-card
+      &__background
+        img
+          transform: translate(-50%,-50%) scale(1.1)
+      &__timestamp
+        color: rgba(white, .8)
+      &__title
+        transform: translate(.3em,0)
+
+
+/* News media rules
++r($lg)
+  .grid-sizer
+    width: 33.3%
+
+  .news-card
+    width: 33.3%
+    &--wide
+      width: 66.6%
+
++r($md)
+  .grid-sizer
+    width: 50%
+
+  .news-card
+    width: 50%
+    &--wide
+      width: 100%
+
++r($sm)
+  .news
+    &__masonry
+      margin-left: -10px
+      margin-right: -10px
+
+  .news-card
+    padding: 10px

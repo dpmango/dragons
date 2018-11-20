@@ -17,10 +17,24 @@
   display: flex
   flex-direction: column
   display: block
-  &__image
+  &__background
+    padding-bottom: 66.4%
+    position: relative
+    z-index: 1
+    overflow: hidden
     font-size: 0
+    user-select: none
+    pointer-events: none
     img
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: 1
       width: 100%
+      transform: translate(-50%,-50%)
+      will-change: transform
+      backface-visibility: hidden
+      transition: .75s easeOutQuart
 
   &__contents
     flex: 1 0 auto
@@ -33,6 +47,18 @@
 
   &__title
     font-weight: 700
+    transition: color .25s $ease
 
   &__link
     color: $colorRed2
+    transition: color .25s $ease
+
+  &:hover
+    .about-card
+      &__background
+        img
+          transform: translate(-50%,-50%) scale(1.1)
+      &__title
+        // color: $colorRed2
+      &__link
+        color: $fontColor

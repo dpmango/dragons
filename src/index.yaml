@@ -4,11 +4,11 @@ PageList:
 - file: article.html
   ready: 100
 - file: news.html
-  ready: 50
-- file: article-news.html
-  ready: 5
+  ready: 70
+- file: news-article.html
+  ready: 80
 - file: homepage.html
-  ready: 5
+  ready: 20
 - file: fixtures.html
   ready: 5
 - file: match-report.html

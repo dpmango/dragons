@@ -29,6 +29,8 @@ $(document).ready(function(){
     closeMobileMenu();
     setDynamicSizes();
     revealFooter();
+    populateContent();
+    positionArticleHeader();
 
     initMasonry();
     initCountDown();
@@ -53,6 +55,8 @@ $(document).ready(function(){
   _window.on('resize', debounce(setDynamicSizes, 100));
   _window.on('resize', throttle(revealFooter, 100));
   _window.on('resize', debounce(resetListenersPrevent, 100))
+  _window.on('scroll', throttle(positionArticleHeader, 50));
+  _window.on('resize', debounce(positionArticleHeader, 200));
 
   // development helper
   _window.on('resize', debounce(setBreakpoint, 200))
@@ -253,7 +257,6 @@ $(document).ready(function(){
     preventDropdownScrollListener = false
   }
 
-
   // HEADER PAGE OFFSET
   function setPageHeaderOffset(){
     var headerHeight =
@@ -443,6 +446,49 @@ $(document).ready(function(){
     }
   }
 
+
+
+  /***************
+  * PAGE SPECIFIC *
+  ***************/
+
+  // Article fixed header
+  function populateContent(){
+    if ( $('[js-populate-content]').length > 0 ){
+      $('[js-populate-content]').each(function(i, header){
+        var $header = $(header);
+        var $title = $($header.data('target'))
+        $header.html( $title.text() )
+      })
+    }
+  }
+
+  function positionArticleHeader(){
+    var $articleHeader = $('[js-article-fixed-header]');
+    if ( !$articleHeader ) return
+
+    // if ( _window.width() <= 992 ){
+    //   // $articleHeader.attr('style', '')
+    //   return false
+    // }
+
+    var vScroll = _window.scrollTop();
+    var topHeight = $headerTop.outerHeight() - 10;
+
+    if ( vScroll >= topHeight ){
+      $articleHeader.addClass('is-visible')
+    } else{
+      $articleHeader.removeClass('is-visible')
+    }
+  }
+
+
+
+  /**********
+  * PLUGINS *
+  **********/
+
+
   //////////
   // MASONRY
   //////////
@@ -452,26 +498,79 @@ $(document).ready(function(){
         var $masonry = $(masonry);
         var $grid;
         var masonryOption = {
+          // layoutMode: 'masonry',
+          layoutMode: 'packery',
           itemSelector: '[js-masonry-card]',
-          columnWidth: '[js-masonry-grid-sizer]',
           percentPosition: true,
-          gutter: 36
-        }
-        $grid = $masonry.masonry(masonryOption);
-
-        if ( _window.width() < 640 ){
-          $grid.masonry('destroy')
-        } else {
-          $grid.masonry(masonryOption);
-          if ( shouldReload ){
-            setTimeout(function(){
-              $grid.masonry('reloadItems')
-            }, 150)
+          // gutter: 36,
+          // masonry: {
+          //   columnWidth: '[js-masonry-grid-sizer]'
+          // },
+          packery: {
+            // https://packery.metafizzy.co/options.html
+            columnWidth: '[js-masonry-grid-sizer]',
+            originLeft: true,
+            originTop: true,
+            gutter: 0
           }
         }
+        $grid = $masonry.isotope(masonryOption);
+
+        // if ( _window.width() < 640 ){
+        //   $grid.masonry('destroy')
+        // } else {
+        //   $grid.masonry(masonryOption);
+        //   if ( shouldReload ){
+        //     setTimeout(function(){
+        //       $grid.masonry('reloadItems')
+        //     }, 150)
+        //   }
+        // }
+
+        // var $masonry = $(masonry);
+        // var $grid;
+        // var masonryOption = {
+        //   itemSelector: '[js-masonry-card]',
+        //   columnWidth: '[js-masonry-grid-sizer]',
+        //   percentPosition: true,
+        //   gutter: 36
+        // }
+        // $grid = $masonry.masonry(masonryOption);
+        //
+        // if ( _window.width() < 640 ){
+        //   $grid.masonry('destroy')
+        // } else {
+        //   $grid.masonry(masonryOption);
+        //   if ( shouldReload ){
+        //     setTimeout(function(){
+        //       $grid.masonry('reloadItems')
+        //     }, 150)
+        //   }
+        // }
       })
     }
   }
+
+  // masonry click handlers
+  _document
+    .on('click', '[js-masonry-filter] a', function(){
+      var $this = $(this);
+      var gridTarget = $this.closest('[js-masonry-filter]').data('target');
+      var $masonryGrid = $('[js-masonry][data-for="'+gridTarget+'"]');
+      var dataFilter = $this.data('filter');
+
+      $masonryGrid.isotope({
+        filter: function() {
+          if ( !dataFilter ) return true // if filter is blank - show all
+
+          var cardFilters = $(this).data('filter').split(" ")
+          return cardFilters.indexOf(dataFilter) !== -1
+        }
+      });
+
+      $this.parent().siblings().find('a').removeClass('is-active');
+      $this.addClass('is-active');
+    })
 
   function initCountDown(){
     if ($("[js-countdown]").length > 0) {

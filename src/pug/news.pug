@@ -14,29 +14,29 @@ block content
             h1.h2-title LATEST NEWS
             
           .col-12.col-md-auto
-            ul.tabs-nav(js-masonry-nav data-for="news-grid")
+            ul.tabs-nav(js-masonry-filter data-target="news-grid")
               li
-                a.is-active(href="#") ALL
+                a.is-active(href="#" data-filter="") ALL
               li 
-                a(href="#") CLUB
+                a(href="#" data-filter="club") CLUB
               li 
-                a(href="#") CORPORATE
+                a(href="#" data-filter="corporate") CORPORATE
               li 
-                a(href="#") COMMUNITY
+                a(href="#" data-filter="community") COMMUNITY
               li 
-                a(href="#") YOUTH
+                a(href="#" data-filter="youth") YOUTH
             
     // wrapper
     .news__wrapper
       .container
         // masonry
-        .news__masonry(js-masonry)
+        .news__masonry(js-masonry data-for="news-grid")
           // grid sizer
           .grid-sizer(js-masonry-grid-sizer)
           
           mixin newsCard_1 
             // card
-            a(href='#').news-card.news-card--wide(js-masonry-card)
+            a(href='#').news-card.news-card--wide(js-masonry-card data-filter="club youth")
               .news-card__wrapper
                 .news-card__background
                   img(src='img/newsCover_1.jpg' srcset='img/newsCover_1@2x.jpg 2x')
@@ -50,7 +50,7 @@ block content
           
           mixin newsCard_2
             // card
-            a(href='#').news-card(js-masonry-card)
+            a(href='#').news-card(js-masonry-card data-filter="community")
               .news-card__wrapper
                 .news-card__background
                   img(src='img/newsCover_2.jpg' srcset='img/newsCover_2@2x.jpg 2x')
@@ -66,7 +66,7 @@ block content
           
           mixin newsCard_3
             // card
-            a(href='#').news-card(js-masonry-card)
+            a(href='#').news-card(js-masonry-card data-filter="club youth")
               .news-card__wrapper
                 .news-card__background
                   img(src='img/newsCover_3.jpg' srcset='img/newsCover_3@2x.jpg 2x')
@@ -80,7 +80,7 @@ block content
         
           mixin newsCard_4
             // card
-            a(href='#').news-card(js-masonry-card)
+            a(href='#').news-card(js-masonry-card data-filter="club corporate")
               .news-card__wrapper
                 .news-card__background
                   img(src='img/newsCover_4.jpg' srcset='img/newsCover_4@2x.jpg 2x')
@@ -94,7 +94,7 @@ block content
                                    
           mixin newsCard_5
             // card
-            a(href='#').news-card.news-card--wide(js-masonry-card)
+            a(href='#').news-card.news-card--wide(js-masonry-card data-filter="community corporate")
               .news-card__wrapper
                 .news-card__background
                   img(src='img/newsCover_5.jpg' srcset='img/newsCover_5@2x.jpg 2x')

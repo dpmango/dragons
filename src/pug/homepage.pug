@@ -4,6 +4,114 @@ title: Homepage page
 extends shared/_layout
 block content
   
-  // HEY
+  // HOME
+  
+  // NEWS
+  .news
+    // head
+    .news__head
+      .container
+        .row.align-items-center
+          .col-12.col-md
+            h1.h2-title LATEST NEWS
+            
+          .col-12.col-md-auto
+            a(href="#").more-link
+              span SEE ALL NEWS
+              +icon('ico-arrow-right')
+            
+    // wrapper
+    .news__wrapper
+      .container
+        // masonry
+        .news__masonry(js-masonry)
+          // grid sizer
+          .grid-sizer(js-masonry-grid-sizer)
+          
+          mixin newsCard_1 
+            // card
+            a(href='#').news-card.news-card--wide(js-masonry-card)
+              .news-card__wrapper
+                .news-card__background
+                  img(src='img/newsCover_1.jpg' srcset='img/newsCover_1@2x.jpg 2x')
+                .news-card__content
+                  .news-card__title WALES RUN OUT VICTORS <br> 23 – 10 OVER ARGENTINA
+                  .news-card__timestamp 06 June 2018
+                .news-card__tag
+                  .news-card__category(js-link data-href="#" area-label="Link to")
+                    span Match report
+                    +icon('ico-arrow-right')
+          
+          mixin newsCard_2
+            // card
+            a(href='#').news-card(js-masonry-card)
+              .news-card__wrapper
+                .news-card__background
+                  img(src='img/newsCover_2.jpg' srcset='img/newsCover_2@2x.jpg 2x')
+                .news-card__content
+                  .news-card__title MEETING UP WITH OUR local youth teams
+                  .news-card__timestamp 06 June 2018
+                .news-card__tag
+                  .news-card__category.news-card__category--iconed(js-link data-href="#" area-label="Link to")
+                    span COMMUNITY WINS
+                    .news-card__category-icon
+                      .news-card__category-icon-wrap
+                        +icon('ico-play')
+          
+          mixin newsCard_3
+            // card
+            a(href='#').news-card(js-masonry-card)
+              .news-card__wrapper
+                .news-card__background
+                  img(src='img/newsCover_3.jpg' srcset='img/newsCover_3@2x.jpg 2x')
+                .news-card__content
+                  .news-card__title JUST DRAWN… SEE WHO WE’VE GOT IN THE CUP
+                  .news-card__timestamp 06 June 2018
+                .news-card__tag
+                  .news-card__category(js-link data-href="#" area-label="Link to")
+                    span Match report
+                    +icon('ico-arrow-right')          
+        
+          mixin newsCard_4
+            // card
+            a(href='#').news-card(js-masonry-card)
+              .news-card__wrapper
+                .news-card__background
+                  img(src='img/newsCover_4.jpg' srcset='img/newsCover_4@2x.jpg 2x')
+                .news-card__content
+                  .news-card__title A WARM WELCOME to  OUR NEW SPONSORS
+                  .news-card__timestamp 06 June 2018
+                .news-card__tag
+                  .news-card__category(js-link data-href="#" area-label="Link to")
+                    span Club News
+                    +icon('ico-arrow-right')   
+                                   
+          mixin newsCard_5
+            // card
+            a(href='#').news-card.news-card--wide(js-masonry-card)
+              .news-card__wrapper
+                .news-card__background
+                  img(src='img/newsCover_5.jpg' srcset='img/newsCover_5@2x.jpg 2x')
+                .news-card__content
+                  .news-card__title WHY OUR FANS MAKE <br> MATCH DAY THE BEST 
+                  .news-card__timestamp 06 June 2018
+                .news-card__tag
+                  .news-card__category(js-link data-href="#" area-label="Link to")
+                    span FROM THE FLIGHT
+                    +icon('ico-arrow-right')        
+                        
+                                        
+          +newsCard_1
+          +newsCard_2
+          +newsCard_3
+          
+          +newsCard_2
+          +newsCard_4
+          +newsCard_5
+
+  
+  include components/_fixtures
+  
+  include components/_about
   
   include components/_sponsors

@@ -16,8 +16,17 @@
       right: 0
       background: $lightBg
       pointer-events: none
-    h1
+    .h1-title
       margin: 0 0 20px
+    &-headline
+      // p
+      max-width: 810px
+      font-size: 30px
+      line-height: 1.33
+      color: $colorRed
+      margin: .55em 0 .3em 0
+      & + p
+        margin-top: .67em
 
     .container
       z-index: 2
@@ -32,11 +41,23 @@
       max-width: 100%
       width: 100%
     figure
-      // in case in will be a caption
-      font-size: 16px
+      position: relative
+      margin: 0
+    figcaption
+      position: absolute
+      bottom: 0
+      right: 0
+      background: $fontColor
+      font-size: 10px
+      font-weight: 500
+      color: white
+      padding: 15px 12px 14px 12px
+      letter-spacing: em(-.06, 10)
 
   &__wrapper
     padding: 45px 0 140px
+    &--with-video
+      padding-bottom: 90px
 
   &__content-info
     margin-bottom: 45px
@@ -46,6 +67,18 @@
     margin-bottom: 15px
     color: $colorRed
 
+  &__bookmark
+    margin: 0px 0 30px 0
+    a
+      &::after
+        display: none !important
+      &:hover
+        .ico
+          color: $colorRedHover
+    .ico
+      font-size: 26px
+      color: $colorRed
+      transition: .25s $ease
 
   &__content
     h2
@@ -85,6 +118,12 @@
         color: $colorRed
         &::after
           // right: 0
+    a.c-red
+      font-weight: 700
+      &::after
+        display: none
+      &:hover
+        color: $colorRedHover
 
     blockquote
       position: relative
@@ -113,10 +152,66 @@
         content: '”'
         bottom: -.8em
 
+
+.article-video
+  background: #EAECE7
+  padding: 70px 0
+
+.article-share
+  margin: 140px 0 130px
+
+.article-fixed-header
+  position: fixed
+  top: 60px
+  left: 0
+  right: 0
+  z-index: 8
+  background: $colorRed
+  color: white
+  padding: 1em 0
+  transform: translate3d(0px,-10px,0)
+  opacity: 0
+  pointer-events: none
+  transition: .25s $ease
+  &.is-visible
+    transform: translate3d(0,0,0)
+    opacity: 1
+    pointer-events: all
+
+
+/* Article media rules
+
++r($xl)
+  .article
+    &__content
+      blockquote
+        font-size: 32px
+
++r($lg)
+  .article
+    &__head-headline
+      font-size: 22px
+
+  .article-fixed-header
+    top: 50px
+    // logo left offset
+    padding-left: 80px
+
 +r($md)
   .article
+    &__head-headline
+      margin-top: 1em
     &__wrapper
       padding-bottom: 80px
+      &--with-video
+        padding-top: 0
+        padding-bottom: 60px
+
+    &__bookmark
+      margin-bottom: 0px
+      .ico
+        font-size: 24px
+
     &__content
       h2
         font-size: 26px
@@ -129,3 +224,20 @@
         font-size: 30px
         &::after, &::before
           font-size: 60px
+
+  .article-video
+    padding: 35px 0
+
+
+  .article-share
+    margin: 70px 0 65px
+
++r($sm)
+  .article
+    &__head-headline
+      font-size: 18px
+
+
++r($mobile-s)
+  .article-fixed-header
+    padding-left: 60px
