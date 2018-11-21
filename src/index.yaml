@@ -13,8 +13,6 @@ PageList:
   ready: 5
 - file: match-report.html
   ready: 5
-- file: line-ups.html
-  ready: 5
 - file: squads.html
   ready: 5
 - file: player.html
