@@ -37,6 +37,7 @@ $(document).ready(function(){
     // revealFooter();
     populateContent();
     positionArticleHeader();
+    checkTabsHash();
 
     initMasonry();
     setTimeout(initMasonry, 500)
@@ -495,7 +496,35 @@ $(document).ready(function(){
     }
   }
 
+  // TABS
+  _document
+    .on('click', '[js-tabs] a', function(){
+      var dataTarget = $(this).data('target');
+      changeTab(dataTarget)
+      window.location.hash = dataTarget
+    })
 
+  // hashnav chechker
+  function checkTabsHash(){
+    var hash = window.location.hash.substring(1)
+    if ( hash ) changeTab(hash)
+  }
+
+  function changeTab(target){
+    var $this = $('[js-tabs] a[data-target="'+target+'"]')
+    var $target = $('[data-tab-for="'+target+'"]')
+    var $tabsTitle = $this.closest('.container').find('[js-tab-title]')
+
+    $this.parent().siblings().find('a').removeClass('is-active');
+    $this.addClass('is-active')
+    $target.siblings().slideUp();
+    $target.slideDown();
+
+    // change title
+    if ( $tabsTitle.length > 0 ){
+      $tabsTitle.html($this.text())
+    }
+  }
 
   /**********
   * PLUGINS *
@@ -739,6 +768,7 @@ $(document).ready(function(){
         // Barba.Pjax.goTo($(this).attr('href'));
       }
     }, 300, {leading: false}))
+
 
   //////////
   // MODALS

@@ -1,8 +1,6 @@
 .fixtures
   background: $colorRed2
   padding: 70px 0 80px 0
-  &--head
-    background: $lightBg
   &__head
     color: white
 
@@ -26,6 +24,38 @@
 
   &__counter
     transform: translateY(-30px)
+
+  &__result
+    transform: translateY(-70px)
+    min-height: 100px
+    width: 80%
+    background: white
+    display: flex
+    align-items: center
+    justify-content: center
+  &__result-left, &__result-right
+    flex: 0 0 50%
+    font-size: 60px
+    font-weight: 700
+    letter-spacing: em(-6.25, 60)
+    color: $fontColor
+    text-align: center
+    line-height: 1
+  &__result-left
+  &__result-right
+
+  &__result-center
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    font-size: 32px
+    font-weight: 700
+    color: $colorRed2
+    letter-spacing: em(-4.44, 60)
+    line-height: 1
+    text-align: center
+
 
   &__scope
     margin-top: -10px
@@ -51,6 +81,30 @@
   &__all-link
     margin-top: 30px
 
+  &__head-nav
+    padding: 90px 0 30px
+    .container
+      position: relative
+      z-index: 1
+      &::after
+        // arrow
+        display: block
+        content: ' '
+        position: absolute
+        bottom: -47px
+        left: 36px
+        +arr(70, 17, $lightBg, b)
+
+  /* modifiers
+  &--head
+    background: $lightBg
+    padding-top: 60px
+    padding-bottom: 0
+    .fixtures__scope
+      margin-top: -50px
+    .fixtures__col--center
+      background: $fontColor
+      color: white
 
 // team element
 .fixtures-team

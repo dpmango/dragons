@@ -29,19 +29,10 @@
 
 
         .col-12.col-lg-4.fixtures__col.fixtures__col--center
-          .fixtures__counter.counter(js-countdown data-timestamp="November 24, 2018 09:00:00")
-            .counter__col(js-days)
-              .counter__number 00
-              .counter__name Days
-            .counter__col(js-hours)
-              .counter__number 00
-              .counter__name Hours
-            .counter__col(js-minutes)
-              .counter__number 00
-              .counter__name Mins
-            .counter__col(js-seconds)
-              .counter__number 00
-              .counter__name Secs
+          .fixtures__result
+            .fixtures__result-left 17
+            .fixtures__result-center V
+            .fixtures__result-right 31
           
           .fixtures__scope
             .fixtures__title SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
@@ -69,3 +60,23 @@
                   srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_50/v1542801228/Team%20logos/logo-dragons.png 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_100/v1542801228/Team%20logos/logo-dragons_2x.png 2x")
                 // fallback
                 img(src="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-dragons.png" alt="image description")
+
+
+  .fixtures__head-nav
+    // head
+    .container      
+      .row.align-items-center
+        .col-12.col-md
+          .h2-title(js-tab-title) MATCH REPORT
+          
+        .col-12.col-md-auto
+          ul.tabs-nav.tabs-nav--no-pad(js-tabs)
+            li
+              a.is-active(href="#" data-target="match-report") MATCH REPORT
+            li 
+              a(href="#" data-target="line-ups") LINE UPS
+            li 
+              a(href="#" data-target="statistics") STATISTICS
+            li
+              a(href="#" data-target="timeline") TIMELINE
+          

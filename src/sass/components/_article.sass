@@ -100,7 +100,7 @@
       font-size: 20px
       line-height: 1.4
       font-weight: 500
-    a
+    a:not(.c-red):not(.share__icon)
       position: relative
       z-index: 1
       transition: color .25s $ease
@@ -120,8 +120,7 @@
           // right: 0
     a.c-red
       font-weight: 700
-      &::after
-        display: none
+      transition: color .25s $ease
       &:hover
         color: $colorRedHover
 
