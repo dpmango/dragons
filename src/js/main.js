@@ -28,13 +28,14 @@ $(document).ready(function(){
   addMobileMenuClasses();
 
   // triggered when PJAX DONE
+  // The new container has been loaded and injected in the wrapper.
   function pageReady(){
     positionDropdownMenus();
     setPageHeaderOffset();
     updateHeaderActiveClass();
     closeMobileMenu();
     setDynamicSizes();
-    revealFooter();
+    // revealFooter();
     populateContent();
     positionArticleHeader();
 
@@ -50,6 +51,11 @@ $(document).ready(function(){
 
     initLazyLoad();
     // initTeleport();
+  }
+
+  // The transition has just finished and the old Container has been removed from the DOM.
+  function pageCompleated(){
+    revealFooter();
   }
 
   // scroll/resize listeners (some might be found below with isolated initialization)
@@ -71,6 +77,7 @@ $(document).ready(function(){
 
   // this is a master function which should have all functionality
   pageReady();
+  pageCompleated();
 
 
   // some plugins work best with onload triggers
@@ -1039,9 +1046,16 @@ $(document).ready(function(){
   Barba.Prefetch.init();
   Barba.Pjax.start();
 
+  // The new container has been loaded and injected in the wrapper.
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
     pageReady();
   });
+
+  // The transition has just finished and the old Container has been removed from the DOM.
+  Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus) {
+    pageCompleated();
+  });
+
 
   // some plugins get bindings onNewPage only that way
   function triggerBody(){
