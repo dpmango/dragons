@@ -1,5 +1,5 @@
 .fixtures
-  background: $colorRed
+  background: $colorRed2
   padding: 70px 0 80px 0
   &__head
     color: white
@@ -75,7 +75,7 @@
     font-size: 0
     text-align: center
     img
-      width: 100%
+      max-width: 100%
 
 
 // counter
@@ -106,7 +106,7 @@
     &__col
       min-height: 175px
     &__title
-      font-size: 22px
+      font-size: 20px
     &__place
       font-size: 15px
 
@@ -114,8 +114,7 @@
     &__name
       font-size: 24px
     &__logo
-      img
-        width: 80%
+
 
 +r($lg)
   .fixtures
@@ -141,14 +140,70 @@
       transform: translateX(-50%)
 
   .fixtures-team
+    width: 100%
     display: flex
     align-items: center
     flex-direction: row
     &--right
       .fixtures-team
         &__logo
-          padding-right: 15px
-          padding-left: 10px
+          padding-right: 0px
+          padding-left: 0px
 
     &__logo
-      text-align: right
+      padding-left: 0
+      padding-right: 0
+
+    &__name
+      // text-align: left
+      padding-right: 10px
+
+
++r($sm)
+  .fixtures
+    padding-top: 35px
+    &__wrapper
+      margin-top: 80px
+    &__col
+      min-height: 70px
+      padding-top: 8px
+      padding-bottom: 8px
+      &--center
+        padding-top: 15px
+        padding-bottom: 15px
+
+    &__title
+      font-size: 14px
+
+    &__place
+      font-size: 14px
+      margin-top: .2em
+
+    &__counter
+      top: -50px
+
+    &__cta
+      margin-left: -10px
+      margin-right: -10px
+
+    &__all-link
+      margin-top: 20px
+
+  .counter
+    &__col
+      flex-basis: 50px
+      min-size: 50px
+    &__number
+      font-size: 15px
+    &__name
+      font-size: 8.5px
+      margin-top: 3px
+
+  .fixtures-team
+    max-width: 300px
+    margin-left: auto
+    margin-right: auto
+    &__name
+      font-size: 20px
+    &__logo
+      flex-basis: 70px

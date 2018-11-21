@@ -4,9 +4,9 @@ PageList:
 - file: article.html
   ready: 100
 - file: news.html
-  ready: 70
+  ready: 90
 - file: news-article.html
-  ready: 80
+  ready: 90
 - file: homepage.html
   ready: 20
 - file: fixtures.html
