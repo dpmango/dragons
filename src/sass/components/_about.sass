@@ -6,15 +6,14 @@
 
   &__wrapper
     margin-top: 75px
-    [class*="col-"]
-      display: flex
-      flex-direction: column
 
   &__slider
     // rewrite swiper css
     .swiper-wrapper
       width: auto
-
+    &-slide
+      display: flex
+      flex-direction: column
 
 
 // about card
@@ -70,6 +69,11 @@
         color: $fontColor
 
 
++r($xl)
+  .about-card
+    &__contents
+      font-size: 22px
+
 +r($lg)
   .about
     padding: 55px 0 75px 0
@@ -92,17 +96,46 @@
         // let it rewrite margin
         // margin: 0 -15px
         flex-wrap: nowrap
-      [class*="col-"]
+      &-slide
         flex: 0 0 350px
         max-width: 350px
         width: 350px
         padding-left: 0
         padding-right: 0
+        opacity: .5
+        transition: opacity .25s $ease
+        &.swiper-slide-active
+          opacity: 1
+          // + .is-last
+          //   opacity: 1
+        &:hover
+          opacity: 1
+
++r($md)
+  .about
+    &__wrapper
+      margin-top: 50px
+
+    &__slider
+      &-slide
+        flex-basis: 280px
+        max-width: 280px
+        width: 280px
+
+  .about-card
+    &__contents
+      font-size: 20px
+      padding: 22px 15px
+
 
 +r($sm)
   .about
+    padding: 30px 0 60px
+    &__wrapper
+      margin-top: 30px
+
     &__slider
-      [class*="col-"]
+      &-slide
         flex-basis: 240px
         max-width: 240px
         width: 240px

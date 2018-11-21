@@ -673,6 +673,9 @@ $(document).ready(function(){
       slidesPerView: 'auto',
       normalizeSlideIndex: true,
       freeMode: true,
+      freeModeSticky: false,
+      freeModeMinimumVelocity: 0.05,
+      freeModeMomentumRatio: 1.2,
       preventClicks: true,
       breakpoints: {
         // when window width is <= 992px
@@ -680,18 +683,46 @@ $(document).ready(function(){
           spaceBetween: 36,
         },
         576: {
-          spaceBetween: 20,
-        },
-        375: {
-          spaceBetween: 10
+          spaceBetween: 10,
         }
       },
       on: {
+        slideChange: function(){
+        },
         transitionStart: function(){
           aboutSwiperTransitioning = true
         },
         transitionEnd: function(){
           aboutSwiperTransitioning = false
+
+          // var slides = aboutSwiper.instance.slides
+          // var swiperWidth = aboutSwiper.instance.width + 30
+          // var translate = aboutSwiper.instance.translate
+          //
+          // $.each(slides, function(slide){
+          //   var $slide = $(slides[slide]);
+          //   var offsetLeft = $slide.position().left // position inside container
+          //   var slideWidth = $slide.width()
+          //   var actualPosition = offsetLeft - (translate * -1)
+          //
+          //   // console.log(
+          //   //   $slide,
+          //   //   'offsetLeft - ' + offsetLeft,
+          //   //   'actualPosition - ' + actualPosition,
+          //   //   'translate - ' + translate)
+          //
+          //   $slide.removeClass('swiper-slide-outside')
+          //
+          //   console.log(actualPosition, (0 + (slideWidth / 2)))
+          //   // fade sides that are halfly outside container
+          //   if (
+          //     (actualPosition > (swiperWidth + (slideWidth / 2))) // outside right
+          //     || (actualPosition < (0 - (slideWidth / 2))) ) // outsude left
+          //     {
+          //     $slide.addClass('swiper-slide-outside')
+          //   }
+          // })
+
         }
       }
     })
@@ -705,7 +736,7 @@ $(document).ready(function(){
 
     .on('click', '.about-card', debounce(function(e){
       if ( !aboutSwiperTransitioning ){
-        Barba.Pjax.goTo($(this).attr('href'));
+        // Barba.Pjax.goTo($(this).attr('href'));
       }
     }, 300, {leading: false}))
 
