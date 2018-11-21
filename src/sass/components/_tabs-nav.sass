@@ -3,6 +3,7 @@
 .tabs-nav
   flex: 0 1 auto
   display: flex
+  flex-wrap: wrap
   align-items: center
   font-size: 18px
   margin: 0 -10px 0 0
@@ -42,3 +43,18 @@
         background: white
       &:hover, &.is-active
         color: white
+
+
++r($md)
+  .tabs-nav
+    margin: 20px 0 0
+    li
+      margin-right: 20px
+    a
+      padding-left: 0
+      padding-right: 0
+
++r($mobile-s)
+  .tabs-nav
+    li
+      font-size: 12px

@@ -644,16 +644,12 @@ $(document).ready(function(){
           enableAboutSwiper();
         }
       }
-
-      console.log('swiper intances', aboutSwiper.instance)
     }
   }
 
   // ABOUT SWIPER
   function enableAboutSwiper(){
     aboutSwiper.instance = new Swiper(aboutSwiper.selector, {
-      // TODO - option for disabling links on swiping
-
       wrapperClass: "swiper-wrapper",
       slideClass: "about__slider-slide",
       direction: 'horizontal',

@@ -24,6 +24,7 @@
   // width: calc(25% - 36px)
   width: 25%
 
+
 // news card
 .news-card
   // masonry instance - requires wrapper for relative pos
@@ -72,16 +73,21 @@
       z-index: 2
       height: 50%
       background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.50) 61%, rgba(7,7,7,0.50) 95%);
-
+      // force 3d
+      backface-visibility: hidden
+      transform: translate3d(0,0,0)
+      
   &__content
     position: absolute
     bottom: 0
     left: 0
     right: 0
+    overflow: hidden
     z-index: 2
     display: flex
     flex-direction: column
-    padding: 8px 15px
+    // bigger top padding for .tag
+    padding: 40px 15px 8px
     color: white
 
   &__title
@@ -170,20 +176,42 @@
       &__timestamp
         color: rgba(white, .8)
       &__title
-        transform: translate(.3em,0)
+        color: rgba(white, .8)
+        // transform: translate(.3em,0)
 
 
 /* News media rules
++r($xl)
+  .news-card
+    &__title
+      font-size: 22px
+
+
 +r($lg)
+  .news
+    padding: 40px 0 70px
+    &__masonry
+      margin-left: -10px
+      margin-right: -10px
+
   .grid-sizer
     width: 33.3%
 
   .news-card
     width: 33.3%
+    padding: 10px
     &--wide
       width: 66.6%
 
 +r($md)
+  .news
+    &__wrapper
+      margin-top: 30px
+
+    &__head
+      .h2-title
+        margin-bottom: 0
+
   .grid-sizer
     width: 50%
 
@@ -194,9 +222,40 @@
 
 +r($sm)
   .news
-    &__masonry
-      margin-left: -10px
-      margin-right: -10px
+    padding: 30px 0 50px
+
+  .grid-sizer
+    width: 100%
 
   .news-card
-    padding: 10px
+    width: 100%
+    &__background
+      padding-bottom: 56.25%
+    &--wide
+      width: 100%
+      .news-card__background
+        padding-bottom: 56.25%
+
++r($mobile-s)
+  .news
+    &__masonry
+      margin-left: -5px
+      margin-right: -5px
+  .news-card
+    padding: 5px
+    &__content
+      padding: 38px 10px 6px
+    &__title
+      font-size: 18px
+    &__timestamp
+      font-size: 11px
+
+    &__category
+      padding-left: 10px
+      padding-right: 20px
+      span
+        font-size: 11px
+      > .ico
+        font-size: 9.5px
+      &--iconed
+        padding-right: calc(10px + 33px)
