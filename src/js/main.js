@@ -659,7 +659,7 @@ $(document).ready(function(){
   }
 
   // ABOUT SWIPER
-  var aboutSwiperTransitioning = true
+  var aboutSwiperTransitioning = false
 
   function enableAboutSwiper(){
     aboutSwiper.instance = new Swiper('[js-about-swiper]', {
@@ -688,12 +688,10 @@ $(document).ready(function(){
       },
       on: {
         transitionStart: function(){
-          console.log('transition start');
-          aboutSwiperTransitioning = false
+          aboutSwiperTransitioning = true
         },
         transitionEnd: function(){
-          console.log('transition end')
-          aboutSwiperTransitioning = true
+          aboutSwiperTransitioning = false
         }
       }
     })
@@ -701,13 +699,15 @@ $(document).ready(function(){
 
   _document
     .on('click', '.about-card', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+    })
+
+    .on('click', '.about-card', debounce(function(e){
       if ( !aboutSwiperTransitioning ){
-        e.preventDefault();
-        e.stopPropagation();
-      } else {
         Barba.Pjax.goTo($(this).attr('href'));
       }
-    })
+    }, 300, {leading: false}))
 
   //////////
   // MODALS
