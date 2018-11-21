@@ -7,11 +7,11 @@ PageList:
   ready: 90
 - file: news-article.html
   ready: 90
+- file: match-report.html
+  ready: 35
 - file: homepage.html
   ready: 20
 - file: fixtures.html
-  ready: 5
-- file: match-report.html
   ready: 5
 - file: squads.html
   ready: 5

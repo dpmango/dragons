@@ -1,0 +1,71 @@
+// FIXTURES
+.fixtures.fixtures--head          
+  // content
+  .fixtures__wrapper
+    .container
+      .row.row--no-margin
+        .col-12.col-lg-4.fixtures__col
+          .fixtures-team
+            .fixtures-team__name SCARLETS
+            .fixtures-team__logo
+              //- img(src='img/logo-scarlets.png' srcset='img/logo-scarlets@2x.png 2x')
+              picture(
+                alt="image"
+                area-label="Image description")
+                // 1200 +
+                source(
+                  media="(min-width: 1200px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-scarlets.png 1x, https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-scarlets_2x.png 2x")
+                // 1200 - 576 and above
+                source(
+                  media="(min-width: 576px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_120/v1542801228/Team%20logos/logo-scarlets.png 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_240/v1542801228/Team%20logos/logo-scarlets_2x.png 2x")
+                // 576px and less
+                source(
+                  media="(min-width: 0px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_70/v1542801228/Team%20logos/logo-scarlets.png 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_140/v1542801228/Team%20logos/logo-scarlets_2x.png 2x")
+                // fallback
+                img(src="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-scarlets.png" alt="image description")
+
+
+        .col-12.col-lg-4.fixtures__col.fixtures__col--center
+          .fixtures__counter.counter(js-countdown data-timestamp="November 24, 2018 09:00:00")
+            .counter__col(js-days)
+              .counter__number 00
+              .counter__name Days
+            .counter__col(js-hours)
+              .counter__number 00
+              .counter__name Hours
+            .counter__col(js-minutes)
+              .counter__number 00
+              .counter__name Mins
+            .counter__col(js-seconds)
+              .counter__number 00
+              .counter__name Secs
+          
+          .fixtures__scope
+            .fixtures__title SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
+            .fixtures__place GP 14<br> PRINCIPALITY STADIUM, <br>CARDIFF
+            
+              
+        .col-12.col-lg-4.fixtures__col
+          .fixtures-team.fixtures-team--right
+            .fixtures-team__name DRAGONS
+            .fixtures-team__logo
+              //- img(src='img/logo-dragons.png' srcset='img/logo-dragons@2x.png 2x')
+              picture(
+                alt="image"
+                area-label="Image description")
+                // 1200 +
+                source(
+                  media="(min-width: 1200px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-dragons.png 1x, https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-dragons_2x.png 2x")
+                source(
+                  media="(min-width: 576px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_85/v1542801228/Team%20logos/logo-dragons.png 1x, https://res.cloudinary.com/dragons/image/upload/w_170,c_fill/v1542801228/Team%20logos/logo-dragons_2x.png 2x")
+                // 576px and less
+                source(
+                  media="(min-width: 0px)" 
+                  srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_50/v1542801228/Team%20logos/logo-dragons.png 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_100/v1542801228/Team%20logos/logo-dragons_2x.png 2x")
+                // fallback
+                img(src="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-dragons.png" alt="image description")
