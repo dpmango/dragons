@@ -13,7 +13,6 @@ $(document).ready(function(){
   var $dropdows = $('.dropdown-menu');
 
   var aboutSwiper = {
-    selector: '[js-about-swiper]',
     instance: undefined,
     disableOn: 992
   }
@@ -29,7 +28,7 @@ $(document).ready(function(){
 
   // triggered when PJAX DONE
   // The new container has been loaded and injected in the wrapper.
-  function pageReady(){
+  function pageReady(fromPjax){
     positionDropdownMenus();
     setPageHeaderOffset();
     updateHeaderActiveClass();
@@ -42,7 +41,7 @@ $(document).ready(function(){
     initMasonry();
     setTimeout(initMasonry, 500)
     initCountDown();
-    initSliders();
+    initSliders(null, fromPjax);
     initPopups();
     initMasks();
     initSelectric();
@@ -54,7 +53,7 @@ $(document).ready(function(){
   }
 
   // The transition has just finished and the old Container has been removed from the DOM.
-  function pageCompleated(){
+  function pageCompleated(fromPjax){
     revealFooter();
   }
 
@@ -635,11 +634,16 @@ $(document).ready(function(){
   //////////
   // SLIDERS
   //////////
-  function initSliders(){
-    // TODO - wrong selector on barba.js changes
+  function initSliders(e, fromPjax){
+    // clean up on page changes
+    if ( fromPjax ){
+      aboutSwiper.instance.destroy( true, true );
+      aboutSwiper.instance = undefined
+    }
 
     // INIT CHECKERS
-    if ( $(aboutSwiper.selector).length > 0 ){
+    console.log('swiper debug', fromPjax, aboutSwiper.instance, $('[js-about-swiper]'))
+    if ( $('[js-about-swiper]').length > 0 ){
       if ( _window.width() >= aboutSwiper.disableOn ) {
         if ( aboutSwiper.instance !== undefined ) {
           aboutSwiper.instance.destroy( true, true );
@@ -655,8 +659,10 @@ $(document).ready(function(){
   }
 
   // ABOUT SWIPER
+  var aboutSwiperTransitioning = true
+
   function enableAboutSwiper(){
-    aboutSwiper.instance = new Swiper(aboutSwiper.selector, {
+    aboutSwiper.instance = new Swiper('[js-about-swiper]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "about__slider-slide",
       direction: 'horizontal',
@@ -676,16 +682,31 @@ $(document).ready(function(){
         576: {
           spaceBetween: 20,
         },
-        414: {
+        375: {
           spaceBetween: 10
+        }
+      },
+      on: {
+        transitionStart: function(){
+          console.log('transition start');
+          aboutSwiperTransitioning = false
+        },
+        transitionEnd: function(){
+          console.log('transition end')
+          aboutSwiperTransitioning = true
         }
       }
     })
   }
 
   _document
-    .on('click', '.about-card', function(){
-
+    .on('click', '.about-card', function(e){
+      if ( !aboutSwiperTransitioning ){
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        Barba.Pjax.goTo($(this).attr('href'));
+      }
     })
 
   //////////
@@ -1048,12 +1069,12 @@ $(document).ready(function(){
 
   // The new container has been loaded and injected in the wrapper.
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
-    pageReady();
+    pageReady(true);
   });
 
   // The transition has just finished and the old Container has been removed from the DOM.
   Barba.Dispatcher.on('transitionCompleted', function(currentStatus, oldStatus) {
-    pageCompleated();
+    pageCompleated(true);
   });
 
 
