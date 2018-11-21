@@ -1,0 +1,75 @@
+.gallery
+  background: $lightBg
+  margin-top: 128px
+  // padding-bottom: 128px
+  &__wrapper
+    transform: translateY(-128px)
+  &__nav
+    position: relative
+    min-height: 128px
+    background: black
+    color: white
+    padding: 15px 140px 15px 30px
+  &__title
+    font-size: 28px
+    letter-spacing: em(-0.17, 28)
+    line-height: 1.2
+    margin-right: 20px
+  &__images
+    font-size: 0
+  &__slider
+
+  &__slide
+    flex: 0 0 auto
+    width: 100%
+    img
+      max-width: 100%
+      width: 100%
+    figure
+      position: relative
+      margin: 0
+    figcaption
+      position: absolute
+      bottom: 0
+      right: 0
+      background: $fontColor
+      font-size: 10px
+      font-weight: 500
+      color: white
+      padding: 15px 12px 14px 12px
+      letter-spacing: em(-.06, 10)
+
+  &__nav-controls
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    max-width: 128px
+    display: flex
+    flex-direction: column
+  &__nav-fraction
+    margin: auto 0 auto auto
+    padding-right: 20px
+    font-size: 18px
+    span
+      display: inline-block
+
+  &__nav-buttons
+    display: flex
+    // margin-top: auto
+  &__btn
+    size: 64px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    .ico
+      font-size: 12px
+    &--next
+      background: white
+      color: $fontColor
+      .ico
+        transform: rotate(180deg)
+    &--prev
+      background: $colorRed
+      color: $fontColor

@@ -17,6 +17,10 @@ $(document).ready(function(){
     disableOn: 992
   }
 
+  var gallerySwiper = {
+    instance: undefined
+  }
+
   ////////////
   // LIST OF FUNCTIONS
   ////////////
@@ -512,9 +516,12 @@ $(document).ready(function(){
 
   function changeTab(target){
     var $this = $('[js-tabs] a[data-target="'+target+'"]')
+    if ( !$this ) return
+
     var $target = $('[data-tab-for="'+target+'"]')
     var $tabsTitle = $this.closest('.container').find('[js-tab-title]')
 
+    // tab toggle
     $this.parent().siblings().find('a').removeClass('is-active');
     $this.addClass('is-active')
     $target.siblings().slideUp();
@@ -671,7 +678,8 @@ $(document).ready(function(){
     }
 
     // INIT CHECKERS
-    console.log('swiper debug', fromPjax, aboutSwiper.instance, $('[js-about-swiper]'))
+    // console.log('swiper debug', fromPjax, aboutSwiper.instance, $('[js-about-swiper]'))
+
     if ( $('[js-about-swiper]').length > 0 ){
       if ( _window.width() >= aboutSwiper.disableOn ) {
         if ( aboutSwiper.instance !== undefined ) {
@@ -684,6 +692,10 @@ $(document).ready(function(){
           enableAboutSwiper();
         }
       }
+    }
+
+    if ($('[js-gallery-swiper]').length > 0 ) {
+      enableGallerySwiper()
     }
   }
 
@@ -768,6 +780,67 @@ $(document).ready(function(){
         // Barba.Pjax.goTo($(this).attr('href'));
       }
     }, 300, {leading: false}))
+
+
+  function enableGallerySwiper(){
+    gallerySwiper.instance = new Swiper('[js-gallery-swiper]', {
+      init: false,
+      wrapperClass: "swiper-wrapper",
+      slideClass: "gallery__slide",
+      direction: 'horizontal',
+      loop: true,
+      watchOverflow: false,
+      setWrapperSize: false,
+      // spaceBetween: 36,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      // custom pagination
+      // pagination: {
+      //   el: '.gallery__nav-pagination',
+      //   type: 'fraction',
+      //   renderFraction: function (currentClass, totalClass) {
+      //     return '<span class="' + currentClass + '"></span>' +
+      //            ' / ' +
+      //            '<span class="' + totalClass + '"></span>';
+      //   }
+      // },
+      // custom click handlers
+      // navigation: {
+      //   nextEl: '.gallery__btn gallery__btn--next',
+      //   prevEl: '.gallery__btn gallery__btn--prev',
+      // },
+    })
+    gallerySwiper.instance.on('init', function() {
+      changeNav()
+    });
+    gallerySwiper.instance.on('slideChange', function() {
+      changeNav()
+    });
+
+    function changeNav(){
+      var totalSlides = gallerySwiper.instance.slides.length - 2
+      var curSlide = gallerySwiper.instance.realIndex + 1
+      $('[js-swiper-fraction]').find('span').text(curSlide + '/' + totalSlides)
+
+      var activeSlide = gallerySwiper.instance.slides[curSlide]
+      var slideTitle = $(activeSlide).data('title')
+      $('[js-swiper-title]').html(slideTitle)
+    }
+
+    gallerySwiper.instance.init();
+  }
+
+  _document
+    .on('click', '[js-swiper-nav]', function(){
+      var dataType = $(this).data('type');
+
+      if ( dataType === "prev" ){
+        gallerySwiper.instance.slidePrev()
+      } else if ( dataType === "next" ){
+        gallerySwiper.instance.slideNext()
+      }
+
+    })
 
 
   //////////
