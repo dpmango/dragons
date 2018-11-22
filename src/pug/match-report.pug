@@ -65,9 +65,10 @@ block content
           .article__content
             mixin rowRegular(num='1', c1='Jack O’Connell', c2='1', c3='--' ,c4='--', c5='--')
               tr
-                td 
-                  span.f-700= num
-                  span= c1
+                td
+                  .table__player-row
+                    span.f-700= num
+                    span= c1
                 td 1
                 td ––
                 td ––
@@ -75,8 +76,10 @@ block content
             mixin rowLinked(num='1', c1='Ryan Bevington', c2='1', c3='--' ,c4='--', c5='--')
               tr
                 td 
-                  span.f-700= num
-                  a(href="player.html")= c1
+                  .table__player-row
+                    span.f-700= num
+                    span
+                      a(href="player.html")= c1
                 td 1
                 td ––
                 td ––
