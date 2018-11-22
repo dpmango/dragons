@@ -56,7 +56,6 @@
     line-height: 1
     text-align: center
 
-
   &__scope
     margin-top: -10px
     text-align: center
@@ -165,6 +164,16 @@
       font-size: 20px
     &__place
       font-size: 15px
+    &__result
+      min-height: 80px
+      transform: translateY(-50px)
+    &__result-left, &__result-right
+      font-size: 52px
+    &__result-center
+      font-size: 28px
+    &--head
+      .fixtures__scope
+        margin-top: -30px
 
   .fixtures-team
     &__name
@@ -194,6 +203,33 @@
       top: -60px
       left: 50%
       transform: translateX(-50%)
+    &__result
+      position: absolute
+      top: -60px
+      left: 50%
+      transform: translateX(-50%)
+      max-width: 250px
+      // background: $colorRed
+      background: black
+      color: white
+
+    &__result-left, &__result-right
+      font-size: 40px
+      color: white
+    &__result-center
+      font-size: 26px
+      // color: white
+
+    &__head-nav
+      padding: 50px 0 30px
+
+    &--head
+      padding-top: 60px
+      padding-bottom: 0
+      .fixtures__wrapper
+        margin-top: 60px
+      .fixtures__scope
+        margin-top: auto
 
   .fixtures-team
     width: 100%
@@ -244,6 +280,39 @@
 
     &__all-link
       margin-top: 20px
+
+    &__result
+      top: -60px
+      min-height: 60px
+      max-width: 185px
+
+    &__result-left, &__result-right
+      font-size: 32px
+    &__result-center
+      font-size: 20px
+      // color: white
+
+    &__head-nav
+      padding: 40px 0 20px
+      .container
+        &::after
+          // arrow
+          display: block
+          content: ' '
+          position: absolute
+          bottom: -32px
+          left: 15px
+          +arr(49, 12, $lightBg, b)
+
+    // &--head
+    //   padding-top: 60px
+    //   padding-bottom: 0
+    //   .fixtures__wrapper
+    //     margin-top: 60px
+    //   .fixtures__scope
+    //     margin-top: auto
+
+
 
   .counter
     &__col

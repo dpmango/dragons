@@ -8,7 +8,7 @@ PageList:
 - file: news-article.html
   ready: 90
 - file: match-report.html
-  ready: 70
+  ready: 80
 - file: fixtures.html
   ready: 80
 - file: squads.html

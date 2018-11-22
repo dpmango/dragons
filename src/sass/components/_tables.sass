@@ -68,6 +68,15 @@
     font-weight: 700
     text-transform: uppercase
 
++r($lg)
+  .lineup-tables
+    .col-lg-6:first-child
+      margin-bottom: 30px
+      &::after
+        display: none
+
+    &__heading
+      margin: 70px 0 30px
 
 /* results table
 .table-results
@@ -236,7 +245,7 @@
   .table-results
     .st-key
       font-size: 12px
-      
+
 +r($mobile-s)
   .table-results
     font-size: 12px
