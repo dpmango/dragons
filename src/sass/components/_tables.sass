@@ -67,3 +67,74 @@
     letter-spacing: em(-.22, 36)
     font-weight: 700
     text-transform: uppercase
+
+
+/* results table
+.table-results
+  width: 100%
+  border-collapse: collapse
+  font-size: 16px
+  color: $fontColor
+  letter-spacing: em(0.56, 18)
+  thead
+    td
+      background: black
+      color: white
+      font-size: 14px
+      font-weight: 700
+      text-transform: uppercase
+      letter-spacing: em(.44, 14)
+      +text-overflow
+  td
+    padding: 20px 20px 20px
+    border-bottom: 4px solid $lightBg
+
+  // colspan month only
+  &__month
+    td
+      background: #F5B209
+      font-weight: 700
+      padding-top: 10px
+      padding-bottom: 10px
+      letter-spacing: em(.5, 16)
+
+  &__kot
+    display: flex
+    align-items: baseline
+    span
+      &:nth-child(1)
+        flex: 1 1 auto
+      &:nth-child(2)
+        color: $colorRed
+        font-weight: 700
+
+  &__link
+    font-size: 0
+    color: $colorRed
+    .ico
+      font-size: 16px
+
+  &__row
+    cursor: pointer
+    td
+      background: white
+      transition: background .3s easeOutQuart, color .1s ease
+      span
+        display: inline-block
+    &:hover
+      td
+        background: $colorRed
+        color: white
+        .table-results__kot
+          span:nth-child(2)
+            color: white
+
+  &__break
+    font-size: 0
+    td
+      min-height: 40px
+      border-bottom: 0
+
++r($xl)
+  .table-results
+    font-size: 14px

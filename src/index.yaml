@@ -8,11 +8,11 @@ PageList:
 - file: news-article.html
   ready: 90
 - file: match-report.html
+  ready: 70
+- file: fixtures.html
   ready: 50
 - file: homepage.html
   ready: 20
-- file: fixtures.html
-  ready: 5
 - file: squads.html
   ready: 5
 - file: player.html

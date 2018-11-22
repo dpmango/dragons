@@ -4,6 +4,115 @@ title: Fixtures page
 extends shared/_layout
 block content
   
-  // HEY
+  // RESULTS
+  .results
+    // head
+    .results__head
+      .container
+        h1.h2-title FIXTURES & RESULTS
+        
+        .row.align-items-center
+          .col-12.col-xl
+            ul.tabs-nav.tabs-nav--no-pad
+              li
+                a.is-active(href="#") DRAGONS
+              li 
+                a(href="#") U23
+              li 
+                a(href="#") PREMIERSHIP SELECT
+              li
+                a(href="#") ACADEMY
+              li
+                a(href="#") U18S
+              li
+                a(href="#") U16S RED
+              li
+                a(href="#") U16S BLACK
+              li
+                a(href="#") WOMENS     
+                
+                
+          .col-12.col-xl-auto
+            .results__select
+              select
+                option 2018/2019
+                option 2017/2018
+                option 2016/2017
+                option 2015/2016
+                option 2014/2015
+                option 2013/2014
+                option 2012/2013
+                option 2011/2012
+                option 2010/2011
+                option 2009/2010
+    
+    // content
+    .results__content
+      .container
+        .results__pre-table
+          .row
+            .col-12.col-md 
+              .results__notemark Please note the following fixtures are subject to change
+            .col-12.col-md-auto
+              a(href="#").results__pdflink.no-barba Download these fixtures in iCal format or PDF
+        
+        // table wrapper
+        .results__table
+          
+          mixin rowRegular(c1='Sat 11 Aug 2018', c2='31 – 17', c3='EALING TRAILFINDERS', c4='Trailfinders Sports Club, West Ealing', c5='F', c6='3331')
+            // row
+            tr.table-results__row(js-link data-target="#")
+              td= c1
+              td
+                .table-results__kot
+                  span= c2
+                  span W
+              td
+                .span.f-700= c3
+              td= c4
+              td
+                .span.f-700= c5
+              td= c6
+              td.table-results__link
+                +icon('ico-arrow-right')
+          
+          mixin rowHeading(name)
+            // row month name
+            tr.table-results__month
+              td(colspan="7")= name
+          
+          // table
+          table.table-results
+            thead
+              tr
+                td DATE
+                td KOT / RESULT
+                td OPPONENT
+                td VENUE
+                td COMPETITION
+                td ATT / TV
+                td
+                
+            tbody
+              +rowHeading("AUGUST")
+              +rowRegular
+              +rowRegular
+              +rowRegular
+              tr.table-results__break
+                td
+              +rowHeading("SEPTEMBER")
+              +rowRegular
+              +rowRegular
+              +rowRegular
+              tr.table-results__break
+                td
+              +rowHeading("OCTOBER")
+              +rowRegular
+              +rowRegular
+              +rowRegular
+                  
+  include components/_fixtures
+  
+  include components/_about
   
   include components/_sponsors

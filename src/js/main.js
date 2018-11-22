@@ -789,7 +789,7 @@ $(document).ready(function(){
 
     .on('click', '.about-card', debounce(function(e){
       if ( !aboutSwiperTransitioning ){
-        // Barba.Pjax.goTo($(this).attr('href'));
+        Barba.Pjax.goTo($(this).attr('href'));
       }
     }, 300, {leading: false}))
 
