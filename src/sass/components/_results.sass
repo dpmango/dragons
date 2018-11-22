@@ -19,6 +19,7 @@
 
   &__pdflink
     display: inline-block
+    margin-bottom: 15px
     color: $colorRed2
     font-size: 14px
     transition: color .25s $ease
@@ -38,7 +39,15 @@
 
 +r($lg)
   .results
+    padding-top: 40px
 
-    
+
++r($md)
+  .results
+    padding-bottom: 100px
+    &__table
+      margin-top: 20px
+
+
 +r($sm)
   .results

@@ -74,7 +74,12 @@ block content
                 .span.f-700= c5
               td= c6
               td.table-results__link
-                +icon('ico-arrow-right')
+                a(href="#").table-results__link-mobile
+                  span See match details
+                  +icon('ico-arrow-right')
+                span.table-results__link-desktop
+                  +icon('ico-arrow-right')
+                
           
           mixin rowHeading(name)
             // row month name
@@ -82,7 +87,7 @@ block content
               td(colspan="7")= name
           
           // table
-          table.table-results
+          table.table-results(js-stacktable)
             thead
               tr
                 td DATE

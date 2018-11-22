@@ -51,6 +51,7 @@ $(document).ready(function(){
     initPopups();
     initMasks();
     initSelectric();
+    initStacktable();
     initScrollMonitor();
     initValidations();
 
@@ -954,6 +955,18 @@ $(document).ready(function(){
         $wrapper.find('.label').html($wrapper.find('.label').data('value'));
       }
     });
+  }
+
+  // Stacktable
+  function initStacktable(){
+    if ( $('[js-stacktable]').length > 0 ){
+      $('[js-stacktable]').each(function(i, el){
+        var $el = $(el);
+        $el.stacktable();
+
+        $('.stacktable.small-only').find('.table-results__link').parent().addClass('is-last')
+      })
+    }
   }
 
   ////////////

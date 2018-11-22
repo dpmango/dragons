@@ -109,8 +109,18 @@
         font-weight: 700
 
   &__link
+    display: flex
+    align-items: center
     font-size: 0
     color: $colorRed
+    &-mobile
+      display: none
+      font-size: 14px
+      span
+        display: inline-block
+        margin-right: 5px
+    &-desktop
+
     .ico
       font-size: 16px
 
@@ -120,7 +130,7 @@
       background: white
       transition: background .3s easeOutQuart, color .1s ease
       span
-        display: inline-block
+        // display: inline-block
     &:hover
       td
         background: $colorRed
@@ -135,6 +145,84 @@
       min-height: 40px
       border-bottom: 0
 
+
+.stacktable
+  &.small-only
+    display: none
+
 +r($xl)
   .table-results
     font-size: 14px
+
++r($lg)
+  .table-results
+    td
+      padding: 15px 10px
+      &:first-child
+        padding-left: 15px
+      &:last-child
+        padding-right: 15px
+    &__month
+      td
+        padding-top: 10px
+        padding-bottom: 10px
+
++r($md)
+  .stacktable
+    &.small-only
+      display: table
+    &.large-only
+      display: none
+
+  .table-results
+    .st-head-row-main
+      display: none
+
+    td
+      border-bottom: 0
+      padding-top: 10px
+      padding-bottom: 10px
+
+    .st-head-row
+      background: #F5B209
+      padding: 10px 15px
+      text-align: left
+
+    &__month
+      .st-head-row
+        text-align: center
+        background: $colorRed
+        color: white
+
+    &__kot
+      // max-width: 100px
+
+    &__link
+      // display: none
+      &-mobile
+        display: flex
+      &-desktop
+        display: none
+
+    &__row
+      cursor: auto
+      &:hover
+        td
+          background: white
+          color: $fontColor
+          .table-results__kot
+            span:nth-child(2)
+              color: $colorRed
+
+      &.is-last
+        td
+          // background: transparent
+          // border-bottom: 20px solid $lightBg
+        & + .table-results__row th
+          border-top: 20px solid $lightBg
+
+    &__break
+      .st-head-row
+        padding-top: 20px
+        padding-bottom: 20px
+        background: transparent
