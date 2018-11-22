@@ -955,6 +955,16 @@ $(document).ready(function(){
         $wrapper.find('.label').html($wrapper.find('.label').data('value'));
       }
     });
+
+    $('[js-select-fxiture-date]').on('selectric-select', function(event, element, selectric){
+      // console.log(event, element, selectric)
+      var curValue = $(element).val()
+      console.log('select change', curValue)
+
+      // i.e. redirect to page
+      // window.location.href = '/fixtures' + curValue
+      // Barba.Pjax.goTo('/fixtures' + curValue); // or with pjax
+    })
   }
 
   // Stacktable

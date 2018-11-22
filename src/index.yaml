@@ -11,11 +11,11 @@ PageList:
   ready: 70
 - file: fixtures.html
   ready: 80
-- file: homepage.html
-  ready: 20
 - file: squads.html
   ready: 5
 - file: player.html
   ready: 5
+- file: homepage.html
+  ready: 20
 - file: styleguide.html
   ready: 5
