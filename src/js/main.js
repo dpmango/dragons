@@ -672,7 +672,7 @@ $(document).ready(function(){
   //////////
   function initSliders(e, fromPjax){
     // clean up on page changes
-    if ( fromPjax ){
+    if ( fromPjax && (aboutSwiper.instance !== undefined)){
       aboutSwiper.instance.destroy( true, true );
       aboutSwiper.instance = undefined
     }
