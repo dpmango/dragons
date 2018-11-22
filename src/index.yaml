@@ -10,7 +10,7 @@ PageList:
 - file: match-report.html
   ready: 70
 - file: fixtures.html
-  ready: 50
+  ready: 80
 - file: homepage.html
   ready: 20
 - file: squads.html

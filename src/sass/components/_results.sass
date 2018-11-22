@@ -1,6 +1,6 @@
 .results
   background: $lightBg
-  padding: 50px 0 175px
+  padding: 55px 0 175px
   &__head
 
   &__select
@@ -21,7 +21,6 @@
     display: inline-block
     margin-bottom: 15px
     color: $colorRed2
-    font-size: 14px
     transition: color .25s $ease
     &:hover
       color: $colorRed
@@ -40,14 +39,39 @@
 +r($lg)
   .results
     padding-top: 40px
+    padding-bottom: 120px
+    &__content
+      // margin-top: 40px
 
 
 +r($md)
   .results
-    padding-bottom: 100px
-    &__table
+    padding-bottom: 90px
+    &__head
+      .h2-title
+        margin-bottom: 0
+
+    &__select
       margin-top: 20px
 
+    // &__table
+    //   margin-top: 10px
+
+    &__content
+      margin-top: 30px
 
 +r($sm)
   .results
+    // padding-bottom: 60px
+    padding-top: 35px
+    &__select
+      margin-top: 20px
+
+    &__table
+      margin-top: 10px
+
++r($mobile-s)
+  .results
+    padding-bottom: 60px
+    &__pre-table
+      font-size: 12px

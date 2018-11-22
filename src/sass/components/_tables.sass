@@ -109,16 +109,18 @@
         font-weight: 700
 
   &__link
-    display: flex
-    align-items: center
     font-size: 0
     color: $colorRed
     &-mobile
       display: none
       font-size: 14px
+      transition: .25s $ease
       span
         display: inline-block
         margin-right: 5px
+      &:hover
+        color: $colorRedHover
+
     &-desktop
 
     .ico
@@ -210,6 +212,8 @@
         td
           background: white
           color: $fontColor
+          &.table-results__link
+            color: $colorRed
           .table-results__kot
             span:nth-child(2)
               color: $colorRed
@@ -226,3 +230,33 @@
         padding-top: 20px
         padding-bottom: 20px
         background: transparent
+
+
++r($sm)
+  .table-results
+    .st-key
+      font-size: 12px
+      
++r($mobile-s)
+  .table-results
+    font-size: 12px
+
+    td
+      &:first-child
+        padding-left: 10px
+      &:last-child
+        padding-right: 10px
+
+    .st-head-row
+      padding-left: 10px
+      padding-right: 10px
+
+    &__row
+      &.is-last
+        & + .table-results__row th
+          border-width: 15px
+
+    &__break
+      .st-head-row
+        padding-top: 15px
+        padding-bottom: 15px
