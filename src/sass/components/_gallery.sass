@@ -73,3 +73,59 @@
     &--prev
       background: $colorRed
       color: $fontColor
+
+
++r($lg)
+  .gallery
+    margin-top: 100px
+    &__title
+      font-size: 24px
+
+    &__wrapper
+      transform: translateY(-100px)
+    &__nav
+      min-height: 100px
+      padding-left: 20px
+      padding-right: 110px
+
+    &__nav-controls
+      max-width: 100px
+
+    &__nav-fraction
+      font-size: 16px
+
+    &__btn
+      size: 50px
+      .ico
+        font-size: 11px
+
+      
++r($sm)
+  .gallery
+    margin-top: 80px
+    &__wrapper
+      transform: translateY(-80px)
+    &__nav
+      min-height: 80px
+      padding-left: 15px
+      padding-right: 90px
+
+    &__nav-controls
+      max-width: 80px
+
+    &__nav-fraction
+      font-size: 14px
+
+    &__btn
+      size: 40px
+      .ico
+        font-size: 10px
+
+    &__title
+      font-size: 18px
+
+
++r($mobile-s)
+  .gallery
+    &__title
+      font-size: 14px
