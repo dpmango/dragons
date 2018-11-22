@@ -33,166 +33,167 @@ block content
     .article__wrapper.article__wrapper--with-gallery
     
       // TABS
-      div(data-tab-for="match-report")
-        // content head
-        .article__content-info
-          
-        // content wysiwyg
-        .article__content
-          .container
-            .row
-              .col-12.col-lg-7
-                h2(itemprop="headline") Dragons started their pre-season campaign with a&nbsp;convincing 31-17 victory away to&nbsp;English Championship side Ealing Trailfinders.
-              
-              .col-12.offset-0.col-lg-4.offset-lg-1
-                include components/_share
+      .tabs-wrapper
+        .tab.is-active(data-tab-for="match-report")
+          // content head
+          .article__content-info
+            
+          // content wysiwyg
+          .article__content
+            .container
+              .row
+                .col-12.col-lg-7
+                  h2(itemprop="headline") Dragons started their pre-season campaign with a&nbsp;convincing 31-17 victory away to&nbsp;English Championship side Ealing Trailfinders.
                 
-            .row
-              .col-12.col-lg-7(itemprop="articleBody")
-                p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
-                p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
-                p Wales under 20&nbsp;Goodchild got the scoreboard moving early on&nbsp;following impressive work by&nbsp;full-back Jordan Williams and centre and captain Jack Dixon down the short side in&nbsp;the build-up.
-                p Much of&nbsp;the rest of&nbsp;the first half was a&nbsp;bit of&nbsp;an&nbsp;arm wrestle, until new signing Rhodri Williams came up&nbsp;with a&nbsp;moment of&nbsp;magic.
-                p Picking the ball up&nbsp;inside the Ealing&nbsp;22, the scrum-half made it&nbsp;all the way to&nbsp;the line for a&nbsp;sensational try which Fly half Josh Lewis improved to&nbsp;make it&nbsp;12-0.
-                p Bevington then made it&nbsp;three for the day by&nbsp;running a&nbsp;good support line to&nbsp;Josh Lewis&rsquo; break and another conversion from Lewis helped put the Dragons in&nbsp;total control approaching half time.
-                p Ealing made a&nbsp;game of&nbsp;it&nbsp;before the break, with Lewis Jones crossing in&nbsp;the corner just before Wayne Barnes&rsquo; half time whistle and Craig Willis touched down when the game resumed to&nbsp;further narrow the gap.
-                p As&nbsp;the second period continued the Dragons emptied their replacements bench as&nbsp;all 26&nbsp;players got a&nbsp;run out, with the changes first bringing immediate returns with further tries from Brok Harris and debutant Brandon Nansen, with Henson taking over the kicking duties. 
-                p Former Dragon Will Harries completed the scoring in&nbsp;the final few minutes as&nbsp;Ealing had the last laugh, but there was no&nbsp;doubting who deserved to&nbsp;win.
-      
-      // next tab  
-      div(data-tab-for="line-ups")
-        .article__content
-          mixin rowRegular(num='1', c1='Jack O’Connell', c2='1', c3='--' ,c4='--', c5='--')
-            tr
-              td 
-                span.f-700= num
-                span= c1
-              td 1
-              td ––
-              td ––
-              td ––
-          mixin rowLinked(num='1', c1='Ryan Bevington', c2='1', c3='--' ,c4='--', c5='--')
-            tr
-              td 
-                span.f-700= num
-                a(href="player.html")= c1
-              td 1
-              td ––
-              td ––
-              td ––  
-          
-          
-          .container
-            .lineup-tables
+                .col-12.offset-0.col-lg-4.offset-lg-1
+                  include components/_share
+                  
               .row
-                // col
-                .col-12.col-lg-6
-                  table.table
-                    thead
-                      tr
-                        td EALING
-                        td T
-                        td C
-                        td D
-                        td P
-                    tbody
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                // col
-                .col-12.col-lg-6
-                  table.table
-                    thead
-                      tr
-                        td DRAGONS
-                        td T
-                        td C
-                        td D
-                        td P
-                    tbody
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                    
+                .col-12.col-lg-7(itemprop="articleBody")
+                  p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
+                  p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
+                  p Wales under 20&nbsp;Goodchild got the scoreboard moving early on&nbsp;following impressive work by&nbsp;full-back Jordan Williams and centre and captain Jack Dixon down the short side in&nbsp;the build-up.
+                  p Much of&nbsp;the rest of&nbsp;the first half was a&nbsp;bit of&nbsp;an&nbsp;arm wrestle, until new signing Rhodri Williams came up&nbsp;with a&nbsp;moment of&nbsp;magic.
+                  p Picking the ball up&nbsp;inside the Ealing&nbsp;22, the scrum-half made it&nbsp;all the way to&nbsp;the line for a&nbsp;sensational try which Fly half Josh Lewis improved to&nbsp;make it&nbsp;12-0.
+                  p Bevington then made it&nbsp;three for the day by&nbsp;running a&nbsp;good support line to&nbsp;Josh Lewis&rsquo; break and another conversion from Lewis helped put the Dragons in&nbsp;total control approaching half time.
+                  p Ealing made a&nbsp;game of&nbsp;it&nbsp;before the break, with Lewis Jones crossing in&nbsp;the corner just before Wayne Barnes&rsquo; half time whistle and Craig Willis touched down when the game resumed to&nbsp;further narrow the gap.
+                  p As&nbsp;the second period continued the Dragons emptied their replacements bench as&nbsp;all 26&nbsp;players got a&nbsp;run out, with the changes first bringing immediate returns with further tries from Brok Harris and debutant Brandon Nansen, with Henson taking over the kicking duties. 
+                  p Former Dragon Will Harries completed the scoring in&nbsp;the final few minutes as&nbsp;Ealing had the last laugh, but there was no&nbsp;doubting who deserved to&nbsp;win.
+        
+        // next tab  
+        .tab(data-tab-for="line-ups")
+          .article__content
+            mixin rowRegular(num='1', c1='Jack O’Connell', c2='1', c3='--' ,c4='--', c5='--')
+              tr
+                td 
+                  span.f-700= num
+                  span= c1
+                td 1
+                td ––
+                td ––
+                td ––
+            mixin rowLinked(num='1', c1='Ryan Bevington', c2='1', c3='--' ,c4='--', c5='--')
+              tr
+                td 
+                  span.f-700= num
+                  a(href="player.html")= c1
+                td 1
+                td ––
+                td ––
+                td ––  
+            
+            
+            .container
+              .lineup-tables
+                .row
+                  // col
+                  .col-12.col-lg-6
+                    table.table
+                      thead
+                        tr
+                          td EALING
+                          td T
+                          td C
+                          td D
+                          td P
+                      tbody
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                  // col
+                  .col-12.col-lg-6
+                    table.table
+                      thead
+                        tr
+                          td DRAGONS
+                          td T
+                          td C
+                          td D
+                          td P
+                      tbody
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                      
+                .row
+                  .col-12
+                    .lineup-tables__heading REPLACMENTS
+                
+                .row
+                  // col
+                  .col-12.col-lg-6
+                    table.table
+                      thead
+                        tr
+                          td EALING
+                          td T
+                          td C
+                          td D
+                          td P
+                      tbody
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                        +rowRegular
+                  // col
+                  .col-12.col-lg-6
+                    table.table
+                      thead
+                        tr
+                          td DRAGONS
+                          td T
+                          td C
+                          td D
+                          td P
+                      tbody
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked
+                        +rowLinked  
+        
+        // next tab
+        .tab(data-tab-for="statistics")
+          .article__content
+            .container
               .row
-                .col-12
-                  .lineup-tables__heading REPLACMENTS
-              
-              .row
-                // col
-                .col-12.col-lg-6
-                  table.table
-                    thead
-                      tr
-                        td EALING
-                        td T
-                        td C
-                        td D
-                        td P
-                    tbody
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                      +rowRegular
-                // col
-                .col-12.col-lg-6
-                  table.table
-                    thead
-                      tr
-                        td DRAGONS
-                        td T
-                        td C
-                        td D
-                        td P
-                    tbody
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked
-                      +rowLinked  
-      
-      // next tab
-      div(data-tab-for="statistics")
-        .article__content
-          .container
-            .row
-              .col-12.col-lg-7
-                h2(itemprop="headline") Tab 3
+                .col-12.col-lg-7
+                  h2(itemprop="headline") Tab 3
 
-            .row
-              .col-12.col-lg-7(itemprop="articleBody")
-                p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
-                p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
-    
-      // next tab
-      div(data-tab-for="timeline")
-        .article__content
-          .container
-            .row
-              .col-12.col-lg-7
-                h2(itemprop="headline") Tab 4
+              .row
+                .col-12.col-lg-7(itemprop="articleBody")
+                  p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
+                  p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
+      
+        // next tab
+        .tab(data-tab-for="timeline")
+          .article__content
+            .container
+              .row
+                .col-12.col-lg-7
+                  h2(itemprop="headline") Tab 4
 
-            .row
-              .col-12.col-lg-7(itemprop="articleBody")
-                p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
-                p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
+              .row
+                .col-12.col-lg-7(itemprop="articleBody")
+                  p New boys Ryan Bevington, Rhodri Williams and Brandon Nansen all scored tries while Joe Goodchild and Brok Harris also crossed for scores either side of&nbsp;half time.
+                  p Josh Lewis and Gavin Henson kicked the rest of&nbsp;the points.
     
       
     // ARTICLE GALLERY

@@ -1,0 +1,27 @@
+.tab
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  opacity: 0
+  transform: translate3d(20px,0,0)
+  pointer-events: none
+  // visibility: hidden
+  will-change: transform
+  transition: opacity .25s $ease, transform .25s $ease
+  &.is-active
+    opacity: 1
+    // visibility: visible
+    pointer-events: all
+    transform: translate3d(0,0,0)
+  // &.is-fading-out
+  //   opacity: 1
+  //   transform: translate3d(-20px,0,0)
+  //   pointer-events: none
+
+
+.tabs-wrapper
+  position: relative
+  z-index: 1
+  overflow: hidden
+  // height to be set with js

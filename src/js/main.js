@@ -42,6 +42,7 @@ $(document).ready(function(){
     populateContent();
     positionArticleHeader();
     checkTabsHash();
+    setTabsHeight();
 
     initMasonry();
     setTimeout(initMasonry, 500)
@@ -73,6 +74,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(resetListenersPrevent, 100))
   _window.on('scroll', throttle(positionArticleHeader, 50));
   _window.on('resize', debounce(positionArticleHeader, 200));
+  _window.on('resize', debounce(setTabsHeight, 100));
   _window.on('resize', debounce(initSliders, 200));
 
   // development helper
@@ -524,13 +526,23 @@ $(document).ready(function(){
     // tab toggle
     $this.parent().siblings().find('a').removeClass('is-active');
     $this.addClass('is-active')
-    $target.siblings().slideUp();
-    $target.slideDown();
+    // $target.siblings().slideUp();
+    // $target.slideDown();
+    $target.siblings().removeClass('is-active')
+    $target.addClass('is-active');
+
+    setTabsHeight();
 
     // change title
     if ( $tabsTitle.length > 0 ){
       $tabsTitle.html($this.text())
     }
+  }
+
+  function setTabsHeight(){
+    var $target = $('.tab.is-active');
+    var targetHeight = $target.outerHeight()
+    $target.closest('.tabs-wrapper').css({'height': targetHeight})
   }
 
   /**********
