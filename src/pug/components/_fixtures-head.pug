@@ -1,5 +1,5 @@
 // FIXTURES
-.fixtures.fixtures--head          
+.fixtures.fixtures--head(aria-label="Fixtures")
   // content
   .fixtures__wrapper
     .container
@@ -11,7 +11,7 @@
               //- img(src='img/logo-scarlets.png' srcset='img/logo-scarlets@2x.png 2x')
               picture(
                 alt="image"
-                area-label="Image description")
+                aria-label="SCARLETS logo")
                 // 1200 +
                 source(
                   media="(min-width: 1200px)" 
@@ -29,14 +29,14 @@
 
 
         .col-12.col-lg-4.fixtures__col.fixtures__col--center
-          .fixtures__result
-            .fixtures__result-left 17
+          .fixtures__result(aria-label="Match results")
+            .fixtures__result-left(aria-label="SCARLETS") 17
             .fixtures__result-center V
-            .fixtures__result-right 31
+            .fixtures__result-right(aria-label="DRAGONS") 31
           
           .fixtures__scope
-            .fixtures__title SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
-            .fixtures__place GP 14<br> PRINCIPALITY STADIUM, <br>CARDIFF
+            .fixtures__title(aria-label="Match date") SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
+            .fixtures__place(aria-label="Match place") GP 14<br> PRINCIPALITY STADIUM, <br>CARDIFF
             
               
         .col-12.col-lg-4.fixtures__col
@@ -46,7 +46,7 @@
               //- img(src='img/logo-dragons.png' srcset='img/logo-dragons@2x.png 2x')
               picture(
                 alt="image"
-                area-label="Image description")
+                aria-label="DRAGONS logo")
                 // 1200 +
                 source(
                   media="(min-width: 1200px)" 
@@ -70,7 +70,7 @@
           .h2-title(js-tab-title) MATCH REPORT
           
         .col-12.col-md-auto
-          ul.tabs-nav.tabs-nav--no-pad(js-tabs)
+          ul.tabs-nav.tabs-nav--no-pad(js-tabs aria-label="Match results navigation")
             li
               a.is-active(href="#" data-target="match-report") MATCH REPORT
             li 

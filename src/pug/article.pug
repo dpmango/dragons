@@ -26,7 +26,7 @@ block content
             
             
     // head
-    .article__head
+    .article__head(aria-label="Article heading section")
       // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
       .article__head-bg(js-set-article-bg-height)
       .container
@@ -34,11 +34,11 @@ block content
           .col-12.col-md
             h1.h1-title(itemprop="name") CHARITY NEWS &amp;<br> MATCH DAY <br>COLLECTIONS
           .col-12.col-md-auto
-            .article__share
+            .article__share(aria-label="Share this article")
               include components/_share
         
         // cover image
-        .article__cover
+        .article__cover(aria-label="Article cover image section")
           //- img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
           // kind of reverse mobile-first approach. First matching media rule will be displayed
           // image options https://cloudinary.com/documentation/image_transformations
@@ -49,7 +49,7 @@ block content
           
           picture(
             alt="image"
-            area-label="Image description"
+            aria-label="Image description"
             js-lazy 
             data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
             // 992 and above
@@ -83,7 +83,7 @@ block content
       
       // content wysiwyg
       // this class is important for below class-free elements (wysiwyg generated)
-      .article__content
+      .article__content(aria-label="Article content section")
         .container
           .row
             .col-12.col-lg-7

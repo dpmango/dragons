@@ -5,12 +5,13 @@ extends shared/_layout
 block content
   
   // ARTICLE
-  article.article(itemscope itemtype="http://schema.org/Article")
+  article.article(itemscope itemtype="http://schema.org/NewsArticle")
     // shema.org hidden
     link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news/charity-news-match-day-collections.html")
     meta(itemprop="inLanguage" content="en")
     meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
     meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
     meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
     div(itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher")
       link(itemprop="url" href="http://www.dragonsrugby.wales")
@@ -31,7 +32,7 @@ block content
         .h3-title(js-populate-content data-target=".h1-title")
         
     // head
-    .article__head
+    .article__head(aria-label="Article heading section")
       // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
       .article__head-bg(js-set-article-bg-height)
       .container
@@ -45,7 +46,9 @@ block content
         
         .row
           .col-12.col-md-8
-            p.article__head-headline(itemprop="headline") Head Coach Bernard Jackman was pleased with the manner in which his Dragons managed the wet conditions and Zebre to secure a key Guinness PRO14 victory.
+            // headline prop should be in range of [0,110 symbols]
+            meta(itemprop="headline" content="Head Coach Bernard Jackman was pleased with his Dragons to secure a key Guinness PRO14 victory.")
+            p.article__head-headline Head Coach Bernard Jackman was pleased with the manner in which his Dragons managed the wet conditions and Zebre to secure a key Guinness PRO14 victory.
         // cover image
         .article__cover
           //- img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
@@ -59,7 +62,7 @@ block content
           figure
             picture(
               alt="image"
-              area-label="Image description"
+              aria-label="Image description"
               js-lazy 
               data-src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
               // 992 and above
@@ -77,10 +80,10 @@ block content
               
               // fallback
               //- img(src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
-            figcaption Ben Mottram | 22/09/2018
+            figcaption(aria-label="Copyright") Ben Mottram | 22/09/2018
               
     // content
-    .article__wrapper.article__wrapper--with-video
+    .article__wrapper.article__wrapper--with-video(aria-label="Article content section")
       
       .article__content-info
         
@@ -91,7 +94,7 @@ block content
           .row
             .col-12
               .article__bookmark
-                a(href="#")
+                a(href="#" aria-label="Bookmark")
                   +icon('ico-bookmark')
                 
           .row
@@ -119,15 +122,15 @@ block content
               blockquote This team is&nbsp;still growing and we&rsquo;re reasonably content, although we&nbsp;still have a&nbsp;lot of&nbsp;work to&nbsp;do.
     
     // article video
-    .article-video
+    .article-video(aria-label="Article video section")
       .container
         .row
-          .col-12.col-md-8.offset-md-2
-            .iframe-scaler(data-ar="16:9")
+          .col-12.col-md-10.offset-md-1.col-lg-8.offset-lg-2
+            .iframe-scaler(data-ar="16:9" aria-label="Play Youtube Video - Arwel Robson looks back on the victory over Zebre")
               iframe(src="https://www.youtube.com/embed/A8njVwwjNnQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
     
     // article share
-    .article-share
+    .article-share(aria-label="Share this article")
       .container
         include components/_share
     

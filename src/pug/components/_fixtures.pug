@@ -1,5 +1,5 @@
 // FIXTURES
-.fixtures
+.fixtures(aria-label="Fixtures")
   .fixtures__head
     // head
     .container      
@@ -8,7 +8,7 @@
           .h3-title PROGRAMME
           
         .col-12.col-md-auto
-          ul.tabs-nav.tabs-nav--white
+          ul.tabs-nav.tabs-nav--white(aria-label="Fixtures navigation")
             li
               a.is-active(href="#") NEXT GAME
             li 
@@ -27,7 +27,7 @@
               //- img(src='img/logo-scarlets.png' srcset='img/logo-scarlets@2x.png 2x')
               picture(
                 alt="image"
-                area-label="Image description")
+                aria-label="SCARLETS logo")
                 // 1200 +
                 source(
                   media="(min-width: 1200px)" 
@@ -45,7 +45,7 @@
 
 
         .col-12.col-lg-4.fixtures__col.fixtures__col--center
-          .fixtures__counter.counter(js-countdown data-timestamp="November 24, 2018 09:00:00")
+          .fixtures__counter.counter(js-countdown data-timestamp="November 24, 2018 09:00:00" aria-label="Match countdown")
             .counter__col(js-days)
               .counter__number 00
               .counter__name Days
@@ -60,8 +60,8 @@
               .counter__name Secs
           
           .fixtures__scope
-            .fixtures__title SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
-            .fixtures__place GP 14<br> PRINCIPALITY STADIUM, <br>CARDIFF
+            .fixtures__title(aria-label="Match date") SATURDAY SEPTEMBER 22 <br> KO 5:15 PM
+            .fixtures__place(aria-label="Match place") GP 14<br> PRINCIPALITY STADIUM, <br>CARDIFF
             
               
         .col-12.col-lg-4.fixtures__col
@@ -71,7 +71,7 @@
               //- img(src='img/logo-dragons.png' srcset='img/logo-dragons@2x.png 2x')
               picture(
                 alt="image"
-                area-label="Image description")
+                aria-label="DRAGONS logo")
                 // 1200 +
                 source(
                   media="(min-width: 1200px)" 

@@ -1,5 +1,5 @@
 // ABOUT
-.about
+.about(aria-label="About section")
   // head
   .about__head
     .container      
@@ -8,7 +8,7 @@
           .h3-title OUR HOME
           
         .col-12.col-md-auto
-          ul.tabs-nav
+          ul.tabs-nav(aria-label="About navigation")
             li
               a.is-active(href="#") CLUB
             li 
@@ -17,18 +17,17 @@
               a(href="#") REGION
             li
               a(href="#") ACADEMY
-           
-          
+
   // wrapper    
   .about__wrapper
     .container
       .about__slider(js-about-swiper).swiper-container
         // bootstrap system will work > 992px only
         // less < 992 - controlled by swiper
-        .row.swiper-wrapper
+        .row.swiper-wrapper(aria-label="Swipe to navigate")
           .col-lg-4.about__slider-slide
             // about card
-            a(href="article.html").about-card.no-barba
+            a(href="article.html" aria-label="Card description").about-card.no-barba
               .about-card__background
                 img(src='img/aboutCover_1.jpg' srcset='img/aboutCover_1@2x.jpg 2x')
               .about-card__contents
@@ -36,7 +35,7 @@
                 .about-card__link HOW TO FIND US
           .col-lg-4.about__slider-slide
             // about card
-            a(href="article.html").about-card.no-barba
+            a(href="article.html" aria-label="Card description").about-card.no-barba
               .about-card__background
                 img(src='img/aboutCover_2.jpg' srcset='img/aboutCover_2@2x.jpg 2x')
               .about-card__contents
@@ -45,7 +44,7 @@
                 
           .col-lg-4.about__slider-slide
             // about card
-            a(href="article.html").about-card.no-barba
+            a(href="article.html" aria-label="Card description").about-card.no-barba
               .about-card__background
                 img(src='img/aboutCover_3.jpg' srcset='img/aboutCover_3@2x.jpg 2x')
               .about-card__contents

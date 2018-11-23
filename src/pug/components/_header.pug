@@ -1,23 +1,23 @@
 // HEADER :: START
-header.header
+header.header(aria-label="Header")
   // TOP
   .header-top(js-header-top)
     .container
       .header__top
         .header__controls
           // socials
-          .header__socials.social-icons
+          .header__socials.social-icons(aria-label="Our social media pages")
             .social-icons__col
-              a(href="https://www.facebook.com/dragonsrugby.wales" target="_blank" area-label="Facebook").social-icons__icon.social-icons__icon--facebook
+              a(href="https://www.facebook.com/dragonsrugby.wales" target="_blank" aria-label="Visit Facebook page").social-icons__icon.social-icons__icon--facebook
                 +icon('ico-social-facebook')
             .social-icons__col
-              a(href="https://www.instagram.com/dragonsrugby/" target="_blank" area-label="Instagram").social-icons__icon.social-icons__icon--instagram
+              a(href="https://www.instagram.com/dragonsrugby/" target="_blank" aria-label="Visit Instagram page").social-icons__icon.social-icons__icon--instagram
                 +icon('ico-social-instagram')
             .social-icons__col
-              a(href="https://twitter.com/dragonsrugby" target="_blank" area-label="Twitter").social-icons__icon.social-icons__icon--twitter
+              a(href="https://twitter.com/dragonsrugby" target="_blank" aria-label="Visit Twitter page").social-icons__icon.social-icons__icon--twitter
                 +icon('ico-social-twitter')
             .social-icons__col
-              a(href="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA" target="_blank" area-label="YouTube").social-icons__icon.social-icons__icon--youtube
+              a(href="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA" target="_blank" aria-label="Visit YouTube page").social-icons__icon.social-icons__icon--youtube
                 +icon('ico-social-youtube')
                 
           // subscription form
@@ -26,6 +26,7 @@ header.header
               input.subsc-form__input.ui-input(
                 type="email" 
                 placeholder="Join our Mailing List"
+                aria-label="Join our Mailing List - Enter your email"
                 id="email"
                 name="email")
               button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE
@@ -38,16 +39,16 @@ header.header
           .header__sponsor
             span.header__sponsor-text Main Club <br/>Sponsor
             a(href="#").header__sponsor-logo
-              i.icon.icon-logo-monmouthshire(area-label="monmouthshire")
+              i.icon.icon-logo-monmouthshire(aria-label="monmouthshire")
   
   // STICKY
   .header-sticky(js-header-sticky)
     .container
-      a(href="homepage.html" area-label="Navigate to homepage" js-header-logo).header__logo
-        i.icon.icon-logo(area-label="Dragons Logo")
+      a(href="homepage.html" aria-label="Navigate to homepage" js-header-logo).header__logo
+        i.icon.icon-logo(aria-label="Dragons Logo")
 
       .header__bottom
-        ul.header__menu
+        ul.header__menu(aria-label="Site primary menu")
           li
             a(href="homepage.html") Home
           li
@@ -55,7 +56,7 @@ header.header
           li
             a(href="#") Tickets
           li
-            a(href="#" js-dropdown-menu data-target="teams") Teams
+            a(href="#" aria-owns="aria-teams" js-dropdown-menu data-target="teams") Teams
           li
             a(href="#") Match
           li
@@ -71,13 +72,13 @@ header.header
           i.icon.icon-logo-small
           span.header__flight-text The FLIGHT
         
-        .header__hamburger(area-label="Toggle mobile menu")
+        .header__hamburger(aria-label="Toggle mobile menu")
           .hamburger.hamburger--squeeze(js-hamburger)
             .hamburger-box
               .hamburger-inner
 
 // header mega menu
-.dropdown-menu(data-for="teams" area-label="Dropdown menu for teams")
+.dropdown-menu#aria-teams(data-for="teams" aria-label="Dropdown menu for teams")
   .container
     .dropdown-menu__list
       .dropdown-menu__col
@@ -97,7 +98,7 @@ header.header
 
 
 // MOBILE NAVI
-.mobile-navi
+.mobile-navi(aria-label="Site mobile menu")
   .mobile-navi__wrapper
     // menu
     ul.mobile-navi__menu(js-mobile-navi-menu)
@@ -156,6 +157,7 @@ header.header
         input.subsc-form__input.ui-input(
           type="email" 
           placeholder="Join our Mailing List"
+          aria-label="Join our Mailing List - Enter your email"
           id="email"
           name="email")
         button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE

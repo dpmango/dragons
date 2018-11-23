@@ -6,7 +6,7 @@ PageList:
 - file: news.html
   ready: 90
 - file: news-article.html
-  ready: 90
+  ready: 100
 - file: match-report.html
   ready: 80
 - file: fixtures.html
