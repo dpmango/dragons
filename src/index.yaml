@@ -12,7 +12,7 @@ PageList:
 - file: fixtures.html
   ready: 100
 - file: squads.html
-  ready: 5
+  ready: 60
 - file: player.html
   ready: 5
 - file: homepage.html

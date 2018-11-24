@@ -4,6 +4,100 @@ title: Squads page
 extends shared/_layout
 block content
   
-  // HEY
-  
+  // SQUADS
+  .squads
+    // head
+    .squads__head
+      .container
+        h1.h2-title Squads
+        
+        .row.align-items-center
+          .col-12
+            ul.tabs-nav.tabs-nav--no-pad(aria-label="Squads navigation")
+              li
+                a.is-active(href="#") DRAGONS
+              li 
+                a(href="#") U23
+              li 
+                a(href="#") PREMIERSHIP SELECT
+              li
+                a(href="#") ACADEMY
+              li
+                a(href="#") U18S
+              li
+                a(href="#") U16S RED
+              li
+                a(href="#") U16S BLACK
+              li
+                a(href="#") WOMENS
+    
+    // content
+    .squads__content
+      .container
+        .row(aria-label="Squads list")
+          
+          mixin playersRow 
+            .col-12.col-sm-6.col-md-4.col-lg-3
+              // card
+              a(href="player.html").squad-card
+                .squad-card__image
+                  .squad-card__image-wrapper
+                    img(src='img/squadImage_1.jpg' srcset='img/squadImage_1@2x.jpg 2x')
+                .squad-card__content
+                  .squad-card__name Gavin Henson
+                  .squad-card__position CENTRE
+                  .squad-card__info
+                    .squad-card__season 2017/18
+                    .squad-card__detail Games Played <strong>15</strong> 
+                    .squad-card__detail Points <strong>98</strong> 
+            
+            .col-12.col-sm-6.col-md-4.col-lg-3
+              // card
+              a(href="player.html").squad-card
+                .squad-card__image
+                  .squad-card__image-wrapper
+                    img(src='img/squadImage_2.jpg' srcset='img/squadImage_2@2x.jpg 2x')
+                .squad-card__content
+                  .squad-card__name Leon Brown
+                  .squad-card__position PROP
+                  .squad-card__info
+                    .squad-card__season 2017/18
+                    .squad-card__detail Games Played <strong>11</strong> 
+                    .squad-card__detail Points <strong>5</strong> 
+            
+            .col-12.col-sm-6.col-md-4.col-lg-3
+              // card
+              a(href="player.html").squad-card
+                .squad-card__image
+                  .squad-card__image-wrapper
+                    img(src='img/squadImage_3.jpg' srcset='img/squadImage_3@2x.jpg 2x')
+                .squad-card__content
+                  .squad-card__name Hallam Amos
+                  .squad-card__position Full back
+                  .squad-card__info
+                    .squad-card__season 2017/18
+                    .squad-card__detail Games Played <strong>11</strong> 
+                    .squad-card__detail Points <strong>5</strong> 
+            
+            .col-12.col-sm-6.col-md-4.col-lg-3
+              // card
+              a(href="player.html").squad-card
+                .squad-card__image
+                  .squad-card__image-wrapper
+                    img(src='img/squadImage_4.jpg' srcset='img/squadImage_4@2x.jpg 2x')
+                .squad-card__content
+                  .squad-card__name Elliot Dee
+                  .squad-card__position Hooker
+                  .squad-card__info
+                    .squad-card__season 2017/18
+                    .squad-card__detail Games Played <strong>11</strong> 
+                    .squad-card__detail Points <strong>5</strong> 
+          
+          +playersRow
+          +playersRow
+          +playersRow
+          +playersRow                                                          
+
+
+  include components/_about
   include components/_sponsors

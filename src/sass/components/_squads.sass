@@ -1,0 +1,120 @@
+.squads
+  padding-bottom: 100px
+  &__head
+    padding: 55px 0 60px
+    background: $lightBg
+    .container
+      position: relative
+      z-index: 1
+      &::after
+        // arrow
+        display: block
+        content: ' '
+        position: absolute
+        bottom: -77px
+        left: 36px
+        +arr(70, 17, $lightBg, b)
+
+  &__content
+    margin-top: 50px
+
++r($lg)
+  .squads
+    padding-bottom: 60px
+    &__head
+      padding-top: 40px
+      padding-bottom: 35px
+      .container::after
+        bottom: -52px
+
+
++r($sm)
+  .squads
+    padding-bottom: 40px
+    &__head
+      padding-top: 35px
+      padding-bottom: 30px
+      .container::after
+        left: 15px
+        bottom: -42px
+        +arr(49, 12, $lightBg, b)
+
+    &__content
+      margin-top: 35px
+
+
+
+/* squad card
+.squad-card
+  display: block
+  width: 100%
+  max-width: 280px
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 45px
+  &__image
+    position: relative
+    z-index: 1
+    border-radius: 50%
+    padding-bottom: 100%
+    background: #B12428
+    font-size: 0
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.24), 0 1px 3px 0 rgba(0,0,0,0.12)
+    transition: .25s $ease
+  &__image-wrapper
+    position: absolute 28px
+    overflow: hidden
+    z-index: 1
+    border-radius: 50%
+    img
+      width: 100%
+
+  &__content
+    text-align: center
+    margin-top: 12px
+    text-transform: uppercase
+
+  &__name
+    line-height: 1
+    font-size: 20px
+    font-weight: 700
+    color: $colorRed
+    letter-spacing: em(-.12, 20)
+
+  &__position
+    font-size: 18px
+    line-height: 1
+    font-weight: 700
+    letter-spacing: em(-.75, 18)
+    color: #979797
+    transition: color .25s $ease
+
+  &__info
+    margin-top: 8px
+    padding-top: 10px
+    border-top: 1px solid $fontColor
+    color: #979797
+    transition: color .25s $ease
+
+  &__season
+    font-size: 12px
+    font-weight: 700
+    letter-spacing: em(-.75, 12)
+    font-weight: 700
+    margin-bottom: 6px
+  &__detail
+    margin-top: 4px
+    font-size: 16px
+    line-height: 1.1
+    font-weight: 500
+    letter-spacing: em(-.09, 15)
+    strong
+      font-weight: 700
+
+  &:hover
+    .squad-card
+      &__image
+        background: black
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.23), 0 3px 6px 0 rgba(0,0,0,0.16)
+      &__position, &__info
+        color: $fontColor
