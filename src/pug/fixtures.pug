@@ -13,7 +13,7 @@ block content
         
         .row.align-items-center
           .col-12.col-xl
-            ul.tabs-nav.tabs-nav--no-pad
+            ul.tabs-nav.tabs-nav--no-pad(aria-label="FIXTURES and RESULTS results navigation")
               li
                 a.is-active(href="#") DRAGONS
               li 
@@ -35,7 +35,7 @@ block content
           .col-12.col-xl-auto
             .results__select
               // .on('selectric-select', func.. ) event - see main.js for example
-              select(js-select-fxiture-date)
+              select(js-select-fxiture-date aria-label="Select year")
                 option 2018/2019
                 option 2017/2018
                 option 2016/2017
@@ -58,23 +58,23 @@ block content
               a(href="#").results__pdflink.no-barba Download these fixtures in iCal format or PDF
         
         // table wrapper
-        .results__table
+        .results__table(aria-label="Results table")
           
           mixin rowRegular(c1='Sat 11 Aug 2018', c2='31 – 17', c3='EALING TRAILFINDERS', c4='Trailfinders Sports Club, West Ealing', c5='F', c6='3331')
             // row
-            tr.table-results__row(js-link data-target="#")
+            tr.table-results__row(js-link data-target="#" aria-label="Match scope")
               td= c1
               td
                 .table-results__kot
                   span= c2
-                  span W
+                  span(aria-label="Dragons wins") W
               td
                 .span.f-700= c3
               td= c4
               td
                 .span.f-700= c5
               td= c6
-              td.table-results__link
+              td.table-results__link(aria-label="Link to match results")
                 a(href="#").table-results__link-mobile
                   span See match details
                   +icon('ico-arrow-right')

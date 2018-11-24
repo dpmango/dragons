@@ -34,7 +34,7 @@ block content
     
       // TABS
       .tabs-wrapper
-        .tab.is-active(data-tab-for="match-report")
+        .tab.is-active(data-tab-for="match-report" aria-label="Match report section")
           // content head
           .article__content-info
             
@@ -43,7 +43,7 @@ block content
             .container
               .row
                 .col-12.col-lg-7
-                  h2(itemprop="headline") Dragons started their pre-season campaign with a&nbsp;convincing 31-17 victory away to&nbsp;English Championship side Ealing Trailfinders.
+                  h2(itemprop="name headline") Dragons started their pre-season campaign with a&nbsp;convincing 31-17 victory away to&nbsp;English Championship side Ealing Trailfinders.
                 
                 .col-12.offset-0.col-lg-4.offset-lg-1
                   include components/_share
@@ -61,7 +61,7 @@ block content
                   p Former Dragon Will Harries completed the scoring in&nbsp;the final few minutes as&nbsp;Ealing had the last laugh, but there was no&nbsp;doubting who deserved to&nbsp;win.
         
         // next tab  
-        .tab(data-tab-for="line-ups")
+        .tab(data-tab-for="line-ups" aria-label="Line-ups section")
           .article__content
             mixin rowRegular(num='1', c1='Jack O’Connell', c2='1', c3='--' ,c4='--', c5='--')
               tr
@@ -79,11 +79,11 @@ block content
                   .table__player-row
                     span.f-700= num
                     span
-                      a(href="player.html")= c1
+                      a(href="player.html" aria-label="Link to player name")= c1
                 td 1
                 td ––
                 td ––
-                td ––  
+                td –– 
             
             
             .container
@@ -173,7 +173,7 @@ block content
                         +rowLinked  
         
         // next tab
-        .tab(data-tab-for="statistics")
+        .tab(data-tab-for="statistics" aria-label="Statistics section")
           .article__content
             .container
               .row
@@ -200,7 +200,7 @@ block content
     
       
     // ARTICLE GALLERY
-    .gallery
+    .gallery(aria-label="Gallery section")
       .container
         .gallery__wrapper
           // navigation
@@ -219,11 +219,12 @@ block content
             .gallery__slider(js-gallery-swiper).swiper-container
               .swiper-wrapper
                 // slide
-                .gallery__slide(data-title="Ryan Bevington runs in to score his first try")
+                .gallery__slide(
+                  aria-label="Ryan Bevington runs in to score his first try"
+                  data-title="Ryan Bevington runs in to score his first try")
                   figure
                     picture(
-                      alt="image"
-                      aria-label="Image description")
+                      alt="image")
                       // 992 and above
                       source(
                         media="(min-width: 992px)" 
@@ -238,13 +239,14 @@ block content
                         srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072/v1542697390/Website/articleCover_2_2x.jpg 2x")
                       // fallback
                       img(src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
-                    figcaption Ben Mottram | 22/09/2018
+                    figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
                 // slide
-                .gallery__slide(data-title="Title is changing - slide 2")
+                .gallery__slide(
+                  aria-label="Title is changing - slide 2"
+                  data-title="Title is changing - slide 2")
                   figure
                     picture(
-                      alt="image"
-                      aria-label="Image description")
+                      alt="image")
                       // 992 and above
                       source(
                         media="(min-width: 992px)" 
@@ -259,13 +261,14 @@ block content
                         srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
                       // fallback
                       img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
-                    figcaption Ben Mottram | 22/09/2018
+                    figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
                 // slide
-                .gallery__slide(data-title="Dragons started their pre-season campaign with a convincing 31-17 victory away to English Championship side Ealing Trailfinders.")
+                .gallery__slide(
+                  aria-label="Dragons started their pre-season campaign with a convincing 31-17 victory away to English Championship side Ealing Trailfinders."
+                  data-title="Dragons started their pre-season campaign with a convincing 31-17 victory away to English Championship side Ealing Trailfinders.")
                   figure
                     picture(
-                      alt="image"
-                      aria-label="Image description")
+                      alt="image")
                       // 992 and above
                       source(
                         media="(min-width: 992px)" 
@@ -280,13 +283,14 @@ block content
                         srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072/v1542697390/Website/articleCover_2_2x.jpg 2x")
                       // fallback
                       img(src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
-                    figcaption Ben Mottram | 22/09/2018
+                    figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
                 // slide
-                .gallery__slide(data-title="Title is changing - slide 4")
+                .gallery__slide(
+                  aria-label="Title is changing - slide 4"
+                  data-title="Title is changing - slide 4")
                   figure
                     picture(
-                      alt="image"
-                      aria-label="Image description")
+                      alt="image")
                       // 992 and above
                       source(
                         media="(min-width: 992px)" 
@@ -301,8 +305,7 @@ block content
                         srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
                       // fallback
                       img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
-                    figcaption Ben Mottram | 22/09/2018
-
+                    figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
 
   
   include components/_about

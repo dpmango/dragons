@@ -1,0 +1,178 @@
+include ../schema/_mixins
+
+mixin newsCard_1 
+  // card
+  a(href='#' js-masonry-card data-filter="club youth" itemprop="itemListElement" itemscope itemtype="http://schema.org/NewsArticle").news-card.news-card--wide
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1.jpg")
+    meta(itemprop="position" content="1")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    meta(itemprop="url mainEntityOfPage" content="news-article.html")
+    +metaPublisher
+    .news-card__wrapper
+      .news-card__background
+        //- img(src='img/newsCover_1.jpg' srcset='img/newsCover_1@2x.jpg 2x')
+        picture(
+          alt="image"
+          aria-label="Image description")
+          // 992 and above
+          source(
+            media="(min-width: 576px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1_2x.jpg 2x")
+          // 576px and less
+          source(
+            media="(min-width: 0px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_1.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_1_2x.jpg 2x")
+          // fallback
+          img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1.jpg")
+
+      .news-card__content
+        .news-card__title(itemprop="name headline") WALES RUN OUT VICTORS <br> 23 – 10 OVER ARGENTINA
+        .news-card__timestamp(itemprop="datePublished") 06 June 2018
+      .news-card__tag
+        .news-card__category(js-link data-href="#" aria-label="Link to match report")
+          span Match report
+          +icon('ico-arrow-right')
+
+mixin newsCard_2
+  // card
+  a(href='#' js-masonry-card data-filter="community" itemprop="itemListElement" itemscope itemtype="http://schema.org/NewsArticle").news-card
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2.jpg")
+    meta(itemprop="position" content="2")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    meta(itemprop="url mainEntityOfPage" content="news-article.html")
+    +metaPublisher
+    .news-card__wrapper
+      .news-card__background
+        //- img(src='img/newsCover_2.jpg' srcset='img/newsCover_2@2x.jpg 2x')
+        picture(
+          alt="image"
+          aria-label="Image description")
+          // 992 and above
+          source(
+            media="(min-width: 576px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2_2x.jpg 2x")
+          // 576px and less
+          source(
+            media="(min-width: 0px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_2_2x.jpg 2x")
+          // fallback
+          img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2.jpg")
+
+      .news-card__content
+        .news-card__title(itemprop="name headline") MEETING UP WITH OUR local youth teams
+        .news-card__timestamp(itemprop="datePublished") 06 June 2018
+      .news-card__tag
+        .news-card__category.news-card__category--iconed(js-link data-href="#" aria-label="Link to match report")
+          span COMMUNITY WINS
+          .news-card__category-icon
+            .news-card__category-icon-wrap
+              +icon('ico-play')
+
+mixin newsCard_3
+  // card
+  a(href='#' js-masonry-card data-filter="club youth" itemprop="itemListElement" itemscope itemtype="http://schema.org/NewsArticle").news-card
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3.jpg")
+    meta(itemprop="position" content="3")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    meta(itemprop="url mainEntityOfPage" content="news-article.html")
+    +metaPublisher
+    .news-card__wrapper
+      .news-card__background
+        //- img(src='img/newsCover_3.jpg' srcset='img/newsCover_3@2x.jpg 2x')
+        picture(
+          alt="image"
+          aria-label="Image description")
+          // 992 and above
+          source(
+            media="(min-width: 576px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3_2x.jpg 2x")
+          // 576px and less
+          source(
+            media="(min-width: 0px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_3.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_3_2x.jpg 2x")
+          // fallback
+          img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3.jpg")
+
+      .news-card__content
+        .news-card__title(itemprop="name headline") JUST DRAWN… <br>SEE WHO WE’VE  GOT IN THE CUP
+        .news-card__timestamp(itemprop="datePublished") 06 June 2018
+      .news-card__tag
+        .news-card__category(js-link data-href="#" aria-label="Link to match report")
+          span Match report
+          +icon('ico-arrow-right')          
+
+mixin newsCard_4
+  // card
+  a(href='#' js-masonry-card data-filter="club corporate" itemprop="itemListElement" itemscope itemtype="http://schema.org/NewsArticle").news-card
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4.jpg")
+    meta(itemprop="position" content="4")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    meta(itemprop="url mainEntityOfPage" content="news-article.html")
+    +metaPublisher
+    .news-card__wrapper
+      .news-card__background
+        //- img(src='img/newsCover_4.jpg' srcset='img/newsCover_4@2x.jpg 2x')
+        picture(
+          alt="image"
+          aria-label="Image description")
+          // 992 and above
+          source(
+            media="(min-width: 576px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4_2x.jpg 2x")
+          // 576px and less
+          source(
+            media="(min-width: 0px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_4.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_4_2x.jpg 2x")
+          // fallback
+          img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4.jpg")
+
+      .news-card__content
+        .news-card__title(itemprop="name headline") A WARM WELCOME to  OUR NEW SPONSORS
+        .news-card__timestamp(itemprop="datePublished") 06 June 2018
+      .news-card__tag
+        .news-card__category(js-link data-href="#" aria-label="Link to match report")
+          span Club News
+          +icon('ico-arrow-right')   
+                         
+mixin newsCard_5
+  // card
+  a(href='#' js-masonry-card data-filter="community corporate" itemprop="itemListElement" itemscope itemtype="http://schema.org/NewsArticle").news-card.news-card--wide
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5.jpg")
+    meta(itemprop="position" content="5")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="datePublished" content="2012-01-01T09:04:20+00:00")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    meta(itemprop="url mainEntityOfPage" content="news-article.html")
+    +metaPublisher
+    .news-card__wrapper
+      .news-card__background
+        //- img(src='img/newsCover_5.jpg' srcset='img/newsCover_5@2x.jpg 2x')
+        picture(
+          alt="image"
+          aria-label="Image description")
+          // 992 and above
+          source(
+            media="(min-width: 576px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5_2x.jpg 2x")
+          // 576px and less
+          source(
+            media="(min-width: 0px)" 
+            srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_5.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_5_2x.jpg 2x")
+          // fallback
+          img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5.jpg")
+
+      .news-card__content
+        .news-card__title(itemprop="name headline") WHY OUR FANS MAKE <br> MATCH DAY THE BEST 
+        .news-card__timestamp(itemprop="datePublished") 06 June 2018
+      .news-card__tag
+        .news-card__category(js-link data-href="#" aria-label="Link to match report")
+          span FROM THE FLIGHT
+          +icon('ico-arrow-right')

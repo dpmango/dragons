@@ -4,18 +4,18 @@ PageList:
 - file: article.html
   ready: 100
 - file: news.html
-  ready: 90
+  ready: 100
 - file: news-article.html
   ready: 100
 - file: match-report.html
-  ready: 80
+  ready: 100
 - file: fixtures.html
-  ready: 80
+  ready: 100
 - file: squads.html
   ready: 5
 - file: player.html
   ready: 5
 - file: homepage.html
-  ready: 20
+  ready: 30
 - file: styleguide.html
   ready: 5

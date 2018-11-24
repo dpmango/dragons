@@ -3,6 +3,7 @@ title: News page
 ---
 extends shared/_layout
 block content
+  include shared/_news-cards
   
   // NEWS
   .news
@@ -30,153 +31,13 @@ block content
     .news__wrapper
       .container
         // masonry
-        .news__masonry(js-masonry data-for="news-grid")
+        .news__masonry(js-masonry data-for="news-grid" itemscope itemtype="http://schema.org/ItemList")
+          // schema.org hidden
+          link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news.html")
+          meta(name="itemListOrder" content="Descending")
+            
           // grid sizer
-          .grid-sizer(js-masonry-grid-sizer)
-          
-          mixin newsCard_1 
-            // card
-            a(href='#').news-card.news-card--wide(js-masonry-card data-filter="club youth")
-              .news-card__wrapper
-                .news-card__background
-                  //- img(src='img/newsCover_1.jpg' srcset='img/newsCover_1@2x.jpg 2x')
-                  picture(
-                    alt="image"
-                    aria-label="Image description")
-                    // 992 and above
-                    source(
-                      media="(min-width: 576px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1_2x.jpg 2x")
-                    // 576px and less
-                    source(
-                      media="(min-width: 0px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_1.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_1_2x.jpg 2x")
-                    // fallback
-                    img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_1.jpg")
-
-                .news-card__content
-                  .news-card__title WALES RUN OUT VICTORS <br> 23 – 10 OVER ARGENTINA
-                  .news-card__timestamp 06 June 2018
-                .news-card__tag
-                  .news-card__category(js-link data-href="#" aria-label="Link to")
-                    span Match report
-                    +icon('ico-arrow-right')
-          
-          mixin newsCard_2
-            // card
-            a(href='#').news-card(js-masonry-card data-filter="community")
-              .news-card__wrapper
-                .news-card__background
-                  //- img(src='img/newsCover_2.jpg' srcset='img/newsCover_2@2x.jpg 2x')
-                  picture(
-                    alt="image"
-                    aria-label="Image description")
-                    // 992 and above
-                    source(
-                      media="(min-width: 576px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2_2x.jpg 2x")
-                    // 576px and less
-                    source(
-                      media="(min-width: 0px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_2_2x.jpg 2x")
-                    // fallback
-                    img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_2.jpg")
-
-                .news-card__content
-                  .news-card__title MEETING UP WITH OUR local youth teams
-                  .news-card__timestamp 06 June 2018
-                .news-card__tag
-                  .news-card__category.news-card__category--iconed(js-link data-href="#" aria-label="Link to")
-                    span COMMUNITY WINS
-                    .news-card__category-icon
-                      .news-card__category-icon-wrap
-                        +icon('ico-play')
-          
-          mixin newsCard_3
-            // card
-            a(href='#').news-card(js-masonry-card data-filter="club youth")
-              .news-card__wrapper
-                .news-card__background
-                  //- img(src='img/newsCover_3.jpg' srcset='img/newsCover_3@2x.jpg 2x')
-                  picture(
-                    alt="image"
-                    aria-label="Image description")
-                    // 992 and above
-                    source(
-                      media="(min-width: 576px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3_2x.jpg 2x")
-                    // 576px and less
-                    source(
-                      media="(min-width: 0px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_3.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_3_2x.jpg 2x")
-                    // fallback
-                    img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_3.jpg")
-
-                .news-card__content
-                  .news-card__title JUST DRAWN… <br>SEE WHO WE’VE  GOT IN THE CUP
-                  .news-card__timestamp 06 June 2018
-                .news-card__tag
-                  .news-card__category(js-link data-href="#" aria-label="Link to")
-                    span Match report
-                    +icon('ico-arrow-right')          
-        
-          mixin newsCard_4
-            // card
-            a(href='#').news-card(js-masonry-card data-filter="club corporate")
-              .news-card__wrapper
-                .news-card__background
-                  //- img(src='img/newsCover_4.jpg' srcset='img/newsCover_4@2x.jpg 2x')
-                  picture(
-                    alt="image"
-                    aria-label="Image description")
-                    // 992 and above
-                    source(
-                      media="(min-width: 576px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4_2x.jpg 2x")
-                    // 576px and less
-                    source(
-                      media="(min-width: 0px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_4.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_4_2x.jpg 2x")
-                    // fallback
-                    img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_4.jpg")
-
-                .news-card__content
-                  .news-card__title A WARM WELCOME to  OUR NEW SPONSORS
-                  .news-card__timestamp 06 June 2018
-                .news-card__tag
-                  .news-card__category(js-link data-href="#" aria-label="Link to")
-                    span Club News
-                    +icon('ico-arrow-right')   
-                                   
-          mixin newsCard_5
-            // card
-            a(href='#').news-card.news-card--wide(js-masonry-card data-filter="community corporate")
-              .news-card__wrapper
-                .news-card__background
-                  //- img(src='img/newsCover_5.jpg' srcset='img/newsCover_5@2x.jpg 2x')
-                  picture(
-                    alt="image"
-                    aria-label="Image description")
-                    // 992 and above
-                    source(
-                      media="(min-width: 576px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5_2x.jpg 2x")
-                    // 576px and less
-                    source(
-                      media="(min-width: 0px)" 
-                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542790069/Website/newsCover_5.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542790069/Website/newsCover_5_2x.jpg 2x")
-                    // fallback
-                    img(src="https://res.cloudinary.com/dragons/image/upload/v1542790069/Website/newsCover_5.jpg")
-
-                .news-card__content
-                  .news-card__title WHY OUR FANS MAKE <br> MATCH DAY THE BEST 
-                  .news-card__timestamp 06 June 2018
-                .news-card__tag
-                  .news-card__category(js-link data-href="#" aria-label="Link to")
-                    span FROM THE FLIGHT
-                    +icon('ico-arrow-right')        
-                        
-                                        
+          .grid-sizer(js-masonry-grid-sizer)                    
           +newsCard_1
           +newsCard_2
           +newsCard_3

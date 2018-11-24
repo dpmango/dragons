@@ -3,10 +3,18 @@
   // content
   .fixtures__wrapper
     .container
-      .row.row--no-margin
+      .row.row--no-margin(itemscope itemtype="http://schema.org/SportsEvent")
+        meta(itemprop="startDate" content="2018-08-26T09:00:00+00:00")
+        meta(itemprop="endDate" content="2018-08-26T11:00:00+00:00")
+        span(itemprop="location" itemscope itemtype="https://schema.org/Place")
+          meta(itemprop="name" content="Rodney Parade")
+          meta(itemprop="address" content="NP19 0UU Rodney Parade, Newport, Gwent")
+        meta(itemprop="name" content="Rubgy match SCARLETS vs DRAGONS")
         .col-12.col-lg-4.fixtures__col
-          .fixtures-team
-            .fixtures-team__name SCARLETS
+          .fixtures-team(itemprop="awayTeam" itemscope itemtype="https://schema.org/SportsTeam")
+            meta(itemprop="logo" content="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-scarlets.png")
+            meta(itemprop="sport" content="Rubgy")
+            .fixtures-team__name(itemprop="name") SCARLETS
             .fixtures-team__logo
               //- img(src='img/logo-scarlets.png' srcset='img/logo-scarlets@2x.png 2x')
               picture(
@@ -40,8 +48,10 @@
             
               
         .col-12.col-lg-4.fixtures__col
-          .fixtures-team.fixtures-team--right
-            .fixtures-team__name DRAGONS
+          .fixtures-team.fixtures-team--right(itemprop="homeTeam" itemscope itemtype="https://schema.org/SportsTeam")
+            meta(itemprop="logo" content="https://res.cloudinary.com/dragons/image/upload/v1542801228/Team%20logos/logo-dragons.png")
+            meta(itemprop="sport" content="Rubgy")
+            .fixtures-team__name(itemprop="name") DRAGONS
             .fixtures-team__logo
               //- img(src='img/logo-dragons.png' srcset='img/logo-dragons@2x.png 2x')
               picture(

@@ -1,10 +1,12 @@
-var gulp        = require('gulp');
-var pug         = require('gulp-pug');
-var plumber     = require('gulp-plumber');
-var changed     = require('gulp-changed');
-var gulpif      = require('gulp-if');
-var frontMatter = require('gulp-front-matter');
-var config      = require('../config');
+var gulp         = require('gulp');
+var util         = require('gulp-util');
+var pug          = require('gulp-pug');
+var htmlbeautify = require('gulp-html-beautify');
+var plumber      = require('gulp-plumber');
+var changed      = require('gulp-changed');
+var gulpif       = require('gulp-if');
+var frontMatter  = require('gulp-front-matter');
+var config       = require('../config');
 
 function renderHtml(onlyChanged) {
   return gulp
@@ -15,6 +17,7 @@ function renderHtml(onlyChanged) {
     .pipe(pug({
       pretty: true
     }))
+    .pipe(config.production ? htmlbeautify({indentSize: 2}) : util.noop())
     .pipe(gulp.dest(config.dest.html));
 }
 

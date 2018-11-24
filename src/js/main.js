@@ -659,6 +659,14 @@ $(document).ready(function(){
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          $this.css({'opacity': .5});
+          return
+          // document.getElementById("#days").innerHTML = "EXPIRED";
+        }
+
         // Display the result in the element with id="demo"
         $days.find('.counter__number').html((days).pad(2));
         $days.find('.counter__name').html( pluralize('day', days) );
@@ -669,11 +677,6 @@ $(document).ready(function(){
         $seconds.find('.counter__number').html((seconds).pad(2));
         $seconds.find('.counter__name').html( pluralize('sec', minutes) );
 
-        // If the count down is finished, write some text
-        if (distance < 0) {
-          clearInterval(x);
-          // document.getElementById("#days").innerHTML = "EXPIRED";
-        }
       }, 1000);
 
     }
