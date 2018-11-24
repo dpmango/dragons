@@ -34,17 +34,24 @@ block content
     // content
     .squads__content
       .container
-        .row(aria-label="Squads list")
-          
+        .row(aria-label="Squads list" itemscope itemtype="http://schema.org/ItemList")
+          // schema.org hidden
+          link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/squads.html")
+          meta(name="itemListOrder" content="Descending")
+            
           mixin playersRow 
             .col-12.col-sm-6.col-md-4.col-lg-3
               // card
-              a(href="player.html").squad-card
+              a.squad-card(href="player.html" itemprop="itemListElement" itemscope itemtype="http://schema.org/Person")
+                meta(itemprop="url" content="https://dragons-team.surge.com/player-1.html")
                 .squad-card__image
                   .squad-card__image-wrapper
                     img(src='img/squadImage_1.jpg' srcset='img/squadImage_1@2x.jpg 2x')
                 .squad-card__content
-                  .squad-card__name Gavin Henson
+                  .squad-card__name 
+                    span(itemprop="givenName") Gavin
+                    | 
+                    span(itemprop="familyName") Henson
                   .squad-card__position CENTRE
                   .squad-card__info
                     .squad-card__season 2017/18
@@ -53,12 +60,16 @@ block content
             
             .col-12.col-sm-6.col-md-4.col-lg-3
               // card
-              a(href="player.html").squad-card
+              a(href="player.html" itemprop="itemListElement" itemscope itemtype="http://schema.org/Person").squad-card
+                meta(itemprop="url" content="https://dragons-team.surge.com/player-2.html")
                 .squad-card__image
                   .squad-card__image-wrapper
                     img(src='img/squadImage_2.jpg' srcset='img/squadImage_2@2x.jpg 2x')
                 .squad-card__content
-                  .squad-card__name Leon Brown
+                  .squad-card__name
+                    span(itemprop="givenName") Leon
+                    | 
+                    span(itemprop="familyName") Brown
                   .squad-card__position PROP
                   .squad-card__info
                     .squad-card__season 2017/18
@@ -67,12 +78,16 @@ block content
             
             .col-12.col-sm-6.col-md-4.col-lg-3
               // card
-              a(href="player.html").squad-card
+              a(href="player.html" itemprop="itemListElement" itemscope itemtype="http://schema.org/Person").squad-card
+                meta(itemprop="url" content="https://dragons-team.surge.com/player-3.html")
                 .squad-card__image
                   .squad-card__image-wrapper
                     img(src='img/squadImage_3.jpg' srcset='img/squadImage_3@2x.jpg 2x')
                 .squad-card__content
-                  .squad-card__name Hallam Amos
+                  .squad-card__name 
+                    span(itemprop="givenName") Hallam
+                    | 
+                    span(itemprop="familyName") Amos
                   .squad-card__position Full back
                   .squad-card__info
                     .squad-card__season 2017/18
@@ -81,12 +96,16 @@ block content
             
             .col-12.col-sm-6.col-md-4.col-lg-3
               // card
-              a(href="player.html").squad-card
+              a(href="player.html" itemprop="itemListElement" itemscope itemtype="http://schema.org/Person").squad-card
+                meta(itemprop="url" content="https://dragons-team.surge.com/player-4.html")
                 .squad-card__image
                   .squad-card__image-wrapper
                     img(src='img/squadImage_4.jpg' srcset='img/squadImage_4@2x.jpg 2x')
                 .squad-card__content
-                  .squad-card__name Elliot Dee
+                  .squad-card__name
+                    span(itemprop="givenName") Elliot
+                    | 
+                    span(itemprop="familyName") Dee
                   .squad-card__position Hooker
                   .squad-card__info
                     .squad-card__season 2017/18

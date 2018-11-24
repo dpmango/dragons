@@ -1,0 +1,107 @@
+// ARTICLE GALLERY
+.gallery(aria-label="Gallery section")
+  .container
+    .gallery__wrapper
+      // navigation
+      .gallery__nav
+        .gallery__title(js-swiper-title) Ryan Bevington runs in to score his first try
+        .gallery__nav-controls
+          .gallery__nav-fraction(js-swiper-fraction)
+            span 1/4
+          .gallery__nav-buttons
+            .gallery__btn.gallery__btn--prev(js-swiper-nav data-type="prev")
+              +icon('ico-swiper-arrow')
+            .gallery__btn.gallery__btn--next(js-swiper-nav data-type="next")
+              +icon('ico-swiper-arrow')
+      // images
+      .gallery__images
+        .gallery__slider(js-gallery-swiper).swiper-container
+          .swiper-wrapper
+            // slide
+            .gallery__slide(
+              aria-label="Ryan Bevington runs in to score his first try"
+              data-title="Ryan Bevington runs in to score his first try")
+              figure
+                picture(
+                  alt="image")
+                  // 992 and above
+                  source(
+                    media="(min-width: 992px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // 992 - 576px
+                  source(
+                    media="(min-width: 576px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // 576px and less
+                  source(
+                    media="(min-width: 0px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // fallback
+                  img(src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
+                figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
+            // slide
+            .gallery__slide(
+              aria-label="Title is changing - slide 2"
+              data-title="Title is changing - slide 2")
+              figure
+                picture(
+                  alt="image")
+                  // 992 and above
+                  source(
+                    media="(min-width: 992px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // 992 - 576px
+                  source(
+                    media="(min-width: 576px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // 576px and less
+                  source(
+                    media="(min-width: 0px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // fallback
+                  img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+                figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
+            // slide
+            .gallery__slide(
+              aria-label="Dragons started their pre-season campaign with a convincing 31-17 victory away to English Championship side Ealing Trailfinders."
+              data-title="Dragons started their pre-season campaign with a convincing 31-17 victory away to English Championship side Ealing Trailfinders.")
+              figure
+                picture(
+                  alt="image")
+                  // 992 and above
+                  source(
+                    media="(min-width: 992px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // 992 - 576px
+                  source(
+                    media="(min-width: 576px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // 576px and less
+                  source(
+                    media="(min-width: 0px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536/v1542697390/Website/articleCover_2.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072/v1542697390/Website/articleCover_2_2x.jpg 2x")
+                  // fallback
+                  img(src="https://res.cloudinary.com/dragons/image/upload/v1542697390/Website/articleCover_2.jpg")
+                figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
+            // slide
+            .gallery__slide(
+              aria-label="Title is changing - slide 4"
+              data-title="Title is changing - slide 4")
+              figure
+                picture(
+                  alt="image")
+                  // 992 and above
+                  source(
+                    media="(min-width: 992px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // 992 - 576px
+                  source(
+                    media="(min-width: 576px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // 576px and less
+                  source(
+                    media="(min-width: 0px)" 
+                    srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                  // fallback
+                  img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+                figcaption(aria-label="copyright") Ben Mottram | 22/09/2018
