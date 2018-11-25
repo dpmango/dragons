@@ -436,6 +436,75 @@ $(document).ready(function(){
       })
 
     }
+
+    var $playerImageBG = $('[js-player-image-bg]')
+
+    if ( $playerImageBG.length > 0 ) {
+      var wWidth = _window.width();
+      var containerWidth = $playerImageBG.closest('.container').width();
+      var widnowContainerDiff = (wWidth - containerWidth) / 2
+
+      $playerImageBG.css({
+        left: widnowContainerDiff * -1,
+        width: widnowContainerDiff + 15 // some overlap just in case
+      })
+    }
+
+    setPlayerTableWidth()
+
+  }
+
+  function setPlayerTableWidth(){
+    var $playerTable = $('[js-set-table-size] table');
+    if ( $playerTable.length > 0 ) {
+
+      var $parentTable = $playerTable.parent().closest('table')
+      var tableWidth = $parentTable.outerWidth();
+      var parentThead = $parentTable.find('.table-player__main-head tr td');
+      var parentTheadWidth = []
+      parentThead.each(function(i, td){
+        parentTheadWidth.push($(td).outerWidth())
+      })
+
+      $playerTable.each(function(i, table){
+        var $table = $(table);
+        var $firstRow = $table.find('tbody tr').first();
+        if ( $firstRow.length === 0 ) return
+
+        // find table cells within target firstRow
+        var tds = $firstRow.find('td');
+        if ( tds.length === 0 ) return
+
+        // var fixedSum = parentTheadWidth[5] + parentTheadWidth[6] + parentTheadWidth[7] + parentTheadWidth[8] + parentTheadWidth[9] + parentTheadWidth[10]
+        // var firstMinWidth = $(tds[0]).outerWidth();
+
+        $(tds[0]).css({
+          width: '20%'
+        })
+        // $(tds[1]).css({
+        //   'width': tableWidth - (firstMinWidth + fixedSum)
+        // })
+        $(tds[2]).css({
+          'width': parentTheadWidth[5]
+        })
+        $(tds[3]).css({
+          'width': parentTheadWidth[6]
+        })
+        $(tds[4]).css({
+          'width': parentTheadWidth[7]
+        })
+        $(tds[5]).css({
+          'width': parentTheadWidth[8]
+        })
+        $(tds[6]).css({
+          'width': parentTheadWidth[9]
+        })
+        $(tds[7]).css({
+          'width': parentTheadWidth[10]
+        })
+
+      })
+    }
   }
 
   ////////////////
@@ -545,6 +614,17 @@ $(document).ready(function(){
     var targetHeight = $target.outerHeight()
     $target.closest('.tabs-wrapper').css({'height': targetHeight})
   }
+
+  // player page
+  _document
+    .on('click', '[js-open-player-row]', function(){
+      var $row = $(this).closest('tr').next();
+
+      if ( !$row.is('.table-player__collapsable') ) return
+      $row.toggle();
+      setPlayerTableWidth();
+      $(this).toggleClass('is-active')
+    })
 
   /**********
   * PLUGINS *

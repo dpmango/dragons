@@ -1,0 +1,95 @@
+.player
+
+  &__head
+    padding-top: 50px
+
+  &__image
+    position: relative
+    z-index: 1
+    img
+      position: relative
+      z-index: 2
+      width: 100%
+
+  &__image-background-fill
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    z-index: 1
+    background: $lightBg
+    // to be calculated with js
+
+  &__scope
+
+  &__name
+    font-size: 48px
+    font-weight: 700
+    letter-spacing: em(-.55, 48)
+    line-height: 1
+    color: $colorRed
+    text-transform: uppercase
+
+  &__position
+    font-size: 48px
+    font-weight: 700
+    letter-spacing: em(-.55, 48)
+    text-transform: uppercase
+
+  &__info
+    margin-top: 30px
+  &__info-row
+    padding: 7px 0
+    border-bottom: 1px solid #EAECE7
+    font-size: 18px
+    font-weight: 500
+    letter-spacing: em(-.11, 16)
+
+    strong
+      font-weight: 700
+
+  &__sponsor
+    margin-top: 30px
+    img
+      max-width: 100%
+  &__sponsor-title
+    font-size: 13px
+    display: block
+    margin-bottom: 7px
+
+  &__share
+    margin-top: 40px
+
+
+  &__content
+    margin-top: -40px
+    background: $lightBg
+    padding-top: 100px
+    padding-bottom: 120px
+
+  &__description
+    font-size: 28px
+    font-weight: 500
+    letter-spacing: em(-.18, 28)
+    p
+      + p
+        margin-top: 2em
+
+
++r($lg)
+  .player
+    &__scope
+      margin-top: 50px
+
++r($sm)
+  .player
+    &__head
+      padding-top: 30px
+
+    &__scope
+      margin-top: 30px
+
+    &__name
+      font-size: 32px
+    &__position
+      font-size: 32px

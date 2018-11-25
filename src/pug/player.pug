@@ -1,13 +1,157 @@
 ---
-title: player page
+title: Gavin Henson
 ---
 extends shared/_layout
 block content
   
-  // HEY
-  .player
-    .container
-    
+  // PLayer
+  .player(itemscope itemtype="http://schema.org/Person")
+    // head
+    .player__head
+      .container
+        .row
+          .col-12
+            // breadcrumbs
+            .breadcrumbs(aria-label="Breadcrumbs navigation")
+              ul.breadcrumbs__list
+                li
+                  a(href='#') TEAMS
+                li
+                  a(href="#") DRAGONS
+                li
+                  span GAVIN HENSON 
+                  
+                    
+          .col-12.col-lg-6
+            .player__image()
+              div.player__image-background-fill(js-player-image-bg)
+              img(src='img/playerImage.jpg' srcset='img/playerImage@2x.jpg 2x')
+                
+          .col-12.col-lg-5.offset-lg-1
+            .player__scope
+              .player__name 
+                span(itemprop="givenName") Gavin
+                | 
+                span(itemprop="familyName") Henson
+              .player__position Centre
+            
+            .player__info
+              .player__info-row Age: <strong>36</strong>
+              .player__info-row Place of birth: <strong>Bridgend</strong>
+              .player__info-row Height: <strong>183cm / 6'</strong>
+              .player__info-row Weight: <strong>93kg / 14st 9lbs</strong>
+              .player__info-row Clubs: <strong>Bath Rugby, Bristol Bears, London Welsh, Saracens, RC Toulonnais, Swansea, Bath United</strong>
+              .player__info-row Education: <strong>Brynteg Comprehensive School, Bridgend</strong>
+              .player__info-row Honours: <strong>British and Irish Lions, Wales, Wales A, Wales Development XV, Wales U16, Wales U18, Wales U19, Wales U21</strong>
+              
+            .player__sponsor
+              .player__sponsor-title Sponsored by
+              img(src='img/sponsors/logo-naturaltalent.jpg' srcset='img/sponsors/logo-naturaltalent@2x.jpg 2x')
+            
+            .player__share(aria-lable="Share Gavin Henson profile")
+              include components/_share
+            
+      // content
+      .player__content
+        .container
+          .row
+            .col-12.col-lg-7
+              .player__description
+                p 
+                  strong Gavin Henson joined the Dragons in the summer of 2017, after siginig a two-year deal to return to Wales from Bristol RFC.
+                p The British and Irish Lion, who toured in 2005 to New Zealand, achieved Grand slams with Wales in the Six Nations Championship in 2005 and 2008. The versatile back can play as fly-half, ful-back or inside centre.
+          
+          .row
+            .col-12
+              .player__table
+                .lineup-tables__heading PLAYING RECORD
+                table.table-player
+                  mixin seasonRow(d)
+                    tr
+                      td= d
+                      td
+                        span.f-700 WASPS
+                      td SR
+                      td 0
+                      td 0
+                      td 0
+                      td 0
+                      td 0
+                    
+                  mixin tableRow(season)
+                    tr.table-player__main-row
+                      td 
+                        .table-player__toggler(js-open-player-row)
+                          +icon('ico-arrow-right')
+                      td= season
+                      td 14
+                      td 4
+                      td 1
+                      td 9
+                      td 2
+                      td 0
+                      td 0
+                      td 0
+                      td 10
+                    
+                    // nested table
+                    tr.table-player__collapsable(js-set-table-size)
+                      td(colspan="11")
+                        table
+                          thead
+                            tr
+                              td(colspan="8") MATCHES PLAYED IN 2013 / 2014
+                          tbody
+                            tr
+                              td DATE
+                              td OPPONENT
+                              td POS
+                              td T
+                              td C
+                              td P
+                              td DG
+                              td PTS
+
+                            +seasonRow("16 / 11/ 2013")
+                            +seasonRow("16 / 11/ 2013")
+                            +seasonRow("16 / 11/ 2013")
+                            +seasonRow("16 / 11/ 2013")
+                            +seasonRow("16 / 11/ 2013")
+                            
+                      
+                    
+                  thead.table-player__main-head
+                    tr
+                      td 
+                      td SEASON
+                      td P
+                      td W
+                      td D
+                      td L
+                      td T
+                      td C
+                      td P
+                      td DG
+                      td PTS
+                  tbody
+                    +tableRow("2017 / 2018")
+                    +tableRow("2016/2017")
+                    +tableRow("2015/2014")
+                    +tableRow("2013/2014")
+                  tfoot
+                    tr
+                      td 
+                      td SEASON
+                      td 99
+                      td 35
+                      td 1
+                      td 63
+                      td 13
+                      td 0
+                      td 0
+                      td 0
+                      td 65
+                    
     include components/_gallery
     
   include components/_sponsors

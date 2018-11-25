@@ -1,0 +1,117 @@
+.table-player
+  width: 100%
+  border-collapse: collapse
+  font-size: 14px
+  color: $fontColor
+  thead, tfoot
+    td
+      background: black
+      color: white
+      text-transform: uppercase
+      font-weight: 700
+      letter-spacing: em(0.44, 14)
+      padding: 20px
+  thead
+    // .table-player__main-head
+    td
+      border-bottom: 4px solid $lightBg
+
+  &__main-row
+    td
+      background: $colorRed
+      color: white
+      font-size: 18px
+      padding: 20px 20px 20px
+      font-weight: 700
+      border-bottom: 4px solid $lightBg
+      &:first-child
+        // toggler
+        background: $fontColor
+        color: white
+        padding: 0
+        width: 60px
+
+  &__toggler
+    min-size: 60px
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    .ico
+      font-size: 18px
+      color: white
+      background: $fontColor
+      will-change: transform
+      transition: transform .25s $ease
+    &.is-active
+      .ico
+        transform: rotate(90deg)
+
+  // nested table
+  &__collapsable
+    display: none
+    > td
+      // wrapper element
+      padding: 0 !important
+    table
+      width: 100%
+      border-collapse: collapse
+      font-size: 14px
+      color: $fontColor
+    thead
+      // 8 colspaned
+      td
+        background: white
+        color: $fontColor
+        font-weight: 700
+
+    tbody
+      // first row
+      tr:first-child
+        td
+          font-size: 14px
+          font-weight: 700
+          background: $colorPrimary
+
+      tr:not(:first-child):hover
+        td
+          background: $colorRed
+          color: white
+
+    td
+      letter-spacing: em(0.44, 14)
+      font-size: 16px
+      padding: 20px
+      background: white
+      color: $fontColor
+      border-bottom: 4px solid $lightBg
+      transition: background .25s $ease
+
+// +r($xl)
+//   .table-player
+//     font-size: 16px
+//
+// +r($lg)
+//   .table-player
+//     font-size: 14px
+//     td
+//       padding: 15px
+//
+// +r($sm)
+//   .table-player
+//     td
+//       border-width: 2px
+//       padding: 10px 10px
+//       &:first-child
+//         padding-left: 15px
+//       &:last-child
+//         padding-right: 15px
+//
+// +r($mobile-s)
+//   .table-player
+//     td
+//       &:first-child
+//         padding-left: 10px
+//       &:last-child
+//         padding-right: 10px
