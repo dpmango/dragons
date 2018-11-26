@@ -4,6 +4,10 @@
   // padding-bottom: 128px
   &__wrapper
     transform: translateY(-128px)
+  &--no-offset
+    margin-top: 0
+    .gallery__wrapper
+      transform: none
   &__nav
     position: relative
     min-height: 128px
@@ -80,9 +84,12 @@
     margin-top: 100px
     &__title
       font-size: 24px
-
     &__wrapper
       transform: translateY(-100px)
+    &--no-offset
+      margin-top: 0
+      // .gallery__wrapper
+      //   transform: none
     &__nav
       min-height: 100px
       padding-left: 20px
@@ -99,10 +106,12 @@
       .ico
         font-size: 11px
 
-      
+
 +r($sm)
   .gallery
     margin-top: 80px
+    &--no-offset
+      margin-top: 0
     &__wrapper
       transform: translateY(-80px)
     &__nav

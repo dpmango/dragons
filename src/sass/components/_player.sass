@@ -2,10 +2,16 @@
 
   &__head
     padding-top: 50px
+    .col-12
+      display: flex
+      flex-direction: column
 
   &__image
+    flex: 1 1 auto
     position: relative
     z-index: 1
+    font-size: 0
+    background: $lightBg
     img
       position: relative
       z-index: 2
@@ -19,6 +25,8 @@
     z-index: 1
     background: $lightBg
     // to be calculated with js
+
+  &__scope-wrapper
 
   &__scope
 
@@ -76,10 +84,60 @@
         margin-top: 2em
 
 
++r($xl)
+  .player
+    &__scope-wrapper
+      // margin-left: -3%
+      padding-left: 15px
+
+    &__name
+      font-size: 42px
+    &__position
+      font-size: 42px
+    &__info
+      margin-top: 25px
+    &__info-row
+      font-size: 16px
+    &__sponsor
+      margin-top: 25px
+    &__share
+      margin-top: 30px
+
 +r($lg)
   .player
+    &__scope-wrapper
+      padding-left: 0px
+
+    &__name
+      font-size: 38px
+    &__position
+      font-size: 38px
+    &__info
+      margin-top: 20px
+    &__info-row
+      font-size: 14px
+      padding: 5px 0
+    &__sponsor
+      margin-top: 20px
+    &__share
+      margin-top: 30px
+
+    &__content
+      // margin-top: 0
+      padding-top: 70px
+      padding-bottom: 100px
+    &__description
+      font-size: 24px
+
++r($md)
+  .player
+    &__image
+      max-width: 400px
     &__scope
-      margin-top: 50px
+      margin-top: 30px
+
+    &__content
+      // margin-top: 0
 
 +r($sm)
   .player
@@ -88,8 +146,19 @@
 
     &__scope
       margin-top: 30px
-
     &__name
-      font-size: 32px
+      font-size: 34px
     &__position
-      font-size: 32px
+      font-size: 34px
+
+    &__description
+      font-size: 18px
+
++r($mobile-s)
+  .player
+    &__name
+      font-size: 26px
+    &__position
+      font-size: 26px
+    &__info-row
+      font-size: 13px

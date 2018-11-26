@@ -22,40 +22,41 @@ block content
                   span GAVIN HENSON 
                   
                     
-          .col-12.col-lg-6
-            .player__image()
+          .col-12.col-md-6
+            .player__image
               div.player__image-background-fill(js-player-image-bg)
               img(src='img/playerImage.jpg' srcset='img/playerImage@2x.jpg 2x')
                 
-          .col-12.col-lg-5.offset-lg-1
-            .player__scope
-              .player__name 
-                span(itemprop="givenName") Gavin
-                | 
-                span(itemprop="familyName") Henson
-              .player__position Centre
-            
-            .player__info
-              .player__info-row Age: <strong>36</strong>
-              .player__info-row Place of birth: <strong>Bridgend</strong>
-              .player__info-row Height: <strong>183cm / 6'</strong>
-              .player__info-row Weight: <strong>93kg / 14st 9lbs</strong>
-              .player__info-row Clubs: <strong>Bath Rugby, Bristol Bears, London Welsh, Saracens, RC Toulonnais, Swansea, Bath United</strong>
-              .player__info-row Education: <strong>Brynteg Comprehensive School, Bridgend</strong>
-              .player__info-row Honours: <strong>British and Irish Lions, Wales, Wales A, Wales Development XV, Wales U16, Wales U18, Wales U19, Wales U21</strong>
+          .col-12.col-md-6.col-xl-5.offset-xl-1
+            .player__scope-wrapper
+              .player__scope
+                .player__name 
+                  span(itemprop="givenName") Gavin
+                  | 
+                  span(itemprop="familyName") Henson
+                .player__position Centre
               
-            .player__sponsor
-              .player__sponsor-title Sponsored by
-              img(src='img/sponsors/logo-naturaltalent.jpg' srcset='img/sponsors/logo-naturaltalent@2x.jpg 2x')
-            
-            .player__share(aria-lable="Share Gavin Henson profile")
-              include components/_share
+              .player__info
+                .player__info-row Age: <strong>36</strong>
+                .player__info-row Place of birth: <strong>Bridgend</strong>
+                .player__info-row Height: <strong>183cm / 6'</strong>
+                .player__info-row Weight: <strong>93kg / 14st 9lbs</strong>
+                .player__info-row Clubs: <strong>Bath Rugby, Bristol Bears, London Welsh, Saracens, RC Toulonnais, Swansea, Bath United</strong>
+                .player__info-row Education: <strong>Brynteg Comprehensive School, Bridgend</strong>
+                .player__info-row Honours: <strong>British and Irish Lions, Wales, Wales A, Wales Development XV, Wales U16, Wales U18, Wales U19, Wales U21</strong>
+                
+              .player__sponsor
+                .player__sponsor-title Sponsored by
+                img(src='img/sponsors/logo-naturaltalent.jpg' srcset='img/sponsors/logo-naturaltalent@2x.jpg 2x')
+              
+              .player__share(aria-lable="Share Gavin Henson profile")
+                include components/_share
             
       // content
       .player__content
         .container
           .row
-            .col-12.col-lg-7
+            .col-12.col-md-9.col-xl-7
               .player__description
                 p 
                   strong Gavin Henson joined the Dragons in the summer of 2017, after siginig a two-year deal to return to Wales from Bristol RFC.
@@ -152,6 +153,6 @@ block content
                       td 0
                       td 65
                     
-    include components/_gallery
+    include components/_gallery-player
     
   include components/_sponsors
