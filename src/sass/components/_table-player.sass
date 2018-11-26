@@ -9,19 +9,22 @@
       color: white
       text-transform: uppercase
       font-weight: 700
-      letter-spacing: em(0.44, 14)
       padding: 20px
+      letter-spacing: em(0.44, 14)
   thead
     // .table-player__main-head
     td
       border-bottom: 4px solid $lightBg
+  tfoot
+    td
+      font-size: 16px
 
   &__main-row
     td
       background: $colorRed
       color: white
       font-size: 18px
-      padding: 20px 20px 20px
+      padding: 20px
       font-weight: 700
       border-bottom: 4px solid $lightBg
       &:first-child
@@ -88,25 +91,91 @@
       border-bottom: 4px solid $lightBg
       transition: background .25s $ease
 
-// +r($xl)
-//   .table-player
-//     font-size: 16px
++r($xl)
+  .table-player
+    font-size: 13px
+    tfoot
+      td
+        font-size: 14px
+    &__main-row
+      td
+        font-size: 16px
+    &__collapsable
+      table
+        font-size: 13px
+      thead
+
+      tbody
+        tr:first-child
+          td
+            font-size: 13px
+      td
+        font-size: 14px
 //
-// +r($lg)
-//   .table-player
-//     font-size: 14px
-//     td
-//       padding: 15px
-//
-// +r($sm)
-//   .table-player
-//     td
-//       border-width: 2px
-//       padding: 10px 10px
-//       &:first-child
-//         padding-left: 15px
-//       &:last-child
-//         padding-right: 15px
++r($lg)
+  .table-player
+    thead, tfoot
+      td
+        padding: 15px
+
+    &__main-row
+      td
+        padding: 15px
+        font-size: 14px
+
+    &__toggler
+      min-size: 50px
+      .ico
+        font-size: 16px
+
+    &__collapsable
+      table
+
+      td
+        font-size: 14px
+        padding: 15px
+
++r(700)
+  .table-player
+    min-width: 640px
++r($sm)
+  .table-player
+    // min-width: 600px
+    thead, tfoot
+      td
+        padding: 10px
+        &:first-child
+          padding-left: 15px
+        &:last-child
+          padding-right: 15px
+
+    td
+      border-width: 2px
+
+    &__main-row
+      td
+        padding: 10px
+        font-size: 14px
+        &:first-child
+          padding-left: 0
+          padding-right: 0
+        &:last-child
+          padding-right: 15px
+
+    &__toggler
+      min-size: 40px
+      .ico
+        font-size: 14px
+
+    &__collapsable
+      td
+        font-size: 14px
+        padding: 10px
+        &:first-child
+          padding-left: 15px
+        &:last-child
+          padding-right: 15px
+
 //
 // +r($mobile-s)
 //   .table-player

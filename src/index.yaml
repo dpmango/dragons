@@ -14,7 +14,7 @@ PageList:
 - file: squads.html
   ready: 100
 - file: player.html
-  ready: 70
+  ready: 100
 - file: homepage.html
   ready: 30
 - file: styleguide.html

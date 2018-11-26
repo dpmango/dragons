@@ -1,5 +1,4 @@
 .player
-
   &__head
     padding-top: 50px
     .col-12
@@ -52,7 +51,6 @@
     font-size: 18px
     font-weight: 500
     letter-spacing: em(-.11, 16)
-
     strong
       font-weight: 700
 
@@ -67,7 +65,6 @@
 
   &__share
     margin-top: 40px
-
 
   &__content
     margin-top: -40px
@@ -89,7 +86,6 @@
     &__scope-wrapper
       // margin-left: -3%
       padding-left: 15px
-
     &__name
       font-size: 42px
     &__position
@@ -107,7 +103,6 @@
   .player
     &__scope-wrapper
       padding-left: 0px
-
     &__name
       font-size: 38px
     &__position
@@ -139,6 +134,15 @@
     &__content
       // margin-top: 0
 
++r(700)
+  .player
+    &__content
+      padding-bottom: 80px
+    &__table-scrollable
+      // min-width: 600px
+      overflow-x: scroll
+      padding-bottom: 20px
+
 +r($sm)
   .player
     &__head
@@ -151,8 +155,11 @@
     &__position
       font-size: 34px
 
+    &__content
+      padding-bottom: 60px
     &__description
       font-size: 18px
+
 
 +r($mobile-s)
   .player
@@ -162,3 +169,5 @@
       font-size: 26px
     &__info-row
       font-size: 13px
+    &__description
+      font-size: 16px

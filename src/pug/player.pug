@@ -6,6 +6,10 @@ block content
   
   // PLayer
   .player(itemscope itemtype="http://schema.org/Person")
+    // schema.org hidden
+    meta(itemprop="url" content="https://dragons-team.surge.com/player.html")
+    mata(itemprop="image" content="img/playerImage.jpg")
+      
     // head
     .player__head
       .container
@@ -25,7 +29,7 @@ block content
           .col-12.col-md-6
             .player__image
               div.player__image-background-fill(js-player-image-bg)
-              img(src='img/playerImage.jpg' srcset='img/playerImage@2x.jpg 2x')
+              img(src='img/playerImage.jpg' srcset='img/playerImage@2x.jpg 2x' alt="")
                 
           .col-12.col-md-6.col-xl-5.offset-xl-1
             .player__scope-wrapper
@@ -34,20 +38,24 @@ block content
                   span(itemprop="givenName") Gavin
                   | 
                   span(itemprop="familyName") Henson
-                .player__position Centre
+                .player__position(itemprop="jobTitle") Centre
               
               .player__info
-                .player__info-row Age: <strong>36</strong>
-                .player__info-row Place of birth: <strong>Bridgend</strong>
-                .player__info-row Height: <strong>183cm / 6'</strong>
-                .player__info-row Weight: <strong>93kg / 14st 9lbs</strong>
+                //- meta(itemprop="birthDate" content="1982-01-01")
+                .player__info-row Age: <strong itemprop="birthDate" content="1982-01-01">36</strong>
+                .player__info-row Place of birth: <strong itemprop="birthPlace">Bridgend</strong>
+                .player__info-row Height: <strong itemprop="height">183cm / 6'</strong>
+                .player__info-row Weight: <strong itemprop="weight">93kg / 14st 9lbs</strong>
                 .player__info-row Clubs: <strong>Bath Rugby, Bristol Bears, London Welsh, Saracens, RC Toulonnais, Swansea, Bath United</strong>
                 .player__info-row Education: <strong>Brynteg Comprehensive School, Bridgend</strong>
-                .player__info-row Honours: <strong>British and Irish Lions, Wales, Wales A, Wales Development XV, Wales U16, Wales U18, Wales U19, Wales U21</strong>
+                .player__info-row Honours: <strong itemprop="award">British and Irish Lions, Wales, Wales A, Wales Development XV, Wales U16, Wales U18, Wales U19, Wales U21</strong>
                 
               .player__sponsor
                 .player__sponsor-title Sponsored by
                 img(src='img/sponsors/logo-naturaltalent.jpg' srcset='img/sponsors/logo-naturaltalent@2x.jpg 2x')
+                span(itemprop="sponsor" itemscope itemtype="http://schema.org/Organization")
+                  meta(itemprop="name" content="naturaltalent")
+                  // .. etc
               
               .player__share(aria-lable="Share Gavin Henson profile")
                 include components/_share
@@ -66,92 +74,93 @@ block content
             .col-12
               .player__table
                 .lineup-tables__heading PLAYING RECORD
-                table.table-player
-                  mixin seasonRow(d)
-                    tr
-                      td= d
-                      td
-                        span.f-700 WASPS
-                      td SR
-                      td 0
-                      td 0
-                      td 0
-                      td 0
-                      td 0
-                    
-                  mixin tableRow(season)
-                    tr.table-player__main-row
-                      td 
-                        .table-player__toggler(js-open-player-row)
-                          +icon('ico-arrow-right')
-                      td= season
-                      td 14
-                      td 4
-                      td 1
-                      td 9
-                      td 2
-                      td 0
-                      td 0
-                      td 0
-                      td 10
-                    
-                    // nested table
-                    tr.table-player__collapsable(js-set-table-size)
-                      td(colspan="11")
-                        table
-                          thead
-                            tr
-                              td(colspan="8") MATCHES PLAYED IN 2013 / 2014
-                          tbody
-                            tr
-                              td DATE
-                              td OPPONENT
-                              td POS
-                              td T
-                              td C
-                              td P
-                              td DG
-                              td PTS
-
-                            +seasonRow("16 / 11/ 2013")
-                            +seasonRow("16 / 11/ 2013")
-                            +seasonRow("16 / 11/ 2013")
-                            +seasonRow("16 / 11/ 2013")
-                            +seasonRow("16 / 11/ 2013")
-                            
+                .player__table-scrollable
+                  table.table-player
+                    mixin seasonRow(d)
+                      tr
+                        td= d
+                        td
+                          span.f-700 WASPS
+                        td SR
+                        td 0
+                        td 0
+                        td 0
+                        td 0
+                        td 0
                       
-                    
-                  thead.table-player__main-head
-                    tr
-                      td 
-                      td SEASON
-                      td P
-                      td W
-                      td D
-                      td L
-                      td T
-                      td C
-                      td P
-                      td DG
-                      td PTS
-                  tbody
-                    +tableRow("2017 / 2018")
-                    +tableRow("2016/2017")
-                    +tableRow("2015/2014")
-                    +tableRow("2013/2014")
-                  tfoot
-                    tr
-                      td 
-                      td SEASON
-                      td 99
-                      td 35
-                      td 1
-                      td 63
-                      td 13
-                      td 0
-                      td 0
-                      td 0
-                      td 65
+                    mixin tableRow(season)
+                      tr.table-player__main-row
+                        td 
+                          .table-player__toggler(js-open-player-row)
+                            +icon('ico-arrow-right')
+                        td= season
+                        td 14
+                        td 4
+                        td 1
+                        td 9
+                        td 2
+                        td 0
+                        td 0
+                        td 0
+                        td 10
+                      
+                      // nested table
+                      tr.table-player__collapsable(js-set-table-size)
+                        td(colspan="11")
+                          table
+                            thead
+                              tr
+                                td(colspan="8") MATCHES PLAYED IN 2013 / 2014
+                            tbody
+                              tr
+                                td DATE
+                                td OPPONENT
+                                td POS
+                                td T
+                                td C
+                                td P
+                                td DG
+                                td PTS
+
+                              +seasonRow("16 / 11/ 2013")
+                              +seasonRow("16 / 11/ 2013")
+                              +seasonRow("16 / 11/ 2013")
+                              +seasonRow("16 / 11/ 2013")
+                              +seasonRow("16 / 11/ 2013")
+                              
+                        
+                      
+                    thead.table-player__main-head
+                      tr
+                        td 
+                        td SEASON
+                        td P
+                        td W
+                        td D
+                        td L
+                        td T
+                        td C
+                        td P
+                        td DG
+                        td PTS
+                    tbody
+                      +tableRow("2017 / 2018")
+                      +tableRow("2016/2017")
+                      +tableRow("2015/2014")
+                      +tableRow("2013/2014")
+                    tfoot
+                      tr
+                        td 
+                        td SEASON
+                        td 99
+                        td 35
+                        td 1
+                        td 63
+                        td 13
+                        td 0
+                        td 0
+                        td 0
+                        td 65
                     
     include components/_gallery-player
     
