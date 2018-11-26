@@ -106,6 +106,17 @@
       background: $fontColor
       color: white
 
+.is-ie
+  .fixtures
+    &__result-left, &__result-right
+      margin-top: 20px
+      +r($xl)
+        margin-top: 13px
+      +r($lg)
+        margin-top: 20px
+      +r($sm)
+        margin-top: 13px
+
 // team element
 .fixtures-team
   margin: auto 0
@@ -247,7 +258,9 @@
       padding-left: 0
       padding-right: 0
 
+
     &__name
+      // TODO ?
       // text-align: left
       padding-right: 10px
 

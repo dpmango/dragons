@@ -18,4 +18,4 @@ PageList:
 - file: homepage.html
   ready: 30
 - file: styleguide.html
-  ready: 5
+  ready: 10

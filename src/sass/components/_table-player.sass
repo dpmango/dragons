@@ -35,13 +35,18 @@
         width: 60px
 
   &__toggler
+    position: relative
     min-size: 60px
     cursor: pointer
-    display: flex
-    align-items: center
-    justify-content: center
-    text-align: center
+    // display: flex
+    // align-items: center
+    // justify-content: center
+    // text-align: center
     .ico
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
       font-size: 18px
       color: white
       background: $fontColor
@@ -49,7 +54,7 @@
       transition: transform .25s $ease
     &.is-active
       .ico
-        transform: rotate(90deg)
+        transform: translate(-50%,-50%) rotate(90deg)
 
   // nested table
   &__collapsable
