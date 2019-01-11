@@ -155,6 +155,58 @@
         content: '”'
         bottom: -.8em
 
+  &__related
+    position: relative
+    z-index: 2
+    background: $colorRed
+    color: white
+    margin-bottom: 45px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      left: 50%
+      transform: translateX(-50%)
+      +arr(115, 35, white, b)
+      pointer-events: none
+    &-wrapper
+      position: relative
+      padding: 80px 0 50px
+    &-close
+      display: inline-block
+      position: absolute
+      top: 20px
+      right: -8px
+      font-size: 0
+      padding: 10px
+      transition: color .25s $ease
+      .ico
+        font-size: 20px
+      &:hover
+        color: rgba(white, .7)
+    ul
+      display: flex
+      flex-wrap: wrap
+      list-style: none
+      margin: 0px
+      padding: 0
+      li
+        display: block
+        flex: 0 0 50%
+        max-width: 50%
+        min-width: 1px
+        margin-left: -1px
+        margin-top: -1px
+        font-size: 20px
+      a
+        display: block
+        padding: 15px 20px
+        border: 1px solid white
+        transition: background .25s $ease
+        &:hover
+          background: $fontColor
+
 
 .article-video
   background: $lightBg
@@ -234,6 +286,22 @@
         &::after, &::before
           font-size: 60px
 
+    &__related
+      &::after
+        +arr(80, 25, white, b)
+      &-wrapper
+        padding: 60px 0 40px
+      &-close
+        top: 10px
+      ul
+        li
+          flex-basis: 100%
+          max-width: 100%
+          font-size: 16px
+        a
+          padding-left: 15px
+          padding-right: 15px
+
   .article-video
     padding: 35px 0
 
@@ -245,6 +313,9 @@
   .article
     &__head-headline
       font-size: 18px
+
+    &__related
+
 
 
 +r($mobile-s)

@@ -625,6 +625,19 @@ $(document).ready(function(){
       $(this).toggleClass('is-active')
     })
 
+
+  // article more section and generic toggler
+  _document
+    .on('click', '[js-slideToggle]', function(){
+      var $btn = $(this);
+      var dataTarget = $btn.data("for");
+      var $target = $('[data-target="'+dataTarget+'"]');
+
+      if ( $target.length === 0 ) return
+      $target.slideToggle();
+      
+    })
+
   /**********
   * PLUGINS *
   **********/

@@ -78,9 +78,32 @@ block content
             .col-12.col-sm
               .article__date(datetime="2012-01-01T09:04:20+00:00" itemprop="datePublished") 01 January 2012
             .col-12.col-sm-auto
-              a(href="#").more-link
+              a(href="#" js-slideToggle data-for="related-articles").more-link
                 span Related articles
                 +icon('ico-arrow-right')
+      
+      // Related articles
+      .article__related(style="display: none;" data-target="related-articles" js-slideToggle data-for="related-articles")
+        .container
+          .article__related-wrapper
+            a(href="#").article__related-close
+              +icon("ico-close")
+            ul
+              li
+                a(href='#') Dragons Junior Academy
+              li
+                a(href='#') Rugby Development
+              li
+                a(href='#') Academy Contacts
+              li
+                a(href='#') Academy FAQ
+              li
+                a(href='#') Dragons Age Grade
+              li
+                a(href='#') Dewar Shield U15s Rugby
+              li
+                a(href='#') Coaching
+
       
       // content wysiwyg
       // this class is important for below class-free elements (wysiwyg generated)
