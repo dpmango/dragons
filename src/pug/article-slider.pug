@@ -1,0 +1,216 @@
+---
+title: Article page with slider
+---
+extends shared/_layout
+block content
+  
+  // ARTICLE
+  article.article(itemscope itemtype="http://schema.org/Article")
+    // shema.org hidden
+    link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news/charity-news-match-day-collections.html")
+    meta(itemprop="inLanguage" content="en")
+    meta(itemprop="image" content="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+    meta(itemprop="author" content="Dragons Team")
+    meta(itemprop="dateModified" content="2018-07-04T09:04:20+02:00")
+    span(itemtype="http://schema.org/SportsOrganization" itemscope="itemscope" itemprop="publisher")
+      meta(itemprop="sport" content="Rugby")
+      link(itemprop="url" href="http://www.dragonsrugby.wales")
+      span(itemprop="name" content="Dragons")
+      span(itemprop="logo" itemscope itemtype="https://schema.org/ImageObject")
+        link(itemprop="url" href="https://res.cloudinary.com/dragons/image/upload/c_scale,w_150/common/dragons-logo.png")
+        meta(itemprop="width" content="150")
+        meta( temprop="height" content="169")
+      meta(itemprop="sameAs" content="https://www.facebook.com/dragonsrugby.wales")
+      meta(itemprop="sameAs" content="https://www.instagram.com/dragonsrugby/")
+      meta(itemprop="sameAs" content="https://twitter.com/dragonsrugby")
+      meta(itemprop="sameAs" content="https://www.youtube.com/channel/UCdB_8F9Yqur14jXdSzxyQeA")
+            
+            
+    // head
+    .article__head(aria-label="Article heading section")
+      // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
+      .article__head-bg(js-set-article-bg-height)
+      .container
+        .row
+          .col-12.col-md
+            h1.h1-title(itemprop="name") CHARITY NEWS &amp;<br> MATCH DAY <br>COLLECTIONS
+          .col-12.col-md-auto
+            .article__share(aria-label="Share this article")
+              include components/_share
+        
+        // cover image
+        .article__cover(aria-label="Article cover image section")
+          //- img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
+          // kind of reverse mobile-first approach. First matching media rule will be displayed
+          // image options https://cloudinary.com/documentation/image_transformations
+          // aspect ration - ar_16:9
+          // fill mode - c_fill
+          // width - w_1824
+          // filters - g_auto,e_sharpen
+          
+          picture(
+            alt="image"
+            aria-label="Image description"
+            js-lazy 
+            data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+            // 992 and above
+            data-src(
+              media="(min-width: 992px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            // 992 - 576px
+            data-src(
+              media="(min-width: 576px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            // 576px and less
+            data-src(
+              media="(min-width: 0px)" 
+              srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+            
+            // fallback
+            //- img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+
+    // content
+    .article__wrapper
+      // content head
+      .article__content-info
+        .container
+          .row
+            .col-12.col-sm
+              .article__date(datetime="2012-01-01T09:04:20+00:00" itemprop="datePublished") 01 January 2012
+            .col-12.col-sm-auto
+              a(href="#" js-slideToggle data-for="related-articles").more-link
+                span Related articles
+                +icon('ico-arrow-right')
+      
+      // Related articles
+      .article__related(style="display: none;" data-target="related-articles" js-slideToggle data-for="related-articles")
+        .container
+          .article__related-wrapper
+            a(href="#").article__related-close
+              +icon("ico-close")
+            ul
+              li
+                a(href='#') Dragons Junior Academy
+              li
+                a(href='#') Rugby Development
+              li
+                a(href='#') Academy Contacts
+              li
+                a(href='#') Academy FAQ
+              li
+                a(href='#') Dragons Age Grade
+              li
+                a(href='#') Dewar Shield U15s Rugby
+              li
+                a(href='#') Coaching
+
+      
+      // content wysiwyg
+      // this class is important for below class-free elements (wysiwyg generated)
+      .article__content(aria-label="Article content section")
+        .container
+          .row
+            .col-12.col-lg-7
+              h2(itemprop="headline") Dragons Match Day collections &amp;&nbsp;charity support
+          
+          .row
+            .col-12.col-lg-7(itemprop="articleBody")
+              p In&nbsp;support of&nbsp;Local &amp;&nbsp;National charities, the Dragons provide the opportunity to&nbsp;perform a&nbsp;collection at&nbsp;each home match of&nbsp;the season. This offer proves very popular as&nbsp;it&nbsp;enables valuable funds to&nbsp;be&nbsp;raised. The collectors also receive up&nbsp;to&nbsp;a&nbsp;dozen complimentary tickets to&nbsp;watch the match after their efforts in&nbsp;collecting. To&nbsp;apply for a&nbsp;collection please contact Community Manager, Mike Sage via email&nbsp;on <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY TICKET VOUCHERS
+              p To&nbsp;apply for Dragons match day ticket vouchers to&nbsp;raffle or&nbsp;auction to&nbsp;raise valuable funds, please apply by&nbsp;e-mail to <a href="mailto:info@dragonsrugby.wales">info@dragonsrugby.wales</a>
+       
+              h3 MATCHDAY ENTERTAINMENT
+              p If&nbsp;you feel you have a&nbsp;talent and want to&nbsp;Perform on&nbsp;Parade, we&nbsp;have the perfect opportunities in&nbsp;our family zone or&nbsp;pitch side. For further info contact <a href="mailto:mike.sage@dragonsrugby.wales">mike.sage@dragonsrugby.wales</a>
+              p We&nbsp;regularly have the Dragons Choir&nbsp;&mdash; C&ocirc;r y&nbsp;Dreigiau&nbsp;&mdash; perform at&nbsp;our home games. C&ocirc;r y&nbsp;Dreigiau are available to&nbsp;hire for any occasion and are always happy to&nbsp;welcome new members. So&nbsp;if&nbsp;you like them and you share a&nbsp;passion for both singing and rugby, then why not join in&nbsp;with one of&nbsp;their rehearsals?
+                br
+                | Further details on&nbsp;the choir can be&nbsp;found at&nbsp;<a href="www.corydreigiau.org" target="_blank">www.corydreigiau.org</a>
+              
+              // test content
+              p
+                strong ACADEMY PURPOSE:
+              ol
+                li
+                  | Produce, develop and retain more high-quality players than our competitors in order to create pressure in the pipeline
+                li Identify and develop future professional rugby players for Gwent
+              p Within this purpose are the following processes:
+              ul
+                li Accurate succession planning (long term approach)
+                li Identify potential and not just talent
+                li Developing individuals within teams&nbsp;
+              p
+                | The Dragons Academy has a tradition of producing talented players for the Dragons with a large number of the current first-team squad having come through the Academy system.
+              p
+                | The role of the Dragons Academy is to identify and develop talented young athletes from age 15 to 23 years of age by developing them through a Performance Development Programme. This programme is tailored towards the needs of the individual to ensure that the player can reach their maximum potential. The Academy delivers services across the following areas:
+              p
+                strong PLAYER
+              ul
+                li Technical and tactical development
+                li Player game reviews
+                li Understanding the future professional game
+                li Learning&nbsp;how to train as a pro
+              p
+                strong PERSON
+              ul
+                li
+                  | Developing the Dragons Values of Hard Work, High Expectations, Honesty and Humility
+                li Sports Psychology
+                li Lifestyle development
+              p
+                strong ATHLETE
+              ul
+                li Strength and conditioning
+                li Nutrition and eating for performance
+                li Speed and agility
+                li Injury prevention and management
+              p
+                | All Academy players are encouraged to continue their education in various avenues throughout their Academy programme to allow them to develop both as rugby players and as individuals.
+              p
+                strong CLICK BELOW TO SEE OUR PLAYER PATHWAY
+              p
+                a(href='http://rugbysites.srcdn.co.uk/Uploads/Dragons/Academy/Dragons_Pathway.pdf', target='_blank')
+                  img(alt='', src='http://rugbysites.srcdn.co.uk/Uploads/Dragons/Academy/Pathway_Small.jpg')
+              p
+                strong ROLL OF HONOUR
+                br
+                br
+                |   These are some of the players that have made their way through the Academy and played a prominent role in the region in recent years:
+                br
+                br
+                |   Tyler Morgan (Wales U18s, U20s, Wales)
+                br
+                |   James Benjamin (Wales U18s, U20s, Sevens)
+                br
+                |   Luke Garrett (Wales U18s, U20s)
+                br
+                |   Ashton Hewitt (Wales U18s, U20s)
+                br
+                |   Jack Dixon (Wales U18s, U20s)
+                br
+                |   Elliot Dee (Wales U18s, U20s, Wales)
+                br
+                |   Oliver Griffiths (Wales U18s, U20s, Wales)
+                br
+                |   Angus O&rsquo;Brien (Wales U18s, 20s, Sevens)
+                br
+                |   Hallam Amos (Wales U18s, Wales)
+                br
+                |   Toby Faletau (Wales U20s, Wales)
+                br
+                |   Dan Lydiate (Wales U20s, Wales)
+                br
+                |   Jonathan Evans (Wales U18s, U20s)
+                br
+                |   Ashley Smith (Wales U18s, U20s) ??
+                br
+                |   Lewis Evans (Wales U20s captain) ??
+                br
+                |   Jason Tovey (Wales U18s, U20s)
+                br
+                |   Matthew Pewtner (Wales U20s)
+
+
+            .col-12.offset-0.col-lg-4.offset-lg-1
+              blockquote This team is&nbsp;still growing and we&rsquo;re reasonably content, although we&nbsp;still have a&nbsp;lot of&nbsp;work to&nbsp;do.
+  
+  include components/_sponsors

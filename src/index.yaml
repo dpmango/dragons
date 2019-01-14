@@ -19,5 +19,7 @@ PageList:
   ready: 30
 - file: news-no-masonry.html
   ready: 100
+- file: article-slider.html
+  ready: 100
 - file: styleguide.html
-  ready: 10
+  ready: 100
