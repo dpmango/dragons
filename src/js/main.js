@@ -40,6 +40,7 @@ $(document).ready(function(){
     // revealFooter();
     populateContent();
     positionArticleHeader();
+    parseArticleContent();
     checkTabsHash();
     setTabsHeight();
 
@@ -571,6 +572,23 @@ $(document).ready(function(){
     }
   }
 
+  // parse artcile content
+  function parseArticleContent(){
+    var $content = $('.article__content');
+    if ( $content.length === 0 ) return
+
+    // links with images only
+    var $links = $content.find('a');
+    if ( $links.length > 0 ){
+      $links.each(function(i, a){
+        var $link = $(a);
+        if ( $link.children().is("img") ){
+          $link.addClass('has-image')
+        }
+      })
+    }
+  }
+
   // TABS
   _document
     .on('click', '[js-tabs] a', function(){
@@ -635,7 +653,7 @@ $(document).ready(function(){
 
       if ( $target.length === 0 ) return
       $target.slideToggle();
-      
+
     })
 
   /**********

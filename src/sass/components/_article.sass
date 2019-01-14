@@ -106,6 +106,9 @@
         position: relative
         z-index: 1
         transition: color .25s $ease
+        &.has-image
+          &::after
+            display: none
         &::after
           display: inline-block
           content: ' '
@@ -154,6 +157,44 @@
       &::before
         content: '”'
         bottom: -.8em
+
+    // list styles
+    ul, ol
+      margin: 1.3em 0
+      padding: 0
+      li
+        position: relative
+        display: block
+        font-size: 20px
+        line-height: 1.4
+        font-weight: 500
+        margin-bottom: .5em
+        padding-left: 40px
+    ul
+      li
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute
+          left: 20px
+          top: 11px
+          background: currentColor
+          size: 5px
+          border-radius: 50%
+    ol
+      counter-reset: counter
+      li
+        counter-increment: counter
+        &::after
+          display: inline-block
+          content: counter(counter)
+          position: absolute
+          font-size: .8em
+          left: 17px
+          top: .2em
+          font-weight: 500
+    img, iframe, video
+      max-width: 100%
 
   &__related
     position: relative
@@ -285,6 +326,9 @@
         font-size: 30px
         &::after, &::before
           font-size: 60px
+      ul, ol
+        li
+          font-size: 16px
 
     &__related
       &::after
