@@ -38,37 +38,37 @@ block content
             .article__share(aria-label="Share this article")
               include components/_share
         
-        // cover image
+        // cover image with slider
         .article__cover(aria-label="Article cover image section")
-          //- img(src='img/articleCover.jpg' srcset='img/articleCover@2x.jpg')
-          // kind of reverse mobile-first approach. First matching media rule will be displayed
-          // image options https://cloudinary.com/documentation/image_transformations
-          // aspect ration - ar_16:9
-          // fill mode - c_fill
-          // width - w_1824
-          // filters - g_auto,e_sharpen
+          .article__cover-slider.swiper-container.swiper-bullets-custom(js-article-cover-swiper)
+            .swiper-wrapper
+              mixin slide
+                .swiper-slide
+                  picture(
+                    alt="image"
+                    aria-label="Image description"
+                    js-lazy 
+                    data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
+                    // 992 and above
+                    data-src(
+                      media="(min-width: 992px)" 
+                      srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                    // 992 - 576px
+                    data-src(
+                      media="(min-width: 576px)" 
+                      srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+                    // 576px and less
+                    data-src(
+                      media="(min-width: 0px)" 
+                      srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
+              +slide
+              +slide
+              +slide
+              +slide
+              +slide
           
-          picture(
-            alt="image"
-            aria-label="Image description"
-            js-lazy 
-            data-src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
-            // 992 and above
-            data-src(
-              media="(min-width: 992px)" 
-              srcset="https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
-            // 992 - 576px
-            data-src(
-              media="(min-width: 576px)" 
-              srcset="https://res.cloudinary.com/dragons/image/upload/c_fill,w_912,g_auto,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/c_fill,w_1824,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
-            // 576px and less
-            data-src(
-              media="(min-width: 0px)" 
-              srcset="https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_536,e_sharpen/v1542370424/Website/articleCover.jpg 1x, https://res.cloudinary.com/dragons/image/upload/ar_16:9,c_fill,w_1072,e_sharpen/v1542370424/Website/articleCover_2x.jpg 2x")
-            
-            // fallback
-            //- img(src="https://res.cloudinary.com/dragons/image/upload/v1542370424/Website/articleCover.jpg")
-
+            .swiper-pagination
+              
     // content
     .article__wrapper
       // content head

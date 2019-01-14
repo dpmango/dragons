@@ -823,6 +823,10 @@ $(document).ready(function(){
     if ($('[js-gallery-swiper]').length > 0 ) {
       enableGallerySwiper()
     }
+
+    if ( $('[js-article-cover-swiper]').length > 0 ){
+      enableArticleCoverSwiper();
+    }
   }
 
   // ABOUT SWIPER
@@ -967,6 +971,26 @@ $(document).ready(function(){
       }
 
     })
+
+
+  function enableArticleCoverSwiper(){
+    new Swiper('[js-article-cover-swiper]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: true,
+      watchOverflow: true,
+      setWrapperSize: false,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      // custom pagination
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      }
+    })
+  }
 
 
   //////////
