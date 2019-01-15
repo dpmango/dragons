@@ -16,7 +16,7 @@ PageList:
 - file: player.html
   ready: 100
 - file: homepage.html
-  ready: 30
+  ready: 70
 - file: news-no-masonry.html
   ready: 100
 - file: article-slider.html

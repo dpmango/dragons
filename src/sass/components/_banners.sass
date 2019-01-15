@@ -1,0 +1,156 @@
+.banners
+  &__grid
+    display: flex
+    flex-wrap: wrap
+  &__col-main
+    width: 100%
+    flex: 0 0 58%
+    max-width: 58%
+    min-width: 1px
+    display: flex
+    flex-direction: column
+    .banner-card
+      flex: 1 1 auto
+  &__col-collection
+    display: flex
+    flex-wrap: wrap
+    width: 100%
+    flex: 0 0 42%
+    max-width: 42%
+    min-width: 1px
+    .banner-card
+      flex: 0 0 50%
+      max-width: 50%
+      min-width: 1px
+      &__image
+        position: absolute 0
+        z-index: 1
+        object-fit: cover
+
++r($lg)
+  .banners
+    &__col-main
+      flex-basis: 100%
+      max-width: 100%
+      .banner-card
+        &__image
+          position: relative
+          padding-bottom: 80%
+          display: flex
+          flex-direction: column
+          img
+            position: absolute
+            top: 0
+            left: 0
+            height: 100%
+            object-fit: cover
+
+    &__col-collection
+      flex-basis: 100%
+      max-width: 100%
+      .banner-card
+        padding-bottom: 50%
+
++r($sm)
+  .banners
+    &__col-main
+      .banner-card
+        &__image
+          padding-bottom: 110%
+    &__col-collection
+      .banner-card
+        padding-bottom: 70%
+
+
+/* banner card
+.banner-card
+  display: block
+  position: relative
+  overflow: hidden
+  z-index: 1
+  &__image
+    font-size: 0
+    img
+      width: 100%
+      backface-visibility: visible
+      will-change: transform
+      transform-style: preserve-3d
+      transition: transform .25s $ease
+  &__content
+    position: absolute 0
+    z-index: 2
+    display: flex
+    flex-direction: column
+    padding: 40px 20px
+    text-align: center
+  &__name
+    color: white
+    text-transform: uppercase
+    font-size: 24px
+    line-height: 1
+    font-weight: 700
+    letter-spacing: em(-1.5,24)
+    margin-top: auto
+    margin-bottom: 1em
+  &:hover
+    .banner-card
+      &__image
+        img
+          transform: scale(1.03)
+  &--bigger
+    .banner-card
+      &__name
+        font-size: 40px
+        letter-spacing: em(-2,40)
+
++rmin($xl)
+  .banner-card
+    &__cta
+      .btn
+        font-size: 16px
+        padding-top: 23px
+        padding-bottom: 20px
+
++r($xl)
+  .banner-card
+
++r($lg)
+  .banner-card
+    &__name
+      font-size: 18px
+      letter-spacing: 0
+    &--bigger
+      .banner-card
+        &__name
+          font-size: 30px
+
++r($sm)
+  .banner-card
+    &__content
+
+    &__name
+      font-size: 16px
+    &:not(.banner-card--bigger)
+      // create back fill
+      .banner-card__content
+        padding: 15px 15px 25px
+        background: black
+        top: 50%
+    &:nth-child(1), &:nth-child(4)
+      &:not(.banner-card--bigger)
+        .banner-card__content
+          background: $colorRed
+
+    &--bigger
+      .banner-card
+        &__name
+          font-size: 25px
+
++r($mobile-s)
+  .banner-card
+    &__name
+      font-size: 15px
+    &--bigger
+      .banner-card
+        &__name
+          font-size: 22px

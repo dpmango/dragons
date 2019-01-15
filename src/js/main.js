@@ -61,6 +61,7 @@ $(document).ready(function(){
 
   // The transition has just finished and the old Container has been removed from the DOM.
   function pageCompleated(fromPjax){
+    ieFixImages(fromPjax);
     revealFooter();
   }
 
@@ -827,6 +828,10 @@ $(document).ready(function(){
     if ( $('[js-article-cover-swiper]').length > 0 ){
       enableArticleCoverSwiper();
     }
+
+    if ( $('[js-hero-swiper]').length > 0 ){
+      enableHeroSwiper();
+    }
   }
 
   // ABOUT SWIPER
@@ -983,6 +988,9 @@ $(document).ready(function(){
       setWrapperSize: false,
       slidesPerView: 1,
       normalizeSlideIndex: true,
+      autoplay: {
+        delay: 5000,
+      },
       // custom pagination
       pagination: {
         el: '.swiper-pagination',
@@ -991,6 +999,31 @@ $(document).ready(function(){
       }
     })
   }
+
+
+  function enableHeroSwiper(){
+    new Swiper('[js-hero-swiper]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: true,
+      watchOverflow: true,
+      setWrapperSize: false,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      autoplay: {
+        delay: 5000,
+      },
+      // custom pagination
+      navigation: {
+        nextEl: '.gallery__btn.gallery__btn--next',
+        prevEl: '.gallery__btn.gallery__btn--prev',
+      },
+    })
+  }
+
+
+
 
 
   //////////
@@ -1269,6 +1302,7 @@ $(document).ready(function(){
     $("[js-subscription-validation]").validate(subscriptionValidationObject);
     $("[js-subscription-validation-footer]").validate(subscriptionValidationObject);
     $("[js-subscription-validation-menu]").validate(subscriptionValidationObject);
+    $("[js-subscription-validation-mailer]").validate(subscriptionValidationObject);
   }
 
   //////////
@@ -1297,12 +1331,22 @@ $(document).ready(function(){
 
     $('[js-lazy]').Lazy({
       onFinishedAll: function() {
+        ieFixImages()
         if( !this.config("autoDestroy") )
             setDynamicSizes();
       }
     });
 
   }
+
+  ////////////////////////////////
+  // fix ie images with object fit
+  ////////////////////////////////
+  function ieFixImages(fromPjax){
+    if ( !msieversion() ) return
+    if ( fromPjax ) window.fitie.init()
+  }
+
 
   //////////
   // BARBA PJAX

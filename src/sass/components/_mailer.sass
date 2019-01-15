@@ -1,0 +1,76 @@
+.mailer
+  background: black
+  padding: 40px 0 40px
+  &__title
+    font-size: 48px
+    line-height: 1
+    letter-spacing: em(-1,48)
+    font-weight: 700
+    color: $colorPrimary
+    text-transform: uppercase
+  &__description
+    color: white
+    font-size: 20px
+    font-weight: 500
+    max-width: 470px
+    margin: 1.2em 0 .75em
+  &__hashtag
+    font-size: 28px
+    line-height: 1
+    letter-spacing: em(-1,28)
+    font-weight: 700
+    color: $colorPrimary
+    &--mobile
+      display: none
+  &__form-title
+    margin-bottom: .8em
+    font-size: 24px
+    line-height: 1
+    letter-spacing: em(-.15,24)
+    color: #C2001E
+    font-weight: 700
+    text-transform: uppercase
+
++r($lg)
+  .mailer
+    &__title
+      font-size: 38px
+    &__description
+      font-size: 18px
+      margin-bottom: 0
+    &__hashtag
+      font-size: 22px
+      display: none
+      &--mobile
+        display: block
+        margin-top: 1em
+    &__form-title
+      font-size: 20px
+      margin-top: 1em
+
++r($sm)
+  .mailer
+    padding: 30px 0
+    &__title
+      font-size: 34px
+    &__description
+      font-size: 15px
+      max-width: 260px
+    &__hashtag
+      font-size: 18px
+      margin-top: 1.35em
+    &__form-title
+      font-size: 16px
+      margin-bottom: 1.35em
+
++r($mobile-s)
+  .mailer
+    &__title
+      font-size: 26px
+    &__description
+      font-size: 13px
+      max-width: 220px
+    &__hashtag
+      font-size: 13px
+    &__form-title
+      font-size: 13px

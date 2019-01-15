@@ -30,7 +30,6 @@
           padding-top: 12px
           padding-bottom: 10px
 
-
   &--mobile-navi
     .subsc-form
       &__input
@@ -39,3 +38,46 @@
       &__cta
         padding-top: 12px
         padding-bottom: 10px
+
+  &--mailer
+    .subsc-form
+      &__input
+        font-size: 18px
+        padding-top: 24px
+        padding-bottom: 22px
+        padding-left: 20px
+      &__cta
+        font-size: 16px
+        max-width: 175px
+        padding-left: 32px
+        padding-right: 32px
+        letter-spacing: em(0.5,16)
+        background: #F5B209
+        &:hover
+          background: $colorPrimary
+    +r($lg)
+      max-width: 380px
+      .subsc-form
+        &__input
+          font-size: 14px
+          padding-left: 15px
+          padding-top: 18px
+          padding-bottom: 16px
+        &__cta
+          font-size: 12px
+          padding-left: 15px
+          padding-right: 15px
+          max-width: 105px
+      +r($mobile-s)
+        max-width: 300px
+        .subsc-form
+          &__input
+            font-size: 12px
+            padding-left: 10px
+            padding-top: 14px
+            padding-bottom: 12px
+          &__cta
+            font-size: 12px
+            padding-left: 10px
+            padding-right: 10px
+            max-width: 95px

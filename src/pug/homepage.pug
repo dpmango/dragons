@@ -5,8 +5,48 @@ extends shared/_layout
 block content
   include shared/_news-cards
   
-  // HOME
+  // HERO SLIDER
+  .hero-slider
+    .swiper-container(js-hero-swiper)
+      .swiper-wrapper
+        mixin slide
+          //slide
+          .swiper-slide.hero-slide
+            .hero-slide__image
+              img(src='img/heroSlide.jpg' srcset='img/heroSlide@2x.jpg 2x' alt="")
+            .hero-slide__content
+              .container
+                .hero-slide__title New kit <br/>partner  <br/>for<br/>Dragons
+                .hero-slide__description Dragons have joined forces with <br/>VX3 and Lovell Rugby.
+        +slide
+        +slide
+        
+      .hero-slider__controls
+        .gallery__btn.gallery__btn--prev
+          +icon('ico-swiper-arrow')
+        .gallery__btn.gallery__btn--next
+          +icon('ico-swiper-arrow')
   
+  // MAILER
+  .mailer
+    .container
+      .row.align-items-center
+        .col-12.col-lg-6
+          .mailer__title JOIN THE <br/>EVOLUTION
+          .mailer__description We are entering an exciting phase in our history and we want to have you on board for the journey.
+          .mailer__hashtag #jointheevolution
+        .col-12.col-lg-6
+          .mailer__form-title SIGN UP TODAY AND GET <br/>EXCLUSIVE CLUB BENEFITS
+          form(action="#" js-subscription-validation-mailer).subsc-form.subsc-form--mailer
+            input.subsc-form__input.ui-input(
+              type="email" 
+              placeholder="Sign up for regular newsletter"
+              aria-label="Sign up for regular newsletter - Enter your email"
+              id="email"
+              name="email")
+            button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE
+          .mailer__hashtag.mailer__hashtag--mobile #jointheevolution
+          
   // NEWS
   .news
     // head
@@ -25,13 +65,10 @@ block content
     .news__wrapper
       .container
         // masonry
-        .news__masonry(js-masonry itemscope itemtype="http://schema.org/ItemList")
+        .news__masonry(itemscope itemtype="http://schema.org/ItemList")
           // schema.org hidden
           link(itemprop="mainEntityOfPage" href="https://dragons-team.surge.com/news.html")
           meta(name="itemListOrder" content="Descending")
-          
-          // grid sizer
-          .grid-sizer(js-masonry-grid-sizer)
 
           +newsCard_1
           +newsCard_2
@@ -46,4 +83,60 @@ block content
   
   include components/_about
   
+  // BANNERS
+  .banners
+    .banners__grid
+      .banners__col-main
+        // banner card
+        a(href="#").banner-card.banner-card--bigger
+          .banner-card__image
+            img(js-lazy data-src='img/banner_1.jpg' data-srcset='img/banner_1@2x.jpg 2x' alt="")
+          .banner-card__content
+            .banner-card__name NOW AVAILABLE…  <br/>2018/19 AWAY SHIRT
+            .banner-card__cta
+              .btn.btn-primary SHOP NOW
+            
+      .banners__col-collection
+        // banner card
+        a(href="#").banner-card
+          .banner-card__image
+            img(js-lazy data-src='img/banner_2.jpg' data-srcset='img/banner_2@2x.jpg 2x' alt="")
+          .banner-card__content
+            .banner-card__name New JuniorS Kit
+            .banner-card__cta
+              .btn.btn-primary SHOP NOW
+        // banner card
+        a(href="#").banner-card
+          .banner-card__image
+            img(js-lazy data-src='img/banner_3.jpg' data-srcset='img/banner_3@2x.jpg 2x' alt="")
+          .banner-card__content
+            .banner-card__name TRAINING TOPS RELEASED
+            .banner-card__cta
+              .btn.btn-primary SHOP NOW
+        // banner card
+        a(href="#").banner-card
+          .banner-card__image
+            img(js-lazy data-src='img/banner_4.jpg' data-srcset='img/banner_4@2x.jpg 2x' alt="")
+          .banner-card__content
+            .banner-card__name THE  FLIGHT
+            .banner-card__cta
+              .btn.btn-primary BECOME A MEMBER
+        // banner card
+        a(href="#").banner-card
+          .banner-card__image
+            img(js-lazy data-src='img/banner_5.jpg' data-srcset='img/banner_5@2x.jpg 2x' alt="")
+          .banner-card__content
+            .banner-card__name BRING YOUR FIRE
+            .banner-card__cta
+              .btn.btn-primary TICKET OFFER
+  
+  // PROMO
+  .promo
+    .promo__image
+      img(js-lazy alt="" data-src='img/promo_1.jpg' data-srcset='img/promo_1@2x.jpg 2x')
+    .promo__content
+      .promo__title Our plan for<br/>this season
+      .promo__description Get the lowdown on our big <br/>ambitions for the future. 
+      .promo__timestamp 06 June 2018
+        
   include components/_sponsors
