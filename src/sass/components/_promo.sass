@@ -7,9 +7,22 @@
   min-height: 700px
   &__image
     position: absolute 0
+    font-size: 0
     display: flex
     flex-direction: column
+    a
+      flex: 1 1 auto
+      display: flex
+      flex-direction: column
+      img, picture
+        transition: transform .4s easeOutQuart
+        backface-visibility: hidden
+        transform-style: preserve-3d
+      &:hover
+        img, picture
+          transform: scale(1.02)
     img, picture
+      flex: 1 1 auto
       width: 100%
       height: 100%
       object-fit: cover

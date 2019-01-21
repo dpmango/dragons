@@ -138,5 +138,14 @@ block content
       .promo__title Our plan for<br/>this season
       .promo__description Get the lowdown on our big <br/>ambitions for the future. 
       .promo__timestamp 06 June 2018
-        
+      
+  // PROMO image only
+  .promo
+    .promo__image
+      a(href="#")
+        img(js-lazy alt="" data-src='img/promo_1.jpg' data-srcset='img/promo_1@2x.jpg 2x')
+    // content will block pointer events for image (z-index)
+    // in case image-link + content - use .no-pointers class
+    .promo__content.no-pointers
+    
   include components/_sponsors
