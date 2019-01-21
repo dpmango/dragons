@@ -258,7 +258,8 @@
 .article-share
   margin: 140px 0 130px
 
-.article-fixed-header
+// article-fixed-header
+.afh
   position: fixed
   top: 60px
   left: 0
@@ -266,7 +267,6 @@
   z-index: 8
   background: $colorRed
   color: white
-  padding: 1em 0
   transform: translate3d(0px,-10px,0)
   opacity: 0
   pointer-events: none
@@ -275,8 +275,35 @@
     transform: translate3d(0,0,0)
     opacity: 1
     pointer-events: all
-
-
+  .container
+    display: flex
+  &__heading
+    margin: auto 0
+    padding: 1rem 0
+  &__navigation
+    margin-left: auto
+    display: flex
+  &__btn
+    min-size: 64px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    transition: background .25s $ease
+    .ico
+      font-size: 12px
+    &--next
+      background: white
+      color: $fontColor
+      .ico
+        transform: rotate(180deg)
+      &:hover
+        background: rgba(white, .75)
+    &--prev
+      background: $colorRed
+      color: $fontColor
+      &:hover
+        background: rgba(white, .25)
 
 
 /* Article media rules
@@ -291,11 +318,17 @@
     &__head-headline
       font-size: 22px
 
-  .article-fixed-header
+  .afh
     // added mobile cta button
     top: calc(50px + 36px)
     // logo left offset
-    padding-left: 80px
+    &__heading
+      // no need as we have fixed cta btn covering height of logo
+      // padding-left: 80px
+    &__btn
+      min-size: 50px
+      .ico
+        font-size: 11px
 
   .article-video
     padding: 50px 0
@@ -363,8 +396,14 @@
 
     &__related
 
+  .afh
+    &__btn
+      min-size: 40px
+      .ico
+        font-size: 10px
 
 
 +r($mobile-s)
-  .article-fixed-header
-    padding-left: 60px
+  // .afh
+  //   &__heading
+  //     padding-left: 60px

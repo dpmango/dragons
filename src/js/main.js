@@ -40,6 +40,7 @@ $(document).ready(function(){
     // revealFooter();
     populateContent();
     positionArticleHeader();
+    setStickyElements();
     parseArticleContent();
     checkTabsHash();
     setTabsHeight();
@@ -75,6 +76,7 @@ $(document).ready(function(){
   _window.on('resize', throttle(revealFooter, 100));
   _window.on('resize', debounce(resetListenersPrevent, 100))
   _window.on('scroll', throttle(positionArticleHeader, 50));
+  _window.on('resize', debounce(setStickyElements, 50));
   _window.on('resize', debounce(positionArticleHeader, 200));
   _window.on('resize', debounce(setTabsHeight, 100));
   _window.on('resize', debounce(initSliders, 200));
@@ -177,7 +179,7 @@ $(document).ready(function(){
   var preventHeaderScrollListener = false
 
   function positionHeader(){
-    if ( _window.width() <= 992 ){
+    if ( window.innerWidth <= 992 ){
       $headerLogo.attr('style', '')
       $headerBottom.attr('style', '')
       $headerTop.find('.header__top').attr('style', '')
@@ -239,7 +241,7 @@ $(document).ready(function(){
   var preventDropdownScrollListener = false
 
   function positionDropdownMenus(){
-    if ( _window.width() <= 992 ){
+    if ( window.innerWidth <= 992 ){
       $dropdows.attr('style', '')
       return false
     }
@@ -441,7 +443,7 @@ $(document).ready(function(){
     var $playerImageBG = $('[js-player-image-bg]')
 
     if ( $playerImageBG.length > 0 ) {
-      var wWidth = _window.width();
+      var wWidth = window.innerWidth;
       var containerWidth = $playerImageBG.closest('.container').width();
       var widnowContainerDiff = (wWidth - containerWidth) / 2
 
@@ -558,7 +560,7 @@ $(document).ready(function(){
     var $articleHeader = $('[js-article-fixed-header]');
     if ( !$articleHeader ) return
 
-    // if ( _window.width() <= 992 ){
+    // if ( window.innerWidth <= 992 ){
     //   // $articleHeader.attr('style', '')
     //   return false
     // }
@@ -588,6 +590,32 @@ $(document).ready(function(){
         }
       })
     }
+  }
+
+  // sticky elements (outside container)
+  function setStickyElements(){
+    var $sticky = $('[js-sticky-outside-container]');
+    if ( $sticky.length === 0 ) return
+
+    var wWidth = window.innerWidth;
+    $sticky.each(function(i, st){
+      var $st = $(st);
+      var direction = $st.data('position');
+      var $container = $st.closest('.container');
+      var containerWidth = $container.width()
+
+      var offset = 0
+      // NOTE - works with aligned elements to very end of container (ml: auto, mr: auto)
+      if ( direction === "right" ){
+        offset = (wWidth - containerWidth) / 2
+      } else if ( direction === "left" ){
+        offset = ((wWidth - containerWidth) / 2 ) * -1
+      }
+
+      $st.css({
+        'transform': 'translate3d('+offset+'px,0,0)'
+      })
+    })
   }
 
   // TABS
@@ -689,7 +717,7 @@ $(document).ready(function(){
         }
         $grid = $masonry.isotope(masonryOption);
 
-        // if ( _window.width() < 640 ){
+        // if ( window.innerWidth < 640 ){
         //   $grid.masonry('destroy')
         // } else {
         //   $grid.masonry(masonryOption);
@@ -710,7 +738,7 @@ $(document).ready(function(){
         // }
         // $grid = $masonry.masonry(masonryOption);
         //
-        // if ( _window.width() < 640 ){
+        // if ( window.innerWidth < 640 ){
         //   $grid.masonry('destroy')
         // } else {
         //   $grid.masonry(masonryOption);
@@ -808,7 +836,7 @@ $(document).ready(function(){
     // console.log('swiper debug', fromPjax, aboutSwiper.instance, $('[js-about-swiper]'))
 
     if ( $('[js-about-swiper]').length > 0 ){
-      if ( _window.width() >= aboutSwiper.disableOn ) {
+      if ( window.innerWidth >= aboutSwiper.disableOn ) {
         if ( aboutSwiper.instance !== undefined ) {
           aboutSwiper.instance.destroy( true, true );
           aboutSwiper.instance = undefined
@@ -1444,9 +1472,9 @@ $(document).ready(function(){
     var conditionPosition = cond.substring(0, 1);
 
     if (conditionPosition === "<") {
-      disabledBp = _window.width() < conditionMedia;
+      disabledBp = window.innerWidth < conditionMedia;
     } else if (conditionPosition === ">") {
-      disabledBp = _window.width() > conditionMedia;
+      disabledBp = window.innerWidth > conditionMedia;
     }
 
     return disabledBp
@@ -1459,7 +1487,7 @@ $(document).ready(function(){
     var wHost = window.location.host.toLowerCase()
     var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
     if (displayCondition){
-      var wWidth = _window.width();
+      var wWidth = window.innerWidth;
 
       var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
 

@@ -67,6 +67,7 @@
     align-items: center
     justify-content: center
     cursor: pointer
+    transition: background .25s $ease
     .ico
       font-size: 12px
     &--next
@@ -74,10 +75,13 @@
       color: $fontColor
       .ico
         transform: rotate(180deg)
+      &:hover
+        background: rgba(white, .75)
     &--prev
       background: $colorRed
       color: $fontColor
-
+      &:hover
+        background: rgba(white, .25)
 
 +r($lg)
   .gallery

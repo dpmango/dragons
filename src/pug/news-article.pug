@@ -28,10 +28,15 @@ block content
     
     
     // scroll fixed header    
-    .article-fixed-header(js-article-fixed-header)
+    .afh(js-article-fixed-header)
       .container
-        .h3-title(js-populate-content data-target=".h1-title")
-        
+        .afh__heading.h3-title(js-populate-content data-target=".h1-title")
+        .afh__navigation(js-sticky-outside-container data-position="right")
+          a.afh__btn.afh__btn--prev(href="#" title="Navigate to previous article" aria-label="Navigate to previous article")
+            +icon('ico-swiper-arrow')
+          a.afh__btn.afh__btn--next(href="#" title="Navigate to next article" aria-label="Navigate to next article")
+            +icon('ico-swiper-arrow')
+          
     // head
     .article__head(aria-label="Article heading section")
       // as cover image is at unknown asepct ration, the background is set with dynamic js height (it's covering 50% of image height)
