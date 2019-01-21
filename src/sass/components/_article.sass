@@ -306,6 +306,83 @@
         background: rgba(white, .25)
 
 
+/* article navigation
+.article-nav
+  margin-top: 40px
+  &__wrapper
+    padding: 40px 0
+    position: relative
+    &::after
+      display: block
+      content: ' '
+      position: absolute
+      left: 0
+      right: 0
+      height: 10px
+      background: #EAECE7
+    &::after
+      top: 0
+    // &::before
+    //   bottom: 0
+
+  .col-12
+    display: flex
+    flex-direction: column
+  &__btn
+    flex: 1 1 auto
+    display: flex
+    align-items: center
+    background: #EAECE7
+    padding: 15px 20px 20px
+    transition: background .25s $ease, color .25s $ease
+    &:hover
+      background: $colorRed
+      color: white
+    &--prev
+      .article-nav
+        &__name
+          text-align: right
+        &__content
+          padding-left: 20px
+
+      &:hover
+        .article-nav__icon .ico
+          transform: translate(-5px,0)
+    &--next
+      .article-nav
+        &__content
+          padding-right: 20px
+        &__icon
+          .ico
+            transform: rotate(180deg)
+      &:hover
+        .article-nav__icon .ico
+          transform: translate(5px,0) rotate(180deg)
+
+  &__icon
+    flex: 0 0 auto
+    font-size: 0
+    .ico
+      font-size: 18px
+      will-change: transform
+      transform-style: preserve-3d
+      backface-visibility: hidden
+      transition: transform .25s $ease
+  &__content
+    // width: 100%
+    flex: 1 1 auto
+    min-width: 1px
+  &__name
+    font-size: 14px
+    font-weight: 500
+  &__title
+    margin-top: .4em
+    font-size: 22px
+    +text-overflow
+    letter-spacing: em(-.1, 22)
+
+
+
 /* Article media rules
 +r($xl)
   .article
@@ -332,6 +409,14 @@
 
   .article-video
     padding: 50px 0
+
+  .article-nav
+    &__btn
+      padding: 12px 20px 15px
+    &__name
+      font-size: 13px
+    &__title
+      font-size: 18px
 
 +r($md)
   .article
@@ -389,6 +474,16 @@
   .article-share
     margin: 70px 0 65px
 
+  .article-nav
+    &__wrapper
+      padding-bottom: 20px
+    &__btn
+      margin-bottom: 20px
+      &--prev
+        .article-nav
+          &__name
+
+
 +r($sm)
   .article
     &__head-headline
@@ -401,6 +496,34 @@
       min-size: 40px
       .ico
         font-size: 10px
+
+  .article-nav
+    margin-top: 30px
+    &__wrapper
+      padding-top: 30px
+      padding-bottom: 10px
+      &::after
+        top: 3px
+        height: 7px
+    &__btn
+      padding: 12px 10px
+      margin-bottom: 15px
+      &--prev
+        .article-nav
+          &__name
+          &__content
+            padding-left: 10px
+      &--next
+        .article-nav
+          &__content
+            padding-right: 10px
+    &__name
+      font-size: 12px
+    &__title
+      font-size: 16px
+    &__icon
+      .ico
+        font-size: 15px
 
 
 +r($mobile-s)
