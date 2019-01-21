@@ -63,7 +63,11 @@
 
   &__cta
     flex: 0 0 auto
-    margin-left: 24px
+    margin-left: auto
+    transform: translateY(-7.5px)
+    .btn
+      font-size: 14px
+      padding: 15px 24px 13px
 
   &__sponsor
     flex: 0 0 auto
@@ -157,6 +161,19 @@
     &__flight-text
       display: none
 
++r(1080)
+  .header
+    &__cta
+      .btn
+        font-size: 13px
+        padding: 10px 20px
+    &__menu
+      li
+        margin-right: 5px
+        font-size: 13px
+      a
+        padding-bottom: 21px
+
 +r($lg)
   .header-top
     display: none
@@ -170,6 +187,7 @@
       display: none
 
     &__logo
+      z-index: 2
       transform: scale(.45)
       bottom: -30px
 
@@ -179,3 +197,15 @@
 
     &__hamburger
       display: inline-block
+
+    &__cta
+      position: fixed
+      z-index: 1
+      left: 0
+      right: 0
+      top: 50px
+      transform: translateY(0)
+      .btn
+        display: block
+        width: 100%
+        padding: 10px 20px

@@ -282,7 +282,7 @@ $(document).ready(function(){
   // HEADER PAGE OFFSET
   function setPageHeaderOffset(){
     var headerHeight =
-      ($('[js-header-top]').is(':visible') ? $('[js-header-top]').outerHeight(true) : 0)
+      ($('[js-header-top]').is(':visible') ? $('[js-header-top]').outerHeight(true) : 20)
       + $('[js-header-sticky]').height();
 
     $('.page__content').css({

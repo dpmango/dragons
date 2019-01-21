@@ -31,10 +31,6 @@ header.header(aria-label="Header")
                 name="email")
               button.subsc-form__cta.btn.btn-primary(type="submit") SUBSCRIBE
           
-          // cta
-          .header__cta
-            a(href="#").btn.btn-primary BUY TICKETS
-          
           // sponsor
           .header__sponsor
             span.header__sponsor-text Main Club <br/>Sponsor
@@ -67,11 +63,11 @@ header.header(aria-label="Header")
             a(href="#") CommerciaL
           li
             a(href="#") Contact
-        
-        a(href="#").header__flight
-          i.icon.icon-logo-small
-          span.header__flight-text The FLIGHT
-        
+
+        // cta
+        .header__cta
+          a(href="#").btn.btn-primary BUY TICKETS
+          
         .header__hamburger(aria-label="Toggle mobile menu")
           .hamburger.hamburger--squeeze(js-hamburger)
             .hamburger-box
