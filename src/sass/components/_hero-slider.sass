@@ -30,12 +30,14 @@
       width: 100%
       height: 100%
   &__title
+    display: block
     max-width: 440px
     font-size: 80px
     line-height: 0.85
     letter-spacing: em(-2.61, 80)
     text-transform: uppercase
     font-weight: 700
+    transition: color .25s $ease
 
   &__description
     max-width: 440px
@@ -43,6 +45,15 @@
     line-height: 1.5
     margin-top: 1em
     font-weight: 500
+
+a.hero-slide
+  &:hover
+    .hero-slide__title
+      color: $colorPrimary
+
+a.hero-slide__title
+  &:hover
+    color: $colorPrimary
 
 +r($lg)
   .hero-slide

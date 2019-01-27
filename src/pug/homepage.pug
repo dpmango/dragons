@@ -9,18 +9,23 @@ block content
   .hero-slider
     .swiper-container(js-hero-swiper)
       .swiper-wrapper
-        mixin slide
-          //slide
-          .swiper-slide.hero-slide
-            .hero-slide__image
-              img(src='img/heroSlide.jpg' srcset='img/heroSlide@2x.jpg 2x' alt="")
-            .hero-slide__content
-              .container
-                .hero-slide__title New kit <br/>partner  <br/>for<br/>Dragons
-                .hero-slide__description Dragons have joined forces with <br/>VX3 and Lovell Rugby.
-        +slide
-        +slide
-        
+        //slide (all as link)
+        a(href="article.html").swiper-slide.hero-slide
+          .hero-slide__image
+            img(src='img/heroSlide.jpg' srcset='img/heroSlide@2x.jpg 2x' alt="")
+          .hero-slide__content
+            .container
+              .hero-slide__title New kit <br/>partner  <br/>for<br/>Dragons
+              .hero-slide__description Dragons have joined forces with <br/>VX3 and Lovell Rugby.
+        //slide (title as link)
+        .swiper-slide.hero-slide
+          .hero-slide__image
+            img(src='img/heroSlide.jpg' srcset='img/heroSlide@2x.jpg 2x' alt="")
+          .hero-slide__content
+            .container
+              a(href="article.html").hero-slide__title New kit <br/>partner  <br/>for<br/>Dragons
+              .hero-slide__description Dragons have joined forces with <br/>VX3 and Lovell Rugby.
+              
       .hero-slider__controls
         .gallery__btn.gallery__btn--prev
           +icon('ico-swiper-arrow')
