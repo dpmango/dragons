@@ -940,9 +940,18 @@ $(document).ready(function(){
 
     .on('click', '.about-card', debounce(function(e){
       if ( !aboutSwiperTransitioning ){
-        Barba.Pjax.goTo($(this).attr('href'));
+        var newHref = $(this).attr('href')
+        if ( isOutLink(newHref) ){
+          window.open(newHref)
+        } else {
+          Barba.Pjax.goTo(newHref);
+        }
       }
     }, 300, {leading: false}))
+
+  function isOutLink(href){
+    return href.indexOf(window.location.hostname) === -1
+  }
 
 
   function enableGallerySwiper(){
